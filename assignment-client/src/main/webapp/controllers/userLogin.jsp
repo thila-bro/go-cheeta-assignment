@@ -31,7 +31,8 @@
             
         } else {
             ses.setAttribute("error", "Login failed. Please try again");
-            response.sendRedirect("/assignment-client/login.jsp");
+            response.sendRedirect("/assignment-client/");
+
     }
 
 
