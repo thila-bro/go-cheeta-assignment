@@ -6,3 +6,16 @@ body {
 a {
     text-decoration: none;
 }
+
+.error {
+    color: red;
+    font-style: italic;
+    border-color: red !important;
+    background: unset
+}
+
+.form-control {
+    background: unset !important;
+    border-color: #adb5bd;
+    color: #000 !important;
+}
