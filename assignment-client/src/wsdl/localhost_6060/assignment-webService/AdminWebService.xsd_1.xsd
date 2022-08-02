@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://assignment/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://assignment/">
+
+<xs:element name="addCity" type="tns:addCity"/>
+
+<xs:element name="addCityResponse" type="tns:addCityResponse"/>
+
+<xs:element name="deleteCity" type="tns:deleteCity"/>
+
+<xs:element name="deleteCityResponse" type="tns:deleteCityResponse"/>
+
+<xs:element name="getCities" type="tns:getCities"/>
+
+<xs:element name="getCitiesResponse" type="tns:getCitiesResponse"/>
+
+<xs:element name="getCityById" type="tns:getCityById"/>
+
+<xs:element name="getCityByIdResponse" type="tns:getCityByIdResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="updateCity" type="tns:updateCity"/>
+
+<xs:element name="updateCityResponse" type="tns:updateCityResponse"/>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCities">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCitiesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:city" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="city">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCity">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCityResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCity">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCityResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCity">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCityResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCityById">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCityByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:city" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

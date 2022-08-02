@@ -1,609 +1,816 @@
 <%-- 
-    Document   : index
-    Created on : Aug 1, 2022, 5:01:50 PM
+    Document   : index2
+    Created on : Aug 2, 2022, 4:11:02 PM
     Author     : thilan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../asset/css/admin/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
-        <link rel="stylesheet" href="../asset/css/admin/dataTables.bootstrap5.min.css" />
-        <link rel="stylesheet" href="../asset/css/admin/style.css" />
-        <title>Frontendfunn - Bootstrap 5 Admin Dashboard Template</title>
+        
+        <title>Test Admin Dashboard</title>
+        
+        <%@include file="../admin/includes/new/head-css.jsp" %>
+
     </head>
-    <body>
-        
-        <%@include file="../admin/includes/content/topNav.jsp" %>
-        <%@include file="../admin/includes/content/leftNav.jsp" %>
-        
-        <main class="mt-5 pt-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Dashboard</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-primary text-white h-100">
-                            <div class="card-body py-5">Primary Card</div>
-                            <div class="card-footer d-flex">
-                                View Details
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-warning text-dark h-100">
-                            <div class="card-body py-5">Warning Card</div>
-                            <div class="card-footer d-flex">
-                                View Details
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5">Success Card</div>
-                            <div class="card-footer d-flex">
-                                View Details
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-danger text-white h-100">
-                            <div class="card-body py-5">Danger Card</div>
-                            <div class="card-footer d-flex">
-                                View Details
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                                <canvas class="chart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                                <canvas class="chart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <span><i class="bi bi-table me-2"></i></span> Data Table
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table
-                                        id="example"
-                                        class="table table-striped data-table"
-                                        style="width: 100%"
-                                        >
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brielle Williamson</td>
-                                                <td>Integration Specialist</td>
-                                                <td>New York</td>
-                                                <td>61</td>
-                                                <td>2012/12/02</td>
-                                                <td>$372,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Herrod Chandler</td>
-                                                <td>Sales Assistant</td>
-                                                <td>San Francisco</td>
-                                                <td>59</td>
-                                                <td>2012/08/06</td>
-                                                <td>$137,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rhona Davidson</td>
-                                                <td>Integration Specialist</td>
-                                                <td>Tokyo</td>
-                                                <td>55</td>
-                                                <td>2010/10/14</td>
-                                                <td>$327,900</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Colleen Hurst</td>
-                                                <td>Javascript Developer</td>
-                                                <td>San Francisco</td>
-                                                <td>39</td>
-                                                <td>2009/09/15</td>
-                                                <td>$205,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sonya Frost</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>23</td>
-                                                <td>2008/12/13</td>
-                                                <td>$103,600</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jena Gaines</td>
-                                                <td>Office Manager</td>
-                                                <td>London</td>
-                                                <td>30</td>
-                                                <td>2008/12/19</td>
-                                                <td>$90,560</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Quinn Flynn</td>
-                                                <td>Support Lead</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2013/03/03</td>
-                                                <td>$342,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Charde Marshall</td>
-                                                <td>Regional Director</td>
-                                                <td>San Francisco</td>
-                                                <td>36</td>
-                                                <td>2008/10/16</td>
-                                                <td>$470,600</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Haley Kennedy</td>
-                                                <td>Senior Marketing Designer</td>
-                                                <td>London</td>
-                                                <td>43</td>
-                                                <td>2012/12/18</td>
-                                                <td>$313,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tatyana Fitzpatrick</td>
-                                                <td>Regional Director</td>
-                                                <td>London</td>
-                                                <td>19</td>
-                                                <td>2010/03/17</td>
-                                                <td>$385,750</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Silva</td>
-                                                <td>Marketing Designer</td>
-                                                <td>London</td>
-                                                <td>66</td>
-                                                <td>2012/11/27</td>
-                                                <td>$198,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Paul Byrd</td>
-                                                <td>Chief Financial Officer (CFO)</td>
-                                                <td>New York</td>
-                                                <td>64</td>
-                                                <td>2010/06/09</td>
-                                                <td>$725,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gloria Little</td>
-                                                <td>Systems Administrator</td>
-                                                <td>New York</td>
-                                                <td>59</td>
-                                                <td>2009/04/10</td>
-                                                <td>$237,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>41</td>
-                                                <td>2012/10/13</td>
-                                                <td>$132,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dai Rios</td>
-                                                <td>Personnel Lead</td>
-                                                <td>Edinburgh</td>
-                                                <td>35</td>
-                                                <td>2012/09/26</td>
-                                                <td>$217,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jenette Caldwell</td>
-                                                <td>Development Lead</td>
-                                                <td>New York</td>
-                                                <td>30</td>
-                                                <td>2011/09/03</td>
-                                                <td>$345,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Yuri Berry</td>
-                                                <td>Chief Marketing Officer (CMO)</td>
-                                                <td>New York</td>
-                                                <td>40</td>
-                                                <td>2009/06/25</td>
-                                                <td>$675,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>21</td>
-                                                <td>2011/12/12</td>
-                                                <td>$106,450</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Doris Wilder</td>
-                                                <td>Sales Assistant</td>
-                                                <td>Sydney</td>
-                                                <td>23</td>
-                                                <td>2010/09/20</td>
-                                                <td>$85,600</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Angelica Ramos</td>
-                                                <td>Chief Executive Officer (CEO)</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2009/10/09</td>
-                                                <td>$1,200,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gavin Joyce</td>
-                                                <td>Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>42</td>
-                                                <td>2010/12/22</td>
-                                                <td>$92,575</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jennifer Chang</td>
-                                                <td>Regional Director</td>
-                                                <td>Singapore</td>
-                                                <td>28</td>
-                                                <td>2010/11/14</td>
-                                                <td>$357,650</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>28</td>
-                                                <td>2011/06/07</td>
-                                                <td>$206,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fiona Green</td>
-                                                <td>Chief Operating Officer (COO)</td>
-                                                <td>San Francisco</td>
-                                                <td>48</td>
-                                                <td>2010/03/11</td>
-                                                <td>$850,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shou Itou</td>
-                                                <td>Regional Marketing</td>
-                                                <td>Tokyo</td>
-                                                <td>20</td>
-                                                <td>2011/08/14</td>
-                                                <td>$163,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michelle House</td>
-                                                <td>Integration Specialist</td>
-                                                <td>Sydney</td>
-                                                <td>37</td>
-                                                <td>2011/06/02</td>
-                                                <td>$95,400</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Suki Burks</td>
-                                                <td>Developer</td>
-                                                <td>London</td>
-                                                <td>53</td>
-                                                <td>2009/10/22</td>
-                                                <td>$114,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Prescott Bartlett</td>
-                                                <td>Technical Author</td>
-                                                <td>London</td>
-                                                <td>27</td>
-                                                <td>2011/05/07</td>
-                                                <td>$145,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gavin Cortez</td>
-                                                <td>Team Leader</td>
-                                                <td>San Francisco</td>
-                                                <td>22</td>
-                                                <td>2008/10/26</td>
-                                                <td>$235,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Martena Mccray</td>
-                                                <td>Post-Sales support</td>
-                                                <td>Edinburgh</td>
-                                                <td>46</td>
-                                                <td>2011/03/09</td>
-                                                <td>$324,050</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Unity Butler</td>
-                                                <td>Marketing Designer</td>
-                                                <td>San Francisco</td>
-                                                <td>47</td>
-                                                <td>2009/12/09</td>
-                                                <td>$85,675</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Howard Hatfield</td>
-                                                <td>Office Manager</td>
-                                                <td>San Francisco</td>
-                                                <td>51</td>
-                                                <td>2008/12/16</td>
-                                                <td>$164,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hope Fuentes</td>
-                                                <td>Secretary</td>
-                                                <td>San Francisco</td>
-                                                <td>41</td>
-                                                <td>2010/02/12</td>
-                                                <td>$109,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vivian Harrell</td>
-                                                <td>Financial Controller</td>
-                                                <td>San Francisco</td>
-                                                <td>62</td>
-                                                <td>2009/02/14</td>
-                                                <td>$452,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Timothy Mooney</td>
-                                                <td>Office Manager</td>
-                                                <td>London</td>
-                                                <td>37</td>
-                                                <td>2008/12/11</td>
-                                                <td>$136,200</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jackson Bradshaw</td>
-                                                <td>Director</td>
-                                                <td>New York</td>
-                                                <td>65</td>
-                                                <td>2008/09/26</td>
-                                                <td>$645,750</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Olivia Liang</td>
-                                                <td>Support Engineer</td>
-                                                <td>Singapore</td>
-                                                <td>64</td>
-                                                <td>2011/02/03</td>
-                                                <td>$234,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Nash</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>38</td>
-                                                <td>2011/05/03</td>
-                                                <td>$163,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sakura Yamamoto</td>
-                                                <td>Support Engineer</td>
-                                                <td>Tokyo</td>
-                                                <td>37</td>
-                                                <td>2009/08/19</td>
-                                                <td>$139,575</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Thor Walton</td>
-                                                <td>Developer</td>
-                                                <td>New York</td>
-                                                <td>61</td>
-                                                <td>2013/08/11</td>
-                                                <td>$98,540</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Finn Camacho</td>
-                                                <td>Support Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>47</td>
-                                                <td>2009/07/07</td>
-                                                <td>$87,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Serge Baldwin</td>
-                                                <td>Data Coordinator</td>
-                                                <td>Singapore</td>
-                                                <td>64</td>
-                                                <td>2012/04/09</td>
-                                                <td>$138,575</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Zenaida Frank</td>
-                                                <td>Software Engineer</td>
-                                                <td>New York</td>
-                                                <td>63</td>
-                                                <td>2010/01/04</td>
-                                                <td>$125,250</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Zorita Serrano</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>56</td>
-                                                <td>2012/06/01</td>
-                                                <td>$115,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jennifer Acosta</td>
-                                                <td>Junior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>43</td>
-                                                <td>2013/02/01</td>
-                                                <td>$75,650</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cara Stevens</td>
-                                                <td>Sales Assistant</td>
-                                                <td>New York</td>
-                                                <td>46</td>
-                                                <td>2011/12/06</td>
-                                                <td>$145,600</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hermione Butler</td>
-                                                <td>Regional Director</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2011/03/21</td>
-                                                <td>$356,250</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Lael Greer</td>
-                                                <td>Systems Administrator</td>
-                                                <td>London</td>
-                                                <td>21</td>
-                                                <td>2009/02/27</td>
-                                                <td>$103,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jonas Alexander</td>
-                                                <td>Developer</td>
-                                                <td>San Francisco</td>
-                                                <td>30</td>
-                                                <td>2010/07/14</td>
-                                                <td>$86,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shad Decker</td>
-                                                <td>Regional Director</td>
-                                                <td>Edinburgh</td>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+
+    <body data-sidebar="dark">
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+            
+            
+            <%@include file="../admin/includes/new/menu.jsp" %>
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <?= $page_title ?>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="d-flex">
+                                                    <div class="me-3">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                                    </div>
+                                                    <div class="flex-grow-1 align-self-center">
+                                                        <div class="text-muted">
+                                                            <p class="mb-2">Welcome to Skote Dashboard</p>
+                                                            <h5 class="mb-1">Henry wells</h5>
+                                                            <p class="mb-0">UI / UX Designer</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-lg-4 align-self-center">
+                                                <div class="text-lg-center mt-4 mt-lg-0">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div>
+                                                                <p class="text-muted text-truncate mb-2">Total Projects</p>
+                                                                <h5 class="mb-0">48</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div>
+                                                                <p class="text-muted text-truncate mb-2">Projects</p>
+                                                                <h5 class="mb-0">40</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div>
+                                                                <p class="text-muted text-truncate mb-2">Clients</p>
+                                                                <h5 class="mb-0">18</h5>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-lg-4 d-none d-lg-block">
+                                                <div class="clearfix mt-4 mt-lg-0">
+                                                    <div class="dropdown float-end">
+                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="bx bxs-cog align-middle me-1"></i> Setting
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <a class="dropdown-item" href="#">Something else</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="card bg-primary bg-soft">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <div class="text-primary p-3">
+                                                    <h5 class="text-primary">Welcome Back !</h5>
+                                                    <p>Skote Saas Dashboard</p>
+
+                                                    <ul class="ps-3 mb-0">
+                                                        <li class="py-1">7 + Layouts</li>
+                                                        <li class="py-1">Multiple apps</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 align-self-end">
+                                                <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-8">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar-xs me-3">
+                                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                            <i class="bx bx-copy-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <h5 class="font-size-14 mb-0">Orders</h5>
+                                                </div>
+                                                <div class="text-muted mt-4">
+                                                    <h4>1,452 <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                                    <div class="d-flex">
+                                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span class="ms-2 text-truncate">From previous period</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar-xs me-3">
+                                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                            <i class="bx bx-archive-in"></i>
+                                                        </span>
+                                                    </div>
+                                                    <h5 class="font-size-14 mb-0">Revenue</h5>
+                                                </div>
+                                                <div class="text-muted mt-4">
+                                                    <h4>$ 28,452 <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                                    <div class="d-flex">
+                                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span class="ms-2 text-truncate">From previous period</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
         
-        <script src="../asset/js/admin/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-        <script src="../asset/js/admin/jquery-3.5.1.js"></script>
-        <script src="../asset/js/admin/jquery.dataTables.min.js"></script>
-        <script src="../asset/js/admin/dataTables.bootstrap5.min.js"></script>
-        <script src="../asset/js/admin/script.js"></script>
+                                    <div class="col-sm-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar-xs me-3">
+                                                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                            <i class="bx bx-purchase-tag-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <h5 class="font-size-14 mb-0">Average Price</h5>
+                                                </div>
+                                                <div class="text-muted mt-4">
+                                                    <h4>$ 16.2 <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                                    
+                                                    <div class="d-flex">
+                                                        <span class="badge badge-soft-warning font-size-12"> 0% </span> <span class="ms-2 text-truncate">From previous period</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="clearfix">
+                                            <div class="float-end">
+                                                <div class="input-group input-group-sm">
+                                                    <select class="form-select form-select-sm">
+                                                        <option value="JA" selected>Jan</option>
+                                                        <option value="DE">Dec</option>
+                                                        <option value="NO">Nov</option>
+                                                        <option value="OC">Oct</option>
+                                                    </select>
+                                                    <label class="input-group-text">Month</label>
+                                                </div>
+                                            </div>
+                                            <h4 class="card-title mb-4">Earning</h4>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="text-muted">
+                                                    <div class="mb-4">
+                                                        <p>This month</p>
+                                                        <h4>$2453.35</h4>
+                                                        <div><span class="badge badge-soft-success font-size-12 me-1"> + 0.2% </span> From previous period</div>
+                                                    </div>
+
+                                                    <div>
+                                                        <a href="#" class="btn btn-primary waves-effect waves-light btn-sm">View Details <i class="mdi mdi-chevron-right ms-1"></i></a>
+                                                    </div>
+                                                    
+                                                    <div class="mt-4">
+                                                        <p class="mb-2">Last month</p>
+                                                        <h5>$2281.04</h5>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <div id="line-chart" class="apex-charts" dir="ltr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Sales Analytics</h4>
+
+                                        <div>
+                                            <div id="donut-chart" class="apex-charts"></div>
+                                        </div>
+
+                                        <div class="text-center text-muted">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="mt-4">
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary me-1"></i> Product A</p>
+                                                        <h5>$ 2,132</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="mt-4">
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success me-1"></i> Product B</p>
+                                                        <h5>$ 1,763</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="mt-4">
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger me-1"></i> Product C</p>
+                                                        <h5>$ 973</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="clearfix">
+                                            <div class="float-end">
+                                                <div class="input-group input-group-sm">
+                                                    <select class="form-select form-select-sm">
+                                                        <option value="JA" selected>Jan</option>
+                                                        <option value="DE">Dec</option>
+                                                        <option value="NO">Nov</option>
+                                                        <option value="OC">Oct</option>
+                                                    </select>
+                                                    <label class="input-group-text">Month</label>
+                                                </div>
+                                            </div>
+                                            <h4 class="card-title mb-4">Top Selling product</h4>
+                                        </div>
+
+                                        <div class="text-muted text-center">
+                                            <p class="mb-2">Product A</p>
+                                            <h4>$ 6385</h4>
+                                            <p class="mt-4 mb-0"><span class="badge badge-soft-success font-size-11 me-2"> 0.6% <i class="mdi mdi-arrow-up"></i> </span> From previous period</p>
+                                        </div>
+
+                                        <div class="table-responsive mt-4">
+                                            <table class="table align-middle mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <h5 class="font-size-14 mb-1">Product A</h5>
+                                                            <p class="text-muted mb-0">Neque quis est</p>
+                                                        </td>
+
+                                                        <td>
+                                                            <div id="radialchart-1" class="apex-charts"></div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-muted mb-1">Sales</p>
+                                                            <h5 class="mb-0">37 %</h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h5 class="font-size-14 mb-1">Product B</h5>
+                                                            <p class="text-muted mb-0">Quis autem iure</p>
+                                                        </td>
+
+                                                        <td>
+                                                            <div id="radialchart-2" class="apex-charts"></div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-muted mb-1">Sales</p>
+                                                            <h5 class="mb-0">72 %</h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h5 class="font-size-14 mb-1">Product C</h5>
+                                                            <p class="text-muted mb-0">Sed aliquam mauris.</p>
+                                                        </td>
+
+                                                        <td>
+                                                            <div id="radialchart-3" class="apex-charts"></div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-muted mb-1">Sales</p>
+                                                            <h5 class="mb-0">54 %</h5>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Tasks</h4>
+
+                                        <ul class="nav nav-pills bg-light rounded">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#">In Process</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Upcoming</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="mt-4">
+                                            <div data-simplebar style="max-height: 250px;">
+                                            
+                                                <div class="table-responsive">
+                                                    <table class="table table-nowrap align-middle table-hover mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 50px;">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck01">
+                                                                        <label class="form-check-label" for="tasklistCheck01"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Skote Saas Dashboard</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Mark</p>
+                                                                </td>
+                                                                <td style="width: 90px;">
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck02">
+                                                                        <label class="form-check-label" for="tasklistCheck02"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">New Landing UI</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Team A</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck02">
+                                                                        <label class="form-check-label" for="tasklistCheck02"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Brand logo design</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Janis</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck04">
+                                                                        <label class="form-check-label" for="tasklistCheck04"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Blog Template UI</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Dianna</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck05">
+                                                                        <label class="form-check-label" for="tasklistCheck05"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Multipurpose Landing</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Team B</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck06">
+                                                                        <label class="form-check-label" for="tasklistCheck06"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Redesign - Landing page</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Jerry</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" id="tasklistCheck07">
+                                                                        <label class="form-check-label" for="tasklistCheck07"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Skote Crypto Dashboard</a></h5>
+                                                                    <p class="text-muted mb-0">Assigned to Eric</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <ul class="list-inline mb-0 font-size-16">
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                            </li>
+                                                                            <li class="list-inline-item">
+                                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer bg-transparent border-top">
+                                        <div class="text-center">
+                                            <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light"> Add new Task</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <div class="card-body border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-4 col-9">
+                                                <h5 class="font-size-15 mb-1">Steven Franklin</h5>
+                                                <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Active now</p>
+                                            </div>
+                                            <div class="col-md-8 col-3">
+                                                <ul class="list-inline user-chat-nav text-end mb-0">
+                                                    <li class="list-inline-item d-none d-sm-inline-block">
+                                                        <div class="dropdown">
+                                                            <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="bx bx-search-alt-2"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end py-0 dropdown-menu-md">
+                                                                <form class="p-3">
+                                                                    <div class="form-group m-0">
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                                                            
+                                                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-inline-item  d-none d-sm-inline-block">
+                                                        <div class="dropdown">
+                                                            <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="bx bx-cog"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <a class="dropdown-item" href="#">View Profile</a>
+                                                                <a class="dropdown-item" href="#">Clear chat</a>
+                                                                <a class="dropdown-item" href="#">Muted</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="list-inline-item">
+                                                        <div class="dropdown">
+                                                            <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="bx bx-dots-horizontal-rounded"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <a class="dropdown-item" href="#">Action</a>
+                                                                <a class="dropdown-item" href="#">Another action</a>
+                                                                <a class="dropdown-item" href="#">Something else</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div>
+                                            <div class="chat-conversation">
+                                                <ul class="list-unstyled" data-simplebar style="max-height: 260px;">
+                                                    <li> 
+                                                        <div class="chat-day-title">
+                                                            <span class="title">Today</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="conversation-list">
+                                                            <div class="dropdown">
+        
+                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                  </a>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">Copy</a>
+                                                                    <a class="dropdown-item" href="#">Save</a>
+                                                                    <a class="dropdown-item" href="#">Forward</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">Steven Franklin</div>
+                                                                <p>
+                                                                    Hello!
+                                                                </p>
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00</p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </li>
+        
+                                                    <li class="right">
+                                                        <div class="conversation-list">
+                                                            <div class="dropdown">
+        
+                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                  </a>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">Copy</a>
+                                                                    <a class="dropdown-item" href="#">Save</a>
+                                                                    <a class="dropdown-item" href="#">Forward</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">Henry Wells</div>
+                                                                <p>
+                                                                    Hi, How are you? What about our next meeting?
+                                                                </p>
+        
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+        
+                                                    <li>
+                                                        <div class="conversation-list">
+                                                            <div class="dropdown">
+        
+                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                  </a>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">Copy</a>
+                                                                    <a class="dropdown-item" href="#">Save</a>
+                                                                    <a class="dropdown-item" href="#">Forward</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">Steven Franklin</div>
+                                                                <p>
+                                                                    Yeah everything is fine
+                                                                </p>
+                                                                
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:06</p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </li>
+        
+                                                    <li class="last-chat">
+                                                        <div class="conversation-list">
+                                                            <div class="dropdown">
+        
+                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                  </a>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">Copy</a>
+                                                                    <a class="dropdown-item" href="#">Save</a>
+                                                                    <a class="dropdown-item" href="#">Forward</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">Steven Franklin</div>
+                                                                <p>& Next meeting tomorrow 10.00AM</p>
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:06</p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </li>
+        
+                                                    <li class="right">
+                                                        <div class="conversation-list">
+                                                            <div class="dropdown">
+        
+                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                                  </a>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">Copy</a>
+                                                                    <a class="dropdown-item" href="#">Save</a>
+                                                                    <a class="dropdown-item" href="#">Forward</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ctext-wrap">
+                                                                <div class="conversation-name">Henry Wells</div>
+                                                                <p>
+                                                                    Wow that's great
+                                                                </p>
+        
+                                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:07</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 chat-input-section">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control rounded chat-input" placeholder="Enter Message...">
+                                                    <div class="chat-input-links">
+                                                        <ul class="list-inline mb-0">
+                                                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-emoticon-happy-outline"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-file-image-outline"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i class="mdi mdi-file-document-outline"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                
+                <%@include file="../admin/includes/new/footer.jsp" %>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->        
+
+        <%@include file="../admin/includes/new/scripts.jsp" %>
+
+        <!-- apexcharts -->
+        <script src="/assignment-client/admin/asset/js/apexcharts.min.js"></script>
+        
+        <!-- Saas dashboard init -->
+        <script src="/assignment-client/admin/asset/js/saas-dashboard.init.js"></script>
+
+        <script src="/assignment-client/admin/asset/js/app.js"></script>
+
     </body>
 </html>
