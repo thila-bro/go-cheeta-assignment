@@ -14,4 +14,12 @@ public interface DBUtil {
    public boolean addUser(User customer);
    public User getUserByMobile(String mobile);
    public boolean authUser(String mobile, String password);
+   
+   
+   // admin area 
+   public boolean addCity(City city);
+   public List<City> getCities();
+   public boolean deleteCity(int id);
+   public City getCityById(int id);
+   public boolean updateCity(City city);
 }

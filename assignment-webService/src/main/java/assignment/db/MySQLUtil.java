@@ -4,6 +4,7 @@
  */
 package assignment.db;
 
+import assignment.src.City;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.User;
@@ -95,10 +96,88 @@ public class MySQLUtil implements DBUtil {
             this.rs   = this.stmt.executeQuery("CALL `assignment-db`.`auth_user`('"+mobile+"', '"+password+"');");
             
             return rs.next();
-                      
-           
         } catch(SQLException e) {
             System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    
+    
+   
+    
+    // admin area  
+    @Override
+    public boolean addCity(City city) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_city`('"+city.getName()+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<City> getCities() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_cities`();");
+
+            List<City> cities = new ArrayList<>();
+
+            while (rs.next()) {
+                City city = new City(rs.getInt("id"), rs.getString("city"));
+                cities.add(city);
+            }
+            
+            return cities;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean deleteCity(int id) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_city`('"+id+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+        
+    @Override
+    public City getCityById(int id) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_city_by_id`('"+id+"');");
+        
+            if(rs.next()) {
+                City city = new City(rs.getInt("id"), rs.getString("city"));
+                return city;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateCity(City city) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_city`('"+city.getId()+"','"+city.getName()+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
