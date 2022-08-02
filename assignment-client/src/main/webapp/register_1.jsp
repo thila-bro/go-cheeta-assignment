@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./asset/img/favicon.ico">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/main.css">
-    <link rel="stylesheet" href="./asset/js/sweetalert2/sweetalert2.min.css">
+<%@include file="./includes/html/header.html" %>
 
     <title>Go Cheeta - Register</title>
 </head>
@@ -126,13 +115,9 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/firebase/8.6.7/firebase.js'></script>
-
-    <script src="./asset/js/sweetalert2/sweetalert2.min.js"></script>
-    <script src="./asset/js/custom-alerts.js"></script>
-    <script src="./asset/js/main.js"></script>
     <script src="./asset/js/firebase/auth.js"></script>
     <script src="./asset/js/firebase/otp.js"></script>
-    
+    <%@include file="./includes/html/import-js.html" %>          
     <%@include file="./includes/messages/saveSessionResponse.jsp" %>
 </body>
 
