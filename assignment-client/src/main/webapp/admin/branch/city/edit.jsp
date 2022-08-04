@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">
-                                                    <input name="id" type="hidden" value="<% out.print(city.getId()); %>">
+                                                    <input name="id" type="hidden" value="<% out.print(city.getCityId()); %>">
                                                     <button class="btn btn-primary" type="submit">Update</button>
                                                 </div>
                                             </div>
