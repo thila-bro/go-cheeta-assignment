@@ -93,8 +93,8 @@
                                                     <td><% out.print(cities.indexOf(city)+1); %></td>
                                                     <td><% out.print(city.getName()); %></td>
                                                     <td>
-                                                        <a href="./edit.jsp?id=<% out.print(city.getId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
-                                                        <a href="/assignment-client/admin/controller/branch/deleteCity.jsp?id=<% out.print(city.getId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>
+                                                        <a href="./edit.jsp?id=<% out.print(city.getCityId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
+                                                        <a href="/assignment-client/admin/controller/branch/deleteCity.jsp?id=<% out.print(city.getCityId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>
                                                     </td>
                                                 </tr>
                                                 <% } %>
