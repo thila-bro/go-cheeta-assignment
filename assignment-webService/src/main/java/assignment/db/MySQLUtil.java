@@ -4,10 +4,13 @@
  */
 package assignment.db;
 
+import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
+import assignment.src.Driver;
 import assignment.src.User;
+import assignment.src.VehicleType;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +37,6 @@ public class MySQLUtil implements DBUtil {
             System.out.println(e.getMessage());
         }
     }
-    
     
     @Override
     public List<Customer> getCustomers() {
@@ -173,7 +175,235 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean updateCity(City city) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `update_city`('"+city.getId()+"','"+city.getName()+"');");            
+            this.stmt  = this.con.prepareCall("CALL `update_city`('"+city.getCityId()+"','"+city.getName()+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean addBranch(Branch branch) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_branch`("+branch.getCityId()+", '"+branch.getEmail()+"', '"+branch.getMobile()+"', '"+branch.getFixed()+"', '"+branch.getAddress1()+"', '"+branch.getAddress2()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<Branch> getBranches() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_branches`();");
+
+            List<Branch> branches = new ArrayList<>();
+
+            while (rs.next()) {
+                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"), rs.getString("city"));
+                branches.add(branch);
+            }
+            
+            return branches;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean deleteBranch(int branch_id) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_branch`('"+branch_id+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    
+    @Override
+    public Branch getBranchById(int branch_id) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_branch_by_id`('"+branch_id+"');");
+        
+            if(rs.next()) {
+                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"), "");
+                return branch;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    
+    @Override
+    public boolean upadteBranch(Branch branch) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_branch`("+branch.getBranchId()+", "+branch.getCityId()+", '"+branch.getEmail()+"', '"+branch.getMobile()+"', '"+branch.getFixed()+"', '"+branch.getAddress1()+"', '"+branch.getAddress2()+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean addVehicleType(VehicleType type) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_vehicle_type`('"+type.getVehicleType()+"');");            
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<VehicleType> getVehicleTypes() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_types`();");
+
+            List<VehicleType> vehicleTypes = new ArrayList<>();
+
+            while (rs.next()) {
+                VehicleType vehicleType = new VehicleType(rs.getInt("id"), rs.getString("type"));
+                vehicleTypes.add(vehicleType);
+            }
+            
+            return vehicleTypes;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean deleteVehicleType(int vehicleId) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_vehicle_type`('"+vehicleId+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public VehicleType getVehicleTypeById(int vehicleId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_type_by_id`('"+vehicleId+"');");
+        
+            if(rs.next()) {
+                VehicleType vehilceType = new VehicleType(rs.getInt("id"), rs.getString("type"));
+                return vehilceType;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateVehicleType(VehicleType vehicleType) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_vehicle_category`("+vehicleType.getVehilceTypeId()+", '"+vehicleType.getVehicleType()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean addDriver(Driver driver) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_driver`('"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<Driver> getDrivers() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_drivers`();");
+
+            List<Driver> drivers = new ArrayList<>();
+
+            while (rs.next()) {
+                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                drivers.add(driver);
+            }
+            
+            return drivers;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean deleteDriver(int driverId) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_driver`('"+driverId+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public Driver getDriverById(int driverId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_driver_by_id`("+driverId+");");
+        
+            if(rs.next()) {
+                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                return driver;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateDriver(Driver driver) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_driver`("+driver.getId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {

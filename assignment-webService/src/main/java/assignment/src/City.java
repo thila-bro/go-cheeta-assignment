@@ -9,20 +9,20 @@ package assignment.src;
  * @author thilan
  */
 public class City {
-    private int id;
+    private int cityId;
     private String name;
 
-    public City(int id, String name) {
-        this.id = id;
+    public City(int cityId, String name) {
+        this.cityId = cityId;
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getCityId() {
+        return cityId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     public String getName() {
