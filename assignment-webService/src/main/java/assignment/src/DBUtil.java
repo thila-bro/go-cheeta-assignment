@@ -22,4 +22,19 @@ public interface DBUtil {
    public boolean deleteCity(int id);
    public City getCityById(int id);
    public boolean updateCity(City city);
+   public boolean addBranch(Branch branch);
+   public List<Branch> getBranches();
+   public boolean deleteBranch(int branch_id);
+   public Branch getBranchById(int branch_id);
+   public boolean upadteBranch(Branch branch);
+   public boolean addVehicleType(VehicleType type);
+   public List<VehicleType> getVehicleTypes();
+   public boolean deleteVehicleType(int vehicleId);
+   public VehicleType getVehicleTypeById(int vehicleType);
+   public boolean updateVehicleType(VehicleType type);
+   public boolean addDriver(Driver driver);
+   public List<Driver> getDrivers();
+   public boolean deleteDriver(int driverId);
+   public Driver getDriverById(int driverId);
+   public boolean updateDriver(Driver driver);
 }
