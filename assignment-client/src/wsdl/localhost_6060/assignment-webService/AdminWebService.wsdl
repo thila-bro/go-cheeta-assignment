@@ -4,29 +4,53 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/AdminWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="updateCity">
-<part name="parameters" element="tns:updateCity"/>
+<message name="getDriverById">
+<part name="parameters" element="tns:getDriverById"/>
 </message>
-<message name="updateCityResponse">
-<part name="parameters" element="tns:updateCityResponse"/>
+<message name="getDriverByIdResponse">
+<part name="parameters" element="tns:getDriverByIdResponse"/>
 </message>
-<message name="deleteCity">
-<part name="parameters" element="tns:deleteCity"/>
+<message name="updateDriver">
+<part name="parameters" element="tns:updateDriver"/>
 </message>
-<message name="deleteCityResponse">
-<part name="parameters" element="tns:deleteCityResponse"/>
+<message name="updateDriverResponse">
+<part name="parameters" element="tns:updateDriverResponse"/>
 </message>
-<message name="getCityById">
-<part name="parameters" element="tns:getCityById"/>
+<message name="deleteDriver">
+<part name="parameters" element="tns:deleteDriver"/>
 </message>
-<message name="getCityByIdResponse">
-<part name="parameters" element="tns:getCityByIdResponse"/>
+<message name="deleteDriverResponse">
+<part name="parameters" element="tns:deleteDriverResponse"/>
 </message>
 <message name="hello">
 <part name="parameters" element="tns:hello"/>
 </message>
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
+</message>
+<message name="getDrivers">
+<part name="parameters" element="tns:getDrivers"/>
+</message>
+<message name="getDriversResponse">
+<part name="parameters" element="tns:getDriversResponse"/>
+</message>
+<message name="updateVehicleType">
+<part name="parameters" element="tns:updateVehicleType"/>
+</message>
+<message name="updateVehicleTypeResponse">
+<part name="parameters" element="tns:updateVehicleTypeResponse"/>
+</message>
+<message name="getVehicleTypeById">
+<part name="parameters" element="tns:getVehicleTypeById"/>
+</message>
+<message name="getVehicleTypeByIdResponse">
+<part name="parameters" element="tns:getVehicleTypeByIdResponse"/>
+</message>
+<message name="deleteVehicleType">
+<part name="parameters" element="tns:deleteVehicleType"/>
+</message>
+<message name="deleteVehicleTypeResponse">
+<part name="parameters" element="tns:deleteVehicleTypeResponse"/>
 </message>
 <message name="addCity">
 <part name="parameters" element="tns:addCity"/>
@@ -40,22 +64,104 @@
 <message name="getCitiesResponse">
 <part name="parameters" element="tns:getCitiesResponse"/>
 </message>
+<message name="deleteCity">
+<part name="parameters" element="tns:deleteCity"/>
+</message>
+<message name="deleteCityResponse">
+<part name="parameters" element="tns:deleteCityResponse"/>
+</message>
+<message name="getCityById">
+<part name="parameters" element="tns:getCityById"/>
+</message>
+<message name="getCityByIdResponse">
+<part name="parameters" element="tns:getCityByIdResponse"/>
+</message>
+<message name="updateCity">
+<part name="parameters" element="tns:updateCity"/>
+</message>
+<message name="updateCityResponse">
+<part name="parameters" element="tns:updateCityResponse"/>
+</message>
+<message name="addBranch">
+<part name="parameters" element="tns:addBranch"/>
+</message>
+<message name="addBranchResponse">
+<part name="parameters" element="tns:addBranchResponse"/>
+</message>
+<message name="upadteBranch">
+<part name="parameters" element="tns:upadteBranch"/>
+</message>
+<message name="upadteBranchResponse">
+<part name="parameters" element="tns:upadteBranchResponse"/>
+</message>
+<message name="getBranches">
+<part name="parameters" element="tns:getBranches"/>
+</message>
+<message name="getBranchesResponse">
+<part name="parameters" element="tns:getBranchesResponse"/>
+</message>
+<message name="deleteBranch">
+<part name="parameters" element="tns:deleteBranch"/>
+</message>
+<message name="deleteBranchResponse">
+<part name="parameters" element="tns:deleteBranchResponse"/>
+</message>
+<message name="getBranchById">
+<part name="parameters" element="tns:getBranchById"/>
+</message>
+<message name="getBranchByIdResponse">
+<part name="parameters" element="tns:getBranchByIdResponse"/>
+</message>
+<message name="addVehicleType">
+<part name="parameters" element="tns:addVehicleType"/>
+</message>
+<message name="addVehicleTypeResponse">
+<part name="parameters" element="tns:addVehicleTypeResponse"/>
+</message>
+<message name="getVehicleTypes">
+<part name="parameters" element="tns:getVehicleTypes"/>
+</message>
+<message name="getVehicleTypesResponse">
+<part name="parameters" element="tns:getVehicleTypesResponse"/>
+</message>
+<message name="addDriver">
+<part name="parameters" element="tns:addDriver"/>
+</message>
+<message name="addDriverResponse">
+<part name="parameters" element="tns:addDriverResponse"/>
+</message>
 <portType name="AdminWebService">
-<operation name="updateCity">
-<input wsam:Action="http://assignment/AdminWebService/updateCityRequest" message="tns:updateCity"/>
-<output wsam:Action="http://assignment/AdminWebService/updateCityResponse" message="tns:updateCityResponse"/>
+<operation name="getDriverById">
+<input wsam:Action="http://assignment/AdminWebService/getDriverByIdRequest" message="tns:getDriverById"/>
+<output wsam:Action="http://assignment/AdminWebService/getDriverByIdResponse" message="tns:getDriverByIdResponse"/>
 </operation>
-<operation name="deleteCity">
-<input wsam:Action="http://assignment/AdminWebService/deleteCityRequest" message="tns:deleteCity"/>
-<output wsam:Action="http://assignment/AdminWebService/deleteCityResponse" message="tns:deleteCityResponse"/>
+<operation name="updateDriver">
+<input wsam:Action="http://assignment/AdminWebService/updateDriverRequest" message="tns:updateDriver"/>
+<output wsam:Action="http://assignment/AdminWebService/updateDriverResponse" message="tns:updateDriverResponse"/>
 </operation>
-<operation name="getCityById">
-<input wsam:Action="http://assignment/AdminWebService/getCityByIdRequest" message="tns:getCityById"/>
-<output wsam:Action="http://assignment/AdminWebService/getCityByIdResponse" message="tns:getCityByIdResponse"/>
+<operation name="deleteDriver">
+<input wsam:Action="http://assignment/AdminWebService/deleteDriverRequest" message="tns:deleteDriver"/>
+<output wsam:Action="http://assignment/AdminWebService/deleteDriverResponse" message="tns:deleteDriverResponse"/>
 </operation>
 <operation name="hello">
 <input wsam:Action="http://assignment/AdminWebService/helloRequest" message="tns:hello"/>
 <output wsam:Action="http://assignment/AdminWebService/helloResponse" message="tns:helloResponse"/>
+</operation>
+<operation name="getDrivers">
+<input wsam:Action="http://assignment/AdminWebService/getDriversRequest" message="tns:getDrivers"/>
+<output wsam:Action="http://assignment/AdminWebService/getDriversResponse" message="tns:getDriversResponse"/>
+</operation>
+<operation name="updateVehicleType">
+<input wsam:Action="http://assignment/AdminWebService/updateVehicleTypeRequest" message="tns:updateVehicleType"/>
+<output wsam:Action="http://assignment/AdminWebService/updateVehicleTypeResponse" message="tns:updateVehicleTypeResponse"/>
+</operation>
+<operation name="getVehicleTypeById">
+<input wsam:Action="http://assignment/AdminWebService/getVehicleTypeByIdRequest" message="tns:getVehicleTypeById"/>
+<output wsam:Action="http://assignment/AdminWebService/getVehicleTypeByIdResponse" message="tns:getVehicleTypeByIdResponse"/>
+</operation>
+<operation name="deleteVehicleType">
+<input wsam:Action="http://assignment/AdminWebService/deleteVehicleTypeRequest" message="tns:deleteVehicleType"/>
+<output wsam:Action="http://assignment/AdminWebService/deleteVehicleTypeResponse" message="tns:deleteVehicleTypeResponse"/>
 </operation>
 <operation name="addCity">
 <input wsam:Action="http://assignment/AdminWebService/addCityRequest" message="tns:addCity"/>
@@ -65,10 +171,135 @@
 <input wsam:Action="http://assignment/AdminWebService/getCitiesRequest" message="tns:getCities"/>
 <output wsam:Action="http://assignment/AdminWebService/getCitiesResponse" message="tns:getCitiesResponse"/>
 </operation>
+<operation name="deleteCity">
+<input wsam:Action="http://assignment/AdminWebService/deleteCityRequest" message="tns:deleteCity"/>
+<output wsam:Action="http://assignment/AdminWebService/deleteCityResponse" message="tns:deleteCityResponse"/>
+</operation>
+<operation name="getCityById">
+<input wsam:Action="http://assignment/AdminWebService/getCityByIdRequest" message="tns:getCityById"/>
+<output wsam:Action="http://assignment/AdminWebService/getCityByIdResponse" message="tns:getCityByIdResponse"/>
+</operation>
+<operation name="updateCity">
+<input wsam:Action="http://assignment/AdminWebService/updateCityRequest" message="tns:updateCity"/>
+<output wsam:Action="http://assignment/AdminWebService/updateCityResponse" message="tns:updateCityResponse"/>
+</operation>
+<operation name="addBranch">
+<input wsam:Action="http://assignment/AdminWebService/addBranchRequest" message="tns:addBranch"/>
+<output wsam:Action="http://assignment/AdminWebService/addBranchResponse" message="tns:addBranchResponse"/>
+</operation>
+<operation name="upadteBranch">
+<input wsam:Action="http://assignment/AdminWebService/upadteBranchRequest" message="tns:upadteBranch"/>
+<output wsam:Action="http://assignment/AdminWebService/upadteBranchResponse" message="tns:upadteBranchResponse"/>
+</operation>
+<operation name="getBranches">
+<input wsam:Action="http://assignment/AdminWebService/getBranchesRequest" message="tns:getBranches"/>
+<output wsam:Action="http://assignment/AdminWebService/getBranchesResponse" message="tns:getBranchesResponse"/>
+</operation>
+<operation name="deleteBranch">
+<input wsam:Action="http://assignment/AdminWebService/deleteBranchRequest" message="tns:deleteBranch"/>
+<output wsam:Action="http://assignment/AdminWebService/deleteBranchResponse" message="tns:deleteBranchResponse"/>
+</operation>
+<operation name="getBranchById">
+<input wsam:Action="http://assignment/AdminWebService/getBranchByIdRequest" message="tns:getBranchById"/>
+<output wsam:Action="http://assignment/AdminWebService/getBranchByIdResponse" message="tns:getBranchByIdResponse"/>
+</operation>
+<operation name="addVehicleType">
+<input wsam:Action="http://assignment/AdminWebService/addVehicleTypeRequest" message="tns:addVehicleType"/>
+<output wsam:Action="http://assignment/AdminWebService/addVehicleTypeResponse" message="tns:addVehicleTypeResponse"/>
+</operation>
+<operation name="getVehicleTypes">
+<input wsam:Action="http://assignment/AdminWebService/getVehicleTypesRequest" message="tns:getVehicleTypes"/>
+<output wsam:Action="http://assignment/AdminWebService/getVehicleTypesResponse" message="tns:getVehicleTypesResponse"/>
+</operation>
+<operation name="addDriver">
+<input wsam:Action="http://assignment/AdminWebService/addDriverRequest" message="tns:addDriver"/>
+<output wsam:Action="http://assignment/AdminWebService/addDriverResponse" message="tns:addDriverResponse"/>
+</operation>
 </portType>
 <binding name="AdminWebServicePortBinding" type="tns:AdminWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="updateCity">
+<operation name="getDriverById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateDriver">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteDriver">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getDrivers">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateVehicleType">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getVehicleTypeById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteVehicleType">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addCity">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getCities">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -95,7 +326,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="hello">
+<operation name="updateCity">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -104,7 +335,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="addCity">
+<operation name="addBranch">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -113,7 +344,61 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getCities">
+<operation name="upadteBranch">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getBranches">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteBranch">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getBranchById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addVehicleType">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getVehicleTypes">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addDriver">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

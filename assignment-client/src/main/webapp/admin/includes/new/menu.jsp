@@ -238,8 +238,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/assignment-client/admin/branch/city/add.jsp" key="t-products">Branch City</a></li>
-                        <li><a href="ecommerce-products" key="t-products">New Branch</a></li>
-                        <li><a href="ecommerce-product-detail" key="t-product-detail">All Branch</a></li>
+                        <li><a href="/assignment-client/admin/branch/add.jsp" key="t-products">Branch</a></li>
                     </ul>
                 </li>
                 
@@ -249,10 +248,16 @@
                         <span key="t-vehicles"><span>Vehicles</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/assignment-client/admin/branch/vehilce/add.jsp" key="t-products">Vehicle Category</a></li>
-                        <li><a href="ecommerce-products" key="t-products">New Vehicle</a></li>
-                        <li><a href="ecommerce-product-detail" key="t-product-detail">All Vehicle</a></li>
+                        <li><a href="/assignment-client/admin/vehicle/type/add.jsp" key="t-products">Vehicle Type</a></li>
+                        <li><a href="ecommerce-products" key="t-products">Vehicle</a></li>
                     </ul>
+                </li>
+                
+                <li>
+                    <a href="/assignment-client/admin/views/driver/add.jsp" class="waves-effect">
+                        <i class="bx bx-calendar"></i>
+                        <span key="t-calendar">Driver</span>
+                    </a>
                 </li>
 
                 <li>
