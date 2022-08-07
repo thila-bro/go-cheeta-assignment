@@ -260,7 +260,8 @@ File: Main Js File
         initPreloader();
         Waves.init();
         initCheckAll();
-    }
+    }        
+
 
     init();
 

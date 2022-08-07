@@ -13,8 +13,6 @@
 
     int branch_id = Integer.parseInt(request.getParameter("id"));
     
-    out.print(branch_id);
-    
     HttpSession ses = request.getSession();
     if (admin_proxy.deleteBranch(branch_id)) {
         ses.setAttribute("success", "Branch deleted Successfully");
