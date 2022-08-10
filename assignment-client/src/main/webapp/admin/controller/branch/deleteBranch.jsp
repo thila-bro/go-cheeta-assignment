@@ -20,7 +20,7 @@
         ses.setAttribute("error", "Branch delete unsuccessful");
     }
     
-    response.sendRedirect("/assignment-client/admin/branch/add.jsp");
+    response.sendRedirect("/assignment-client/admin/views/branch/add.jsp");
     
 
 %>

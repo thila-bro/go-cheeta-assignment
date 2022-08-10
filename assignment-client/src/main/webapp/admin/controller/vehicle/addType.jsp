@@ -20,6 +20,6 @@
             ses.setAttribute("error", "Type add unsuccessful.");
         }
 
-        response.sendRedirect("/assignment-client/admin/vehicle/type/add.jsp");
+        response.sendRedirect("/assignment-client/admin/views/vehicle/type/add.jsp");
     }
 %>

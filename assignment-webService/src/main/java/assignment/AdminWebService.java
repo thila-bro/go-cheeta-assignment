@@ -6,10 +6,12 @@ package assignment;
 
 import assignment.bl.AdminBL;
 import assignment.db.MySQLUtil;
+import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
+import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.util.List;
 import javax.jws.WebService;
@@ -22,16 +24,8 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "AdminWebService")
 public class AdminWebService {
-    private DBUtil util = new MySQLUtil();
-    private AdminBL adminBL = new AdminBL(util);
-
-    /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
+    private final DBUtil util = new MySQLUtil();
+    private final AdminBL adminBL = new AdminBL(util);
     
     @WebMethod(operationName = "addCity")
     public boolean addCity(@WebParam(name = "name") String name) {
@@ -130,5 +124,54 @@ public class AdminWebService {
     @WebMethod(operationName = "updateDriver")
     public boolean updateDriver(@WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
         return this.adminBL.updateDriver(driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
+    }
+    
+    @WebMethod(operationName = "addBranchAdmin")
+    public boolean addBranchAdmin(@WebParam(name = "driverId") int branchId,@WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "password") String password) {
+        return this.adminBL.addBranchAdmin(branchId, firstName, lastName, email, mobile, password);
+    }
+    
+    public boolean updateBranchAdmin(@WebParam(name = "adminId") int adminId, @WebParam(name = "driverId") int branchId,@WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "password") String password) {
+        return this.adminBL.updateBranchAdmin(adminId, branchId, firstName, lastName, email, mobile, password);
+    }
+    
+    @WebMethod(operationName = "getAdmins")
+    public List<Admin> getAdmins() {
+        return this.adminBL.getAdmins();
+    }
+    
+    @WebMethod(operationName = "getAdminById")
+    public Admin getAdminById(@WebParam(name = "adminId") int adminId) {
+        return this.adminBL.getAdminById(adminId);
+    }
+    
+    @WebMethod(operationName = "deleteAdmin")
+    public boolean deleteAdmin(@WebParam(name = "adminId") int adminId) {
+        return this.adminBL.deleteAdmin(adminId);
+    }
+    
+    @WebMethod(operationName = "addVehicle")
+    public boolean addVehicle(@WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo) {
+        return this.adminBL.addVehicle(driverId, vehicleTypeId, vehilceNo);
+    }
+    
+    @WebMethod(operationName = "getVehicles")
+    public List<Vehicle> getVehicles() {
+        return this.adminBL.getVehicles();
+    }
+    
+    @WebMethod(operationName = "deleteVehicle")
+    public boolean deleteVehicle(@WebParam(name = "vehicleId") int vehicleId) {
+        return this.adminBL.deleteVehicle(vehicleId);
+    }
+    
+    @WebMethod(operationName = "getVehicleById")
+    public Vehicle getVehicleById(@WebParam(name = "vehicleId") int vehicleId) {
+        return adminBL.getVehicleById(vehicleId);
+    }
+    
+    @WebMethod(operationName = "updateVehicle")
+    public boolean updateVehicle(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo) {
+        return this.adminBL.updateVehicle(vehicleId, driverId, vehicleTypeId, vehilceNo);
     }
 }

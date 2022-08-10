@@ -16,29 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vehicle_types`
+-- Table structure for table `vehicles`
 --
 
-DROP TABLE IF EXISTS `vehicle_types`;
+DROP TABLE IF EXISTS `vehicles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vehicle_types` (
+CREATE TABLE `vehicles` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `type` varchar(45) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `driver_id` int DEFAULT NULL,
+  `type_id` int DEFAULT NULL,
+  `register_no` varchar(45) DEFAULT NULL,
+  `availability` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vehicle_types`
+-- Dumping data for table `vehicles`
 --
 
-LOCK TABLES `vehicle_types` WRITE;
-/*!40000 ALTER TABLE `vehicle_types` DISABLE KEYS */;
-INSERT INTO `vehicle_types` VALUES (4,'bike','2022-08-04 16:32:51','2022-08-04 16:32:51'),(5,'car','2022-08-04 16:32:54','2022-08-04 16:32:54'),(6,'van','2022-08-04 16:32:56','2022-08-04 16:32:56'),(7,'bus','2022-08-04 16:32:59','2022-08-04 16:32:59'),(8,'test','2022-08-04 16:48:18','2022-08-04 16:48:18'),(11,'test 2 bnvsdinifjkn','2022-08-04 16:48:28','2022-08-04 17:05:39'),(14,'test 3 456456456456','2022-08-04 16:49:01','2022-08-04 17:05:31'),(15,'test 2','2022-08-08 11:51:05','2022-08-09 05:21:38'),(17,'test','2022-08-09 10:09:51','2022-08-09 10:09:51'),(18,'test','2022-08-09 10:10:24','2022-08-09 10:10:24');
-/*!40000 ALTER TABLE `vehicle_types` ENABLE KEYS */;
+LOCK TABLES `vehicles` WRITE;
+/*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
+INSERT INTO `vehicles` VALUES (2,1,4,'BI 8978',1,'2022-08-09 09:50:41','2022-08-09 09:50:41'),(3,8,15,'d dwe dw',1,'2022-08-09 10:13:22','2022-08-09 10:13:22'),(7,3,5,'d dwe dw',1,'2022-08-09 10:33:22','2022-08-09 10:33:22'),(8,11,7,'d dwe dw',1,'2022-08-09 10:44:19','2022-08-09 10:44:19'),(9,10,6,'d dwe dw',1,'2022-08-09 10:44:49','2022-08-10 05:39:33');
+/*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

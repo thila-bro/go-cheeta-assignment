@@ -4,12 +4,14 @@
  */
 package assignment.db;
 
+import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
 import assignment.src.User;
+import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -410,5 +412,155 @@ public class MySQLUtil implements DBUtil {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+    
+    @Override
+    public boolean addBranchAdmin(Admin admin) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_admin`("+admin.getBranchId()+", '"+admin.getFirstName()+"', '"+admin.getLastName()+"', '"+admin.getMobile()+"', '"+admin.getEmail()+"', '"+admin.getPassword()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<Admin> getAdmins() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_admins`();");
+
+            List<Admin> admins = new ArrayList<>();
+
+            while (rs.next()) {
+                Admin admin = new Admin(rs.getInt("branch_id"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                admins.add(admin);
+            }
+            
+            return admins;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public Admin getAdminById(int adminId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_admin_by_id`("+adminId+");");
+        
+            if(rs.next()) {
+                Admin admin = new Admin(rs.getInt("branch_id"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                return admin;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateBranchAdmin(Admin admin) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_admin`("+admin.getId()+", "+admin.getBranchId()+", '"+admin.getFirstName()+"', '"+admin.getLastName()+"', '"+admin.getMobile()+"', '"+admin.getEmail()+"', '"+admin.getPassword()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean deleteAdmin(int adminId) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_admin`('"+adminId+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean addVehicle(Vehicle vehicle) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_vehicle`("+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }   
+    }
+    
+    @Override
+    public List<Vehicle> getVehicles() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicles`();");
+
+            List<Vehicle> vehicles = new ArrayList<>();
+
+            while (rs.next()) {
+                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"));
+                vehicles.add(vehicle);
+            }
+            
+            return vehicles;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean deleteVehicle(int vehicleId) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_vehicle`('"+vehicleId+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public Vehicle getVehicleById(int vehicleId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_by_id`("+vehicleId+");");
+        
+            if(rs.next()) {
+                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"));
+                return vehicle;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateVehicle(Vehicle vehicle) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_vehicle`( "+vehicle.getVehicleId()+", "+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } 
     }
 }
