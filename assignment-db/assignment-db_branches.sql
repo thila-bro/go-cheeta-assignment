@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.30-0ubuntu0.20.04.2
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,7 @@ CREATE TABLE `branches` (
   PRIMARY KEY (`id`),
   KEY `city_id_idx` (`city_id`),
   CONSTRAINT `city_id` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
-INSERT INTO `branches` VALUES (2,1,'a@a.com','456123123','7897985234','address 1','address 2','2022-08-03 16:50:50','2022-08-03 11:54:34'),(3,1,'thilanmaduranga73@gmail.com','0768470707','451564848','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-03 11:55:29','2022-08-03 11:55:29');
+INSERT INTO `branches` VALUES (2,44,'a@a.com','456123123','7897985234','address 1, s uhis j fhuddhiduihd, ucdi ','address 2','2022-08-08 07:19:00','2022-08-03 11:54:34'),(3,1,'thilanmaduranga73@gmail.com','0768470707','451564848','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-03 11:55:29','2022-08-03 11:55:29'),(4,63,'thilanmaduranga73@gmail.com','0766573658','451564848','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-08 07:19:51','2022-08-08 05:48:09'),(5,62,'thilanmaduranga73@gmail.com','0766573658','4515648486','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-08 05:51:00','2022-08-08 05:51:00');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-07 22:23:56
+-- Dump completed on 2022-08-10 22:19:53

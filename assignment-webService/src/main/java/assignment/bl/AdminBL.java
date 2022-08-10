@@ -4,10 +4,12 @@
  */
 package assignment.bl;
 
+import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
+import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.util.List;
 
@@ -110,7 +112,47 @@ public class AdminBL {
         return this.util.updateDriver(driver);
     }
 
-//    public boolean updateDriver(int driverId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
+    public boolean addBranchAdmin(int branchId, String firstName, String lastName, String email, String mobile, String password) {
+        Admin admin = new Admin(branchId, password, 0, firstName, lastName, email, mobile);
+        return this.util.addBranchAdmin(admin);
+    }
+
+    public List<Admin> getAdmins() {
+        return  this.util.getAdmins();
+    }
+
+    public Admin getAdminById(int adminId) {
+        return this.util.getAdminById(adminId);
+    }
+
+    public boolean updateBranchAdmin(int adminId, int branchId, String firstName, String lastName, String email, String mobile, String password) {
+        Admin admin = new Admin(branchId, password, adminId, firstName, lastName, email, mobile);
+        return this.util.updateBranchAdmin(admin);
+    }
+
+    public boolean deleteAdmin(int adminId) {
+        return this.util.deleteAdmin(adminId);
+    }
+
+    public boolean addVehicle(int driverId, int vehicleTypeId, String vehilceNo) {
+        Vehicle vehilce = new Vehicle(0, vehicleTypeId, driverId, vehilceNo, true);
+        return this.util.addVehicle(vehilce);
+    }
+
+    public List<Vehicle> getVehicles() {
+        return this.util.getVehicles();
+    }
+
+    public boolean deleteVehicle(int vehicleId) {
+        return  this.util.deleteVehicle(vehicleId);
+    }
+
+    public Vehicle getVehicleById(int vehicleId) {
+        return this.util.getVehicleById(vehicleId);
+    }
+
+    public boolean updateVehicle(int vehicleId, int driverId, int vehicleTypeId, String vehilceNo) {
+        Vehicle vehilce = new Vehicle(vehicleId, vehicleTypeId, driverId, vehilceNo, true);
+        return this.util.updateVehicle(vehilce);
+    }
 }

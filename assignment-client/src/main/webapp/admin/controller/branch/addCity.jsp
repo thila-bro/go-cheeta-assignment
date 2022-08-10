@@ -20,6 +20,6 @@
             ses.setAttribute("error", "City add unsuccessful.");
         }
 
-        response.sendRedirect("/assignment-client/admin/branch/city/add.jsp");
+        response.sendRedirect("/assignment-client/admin/views/branch/city/add.jsp");
     }
 %>

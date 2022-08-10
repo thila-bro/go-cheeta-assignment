@@ -49,7 +49,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="card-title">Add New Type</h4>
+                                        <h4 class="card-title">Add New Driver</h4>
 
                                         <form action="/assignment-client/admin/controller/driver/add.jsp" method="post" class="custom-validation">
                                             
@@ -120,7 +120,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="card-title">All Vehicle Types</h4>
+                                        <h4 class="card-title">All Drivers</h4>
 
                                         <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                             <thead>

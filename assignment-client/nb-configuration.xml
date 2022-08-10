@@ -16,8 +16,8 @@ Any value defined here will override the pom.xml file value but is only applicab
 -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.7-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>gfv3ee6</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
-        <netbeans.hint.jdkPlatform>JDK_1.8</netbeans.hint.jdkPlatform>
-        <org-netbeans-modules-maven-jaxws._5f_C_5f_AssignmentDBService>http://localhost:6060/assignment-webService/AssignmentDBService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_AssignmentDBService>
+        <netbeans.hint.jdkPlatform>Zulu_8.0.342_7</netbeans.hint.jdkPlatform>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_AssignmentDBService>http://localhost:9090/assignment-webService/AssignmentDBService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_AssignmentDBService>
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
         <org-netbeans-modules-css-prep.less_2e_mappings>/less:/css</org-netbeans-modules-css-prep.less_2e_mappings>
         <org-netbeans-modules-css-prep.less_2e_enabled>false</org-netbeans-modules-css-prep.less_2e_enabled>
@@ -25,6 +25,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-css-prep.sass_2e_compiler_2e_options/>
         <org-netbeans-modules-css-prep.less_2e_compiler_2e_options/>
         <org-netbeans-modules-css-prep.sass_2e_mappings>/scss:/css</org-netbeans-modules-css-prep.sass_2e_mappings>
-        <org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>http://localhost:6060/assignment-webService/AdminWebService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>http://localhost:9090/assignment-webService/AdminWebService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>
     </properties>
 </project-shared-configuration>

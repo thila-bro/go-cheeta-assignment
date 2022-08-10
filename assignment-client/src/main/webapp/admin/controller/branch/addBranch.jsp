@@ -28,6 +28,6 @@
             ses.setAttribute("error", "Branch add unsuccessful.");
         }
 
-        response.sendRedirect("/assignment-client/admin/branch/add.jsp");
+        response.sendRedirect("/assignment-client/admin/views/branch/add.jsp");
     }
 %>

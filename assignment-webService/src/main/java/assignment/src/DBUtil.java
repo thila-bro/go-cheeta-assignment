@@ -37,4 +37,14 @@ public interface DBUtil {
    public boolean deleteDriver(int driverId);
    public Driver getDriverById(int driverId);
    public boolean updateDriver(Driver driver);
+   public boolean addBranchAdmin(Admin admin);
+   public List<Admin> getAdmins();
+   public Admin getAdminById(int adminId);
+   public boolean updateBranchAdmin(Admin admin);
+   public boolean deleteAdmin(int adminId);
+   public boolean addVehicle(Vehicle vehilce);
+   public List<Vehicle> getVehicles();
+   public boolean deleteVehicle(int vehicleId);
+   public Vehicle getVehicleById(int vehicleId);
+   public boolean updateVehicle(Vehicle vehilce);
 }
