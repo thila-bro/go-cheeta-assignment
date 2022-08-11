@@ -6,6 +6,7 @@ package assignment;
 
 
 import assignment.bl.BL;
+import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
@@ -54,5 +55,11 @@ public class AssignmentDBService {
         DBUtil util = new MySQLUtil();
         BL bl = new BL(util);
         return bl.authUser(mobile, password);
+    }
+    
+    
+    @WebMethod(operationName = "sendTestEmail")
+    public void sendTestEmail() {
+        SendEmail.sendMail();
     }
 }

@@ -16,6 +16,10 @@
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
+<xs:element name="sendTestEmail" type="tns:sendTestEmail"/>
+
+<xs:element name="sendTestEmailResponse" type="tns:sendTestEmailResponse"/>
+
 <xs:element name="testFunction" type="tns:testFunction"/>
 
 <xs:element name="testFunctionResponse" type="tns:testFunctionResponse"/>
@@ -96,6 +100,14 @@
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendTestEmail">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="sendTestEmailResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="addUser">
