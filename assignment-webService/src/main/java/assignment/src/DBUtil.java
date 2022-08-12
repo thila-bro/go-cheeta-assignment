@@ -47,4 +47,8 @@ public interface DBUtil {
    public boolean deleteVehicle(int vehicleId);
    public Vehicle getVehicleById(int vehicleId);
    public boolean updateVehicle(Vehicle vehilce);
+   
+   // customer arae
+   public boolean authCustomer(String mobile, String password);
+   public List<Driver> getDriversByTypeId(int typeId);
 }

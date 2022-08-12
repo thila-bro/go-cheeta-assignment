@@ -16,35 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `admins`
+-- Table structure for table `customers`
 --
 
-DROP TABLE IF EXISTS `admins`;
+DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `admins` (
+CREATE TABLE `customers` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `branch_id` int DEFAULT NULL,
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
-  `mobile` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `isSuper` tinyint DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `admins`
+-- Dumping data for table `customers`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com',NULL,0,'2022-08-08 08:25:36','2022-08-08 08:25:36'),(2,5,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com',NULL,0,'2022-08-08 08:25:41','2022-08-08 08:48:42'),(3,2,'first name updated','last name updated','23456677','test@a.com','456',0,'2022-08-08 08:49:53','2022-08-08 12:04:44'),(4,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:24','2022-08-08 11:31:24'),(5,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:36','2022-08-08 11:31:36'),(6,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:38','2022-08-08 11:31:38'),(7,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:39','2022-08-08 11:31:39'),(10,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:40','2022-08-08 11:31:40');
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'first','customer','a@a.com','702505399','123','2022-08-12 08:25:50','2022-08-12 08:05:38');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

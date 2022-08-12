@@ -129,6 +129,24 @@
                         <id>wsimport-generate-AssignmentDBService</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_6060/assignment-webService/CustomerWebService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:6060/assignment-webService/CustomerWebService?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/CustomerWebService.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-CustomerWebService</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

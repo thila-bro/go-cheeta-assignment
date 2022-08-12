@@ -56,8 +56,8 @@
                             <div class="p-2">
                                 <form class="form-horizontal" action="/assignment-client/customer/controller/login.jsp" method="post">
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="email" id="username" placeholder="Enter email" autofocus>
+                                        <label for="mobile" class="form-label">Mobile</label>
+                                        <input type="text" class="form-control" name="mobile" placeholder="Enter mobile" autofocus>
                                     </div>
 
                                     <div class="mb-3">
