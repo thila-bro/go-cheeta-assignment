@@ -563,4 +563,39 @@ public class MySQLUtil implements DBUtil {
             return false;
         } 
     }
+    
+    // customer area
+    @Override
+    public boolean authCustomer(String mobile, String password) {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `auth_customer`('"+mobile+"', '"+password+"');");
+            
+            return rs.next();
+        } catch(SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public List<Driver> getDriversByTypeId(int typeId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_drivers`();");
+
+            List<Driver> drivers = new ArrayList<>();
+
+            while (rs.next()) {
+                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                drivers.add(driver);
+            }
+            
+            return drivers;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

@@ -26,5 +26,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-css-prep.less_2e_compiler_2e_options/>
         <org-netbeans-modules-css-prep.sass_2e_mappings>/scss:/css</org-netbeans-modules-css-prep.sass_2e_mappings>
         <org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>http://localhost:6060/assignment-webService/AdminWebService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_AdminWebService>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_CustomerWebService>http://localhost:6060/assignment-webService/CustomerWebService?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_CustomerWebService>
     </properties>
 </project-shared-configuration>
