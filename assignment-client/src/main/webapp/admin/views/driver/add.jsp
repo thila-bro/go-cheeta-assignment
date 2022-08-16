@@ -54,6 +54,13 @@
                                         <form action="/assignment-client/admin/controller/driver/add.jsp" method="post" class="custom-validation">
                                             
                                             <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Select Driver Branch</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="first_name" type="text" placeholder="Enter Driver First Name" data-parsley-length="[2,40]" required>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Driver First Name</label>
                                                 <div class="col-md-10">
                                                     <input class="form-control" name="first_name" type="text" placeholder="Enter Driver First Name" data-parsley-length="[2,40]" required>

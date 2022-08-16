@@ -34,7 +34,7 @@ CREATE TABLE `admins` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,6 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com',NULL,0,'2022-08-08 08:25:36','2022-08-08 08:25:36'),(2,5,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com',NULL,0,'2022-08-08 08:25:41','2022-08-08 08:48:42'),(3,2,'first name updated','last name updated','23456677','test@a.com','456',0,'2022-08-08 08:49:53','2022-08-08 12:04:44'),(4,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:24','2022-08-08 11:31:24'),(5,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:36','2022-08-08 11:31:36'),(6,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:38','2022-08-08 11:31:38'),(7,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:39','2022-08-08 11:31:39'),(10,4,'thilan','maduranga','0702505399','thilanmaduranga73@gmail.com','456',0,'2022-08-08 11:31:40','2022-08-08 11:31:40');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-12 23:07:18
+-- Dump completed on 2022-08-16 22:13:15

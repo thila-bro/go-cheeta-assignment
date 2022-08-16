@@ -51,6 +51,7 @@
                                         <h4 class="card-title">Add New Branch</h4>
 
                                         <form action="/assignment-client/admin/controller/branch/addBranch.jsp" method="post" class="custom-validation">
+                                            
                                             <div class="mb-3 row">
                                                 <label for="e-mail-input" class="col-md-2 col-form-label">Branch E-mail</label>
                                                 <div class="col-md-10">

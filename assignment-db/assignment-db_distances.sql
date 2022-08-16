@@ -16,29 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cities`
+-- Table structure for table `distances`
 --
 
-DROP TABLE IF EXISTS `cities`;
+DROP TABLE IF EXISTS `distances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cities` (
+CREATE TABLE `distances` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `city` varchar(45) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `source_id` int DEFAULT NULL,
+  `distination_id` int DEFAULT NULL,
+  `distance` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cities`
+-- Dumping data for table `distances`
 --
 
-LOCK TABLES `cities` WRITE;
-/*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT INTO `cities` VALUES (64,'Galle','2022-08-16 15:31:08','2022-08-16 15:31:08'),(65,'Kandy','2022-08-16 15:31:13','2022-08-16 15:31:13'),(66,'Nugegoda','2022-08-16 15:31:15','2022-08-16 15:31:15'),(67,'Gampaha','2022-08-16 15:31:19','2022-08-16 15:31:19'),(68,'Kurunegala','2022-08-16 15:31:21','2022-08-16 15:31:21'),(69,'Jaffna','2022-08-16 15:31:24','2022-08-16 15:31:24');
-/*!40000 ALTER TABLE `cities` ENABLE KEYS */;
+LOCK TABLES `distances` WRITE;
+/*!40000 ALTER TABLE `distances` DISABLE KEYS */;
+INSERT INTO `distances` VALUES (1,67,69,'200','2022-08-16 15:50:17','2022-08-16 15:50:17'),(2,68,69,'150','2022-08-16 16:09:37','2022-08-16 16:09:37'),(3,66,69,'10','2022-08-16 16:10:22','2022-08-16 16:10:22'),(4,65,69,'250','2022-08-16 16:10:29','2022-08-16 16:10:29'),(5,64,69,'220','2022-08-16 16:10:52','2022-08-16 16:10:52');
+/*!40000 ALTER TABLE `distances` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

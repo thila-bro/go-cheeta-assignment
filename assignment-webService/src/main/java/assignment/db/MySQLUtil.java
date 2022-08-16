@@ -9,6 +9,7 @@ import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
+import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.User;
 import assignment.src.Vehicle;
@@ -128,6 +129,27 @@ public class MySQLUtil implements DBUtil {
         try {
             this.stmt  = this.con.createStatement();
             this.rs    = this.stmt.executeQuery("CALL `get_cities`();");
+
+            List<City> cities = new ArrayList<>();
+
+            while (rs.next()) {
+                City city = new City(rs.getInt("id"), rs.getString("city"));
+                cities.add(city);
+            }
+            
+            return cities;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public List<City> getCitiesWithOutSelectedId(int id) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_cities_without_selected_id`("+id+");");
 
             List<City> cities = new ArrayList<>();
 
@@ -435,6 +457,15 @@ public class MySQLUtil implements DBUtil {
             List<Admin> admins = new ArrayList<>();
 
             while (rs.next()) {
+                System.err.println(rs.getInt("branch_id"));
+                System.err.println(rs.getString("password"));
+                System.err.println(rs.getString("first_name"));
+                System.err.println(rs.getString("last_name"));
+                System.err.println(rs.getString("email"));
+                System.err.println(rs.getString("mobile"));
+                System.err.println(rs.getString("id"));
+                
+                
                 Admin admin = new Admin(rs.getInt("branch_id"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 admins.add(admin);
             }
@@ -562,6 +593,36 @@ public class MySQLUtil implements DBUtil {
             System.out.println(e.getMessage());
             return false;
         } 
+    }
+    
+    @Override
+    public boolean addDestination(Distance distance) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_distance`( "+distance.getSourceId()+", "+distance.getDestinationId()+", "+distance.getDistance()+");");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public Distance getDistanceBySourceIdAndDestinationId(int sourceId, int destinationId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_distance_by_source_and_destination`("+sourceId+", "+destinationId+");");
+        
+            if(rs.next()) {
+                Distance distance = new Distance(rs.getInt("distination_id"), rs.getInt("source_id"), rs.getString("distance"));
+                return distance;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     // customer area

@@ -8,6 +8,7 @@ import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.DBUtil;
+import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
@@ -18,7 +19,7 @@ import java.util.List;
  * @author thilan
  */
 public class AdminBL {
-    private DBUtil util;
+    private final DBUtil util;
 
     public AdminBL(DBUtil util) {
         this.util = util;
@@ -31,6 +32,10 @@ public class AdminBL {
     
     public List<City> getCities() {
         return this.util.getCities();
+    }
+    
+    public List<City> getCitiesWithOutSelectedId(int id) {
+        return this.util.getCitiesWithOutSelectedId(id);
     }
     
     public boolean deleteCity(int id) {
@@ -154,5 +159,14 @@ public class AdminBL {
     public boolean updateVehicle(int vehicleId, int driverId, int vehicleTypeId, String vehilceNo) {
         Vehicle vehilce = new Vehicle(vehicleId, vehicleTypeId, driverId, vehilceNo, true);
         return this.util.updateVehicle(vehilce);
+    }
+
+    public boolean addDestination(int sourceId, int destinationId, String cityDistance) {
+        Distance distance = new Distance(destinationId, sourceId, cityDistance);
+        return this.util.addDestination(distance);
+    }
+
+    public Distance getDistanceBySourceIdAndDestinationId(int sourceId, int destinationId) {
+        return this.util.getDistanceBySourceIdAndDestinationId(sourceId, destinationId);
     }
 }
