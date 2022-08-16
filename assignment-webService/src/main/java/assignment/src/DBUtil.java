@@ -19,6 +19,7 @@ public interface DBUtil {
    // admin area 
    public boolean addCity(City city);
    public List<City> getCities();
+   public List<City> getCitiesWithOutSelectedId(int id);
    public boolean deleteCity(int id);
    public City getCityById(int id);
    public boolean updateCity(City city);
@@ -47,8 +48,16 @@ public interface DBUtil {
    public boolean deleteVehicle(int vehicleId);
    public Vehicle getVehicleById(int vehicleId);
    public boolean updateVehicle(Vehicle vehilce);
+   public boolean addDestination(Distance distance);
+   public Distance getDistanceBySourceIdAndDestinationId(int sourceId, int destinationId);
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
    public List<Driver> getDriversByTypeId(int typeId);
+
+    
+
+    
+
+    
 }

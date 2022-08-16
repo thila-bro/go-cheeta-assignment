@@ -45,7 +45,6 @@ CREATE TABLE `drivers` (
 
 LOCK TABLES `drivers` WRITE;
 /*!40000 ALTER TABLE `drivers` DISABLE KEYS */;
-INSERT INTO `drivers` VALUES (1,'thilan 1','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-08-15',0,5,'2022-08-07 13:31:43','2022-08-07 13:46:08'),(2,'thilan 2','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-08-15',0,5,'2022-08-07 13:34:37','2022-08-07 13:46:08'),(3,'thilan 3','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-08-15',0,5,'2022-08-07 13:34:45','2022-08-07 13:46:08'),(7,'thilan','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-08-15',0,5,'2022-08-07 15:09:39','2022-08-07 15:09:39'),(8,'thilan','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-09-15',0,5,'2022-08-07 16:41:15','2022-08-07 16:41:15'),(9,'thilan','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-10-15',0,5,'2022-08-07 16:41:22','2022-08-07 16:41:22'),(10,'thilan','maduranga','0768470707','thilanmaduranga73@gmail.com','12345678','952191926V','2022-11-15',0,5,'2022-08-07 16:41:49','2022-08-07 16:41:49'),(11,'gourge','andrew','0768470707','gourge@gmail.com','12345678','952191926V','2022-12-22',0,5,'2022-08-07 16:41:56','2022-08-07 16:52:21');
 /*!40000 ALTER TABLE `drivers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-12 23:07:18
+-- Dump completed on 2022-08-16 22:13:15

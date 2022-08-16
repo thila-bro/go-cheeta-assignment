@@ -35,7 +35,7 @@ CREATE TABLE `branches` (
   PRIMARY KEY (`id`),
   KEY `city_id_idx` (`city_id`),
   CONSTRAINT `city_id` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
-INSERT INTO `branches` VALUES (2,44,'a@a.com','456123123','7897985234','address 1, s uhis j fhuddhiduihd, ucdi ','address 2','2022-08-08 07:19:00','2022-08-03 11:54:34'),(3,1,'thilanmaduranga73@gmail.com','0768470707','451564848','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-03 11:55:29','2022-08-03 11:55:29'),(4,63,'thilanmaduranga73@gmail.com','0766573658','451564848','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-08 07:19:51','2022-08-08 05:48:09'),(5,62,'thilanmaduranga73@gmail.com','0766573658','4515648486','12/e,behind The Temple','Godella Waththa, Mahawila','2022-08-08 05:51:00','2022-08-08 05:51:00');
+INSERT INTO `branches` VALUES (8,64,'galle@gocheeta.com','0782195255','0912547892','#450/B','Akuressa Road','2022-08-16 16:24:06','2022-08-16 16:19:12'),(9,65,'kandy@gocheeta.com','0768470707','091854521','#32/A, First Floor','Badulla Road','2022-08-16 16:20:27','2022-08-16 16:20:27'),(10,66,'nugegoda@gocheeta.com','0712548640','0112806078','#250','Main Road','2022-08-16 16:25:48','2022-08-16 16:22:38'),(11,67,'gampaha@gocheeta.com','076456987','0248956384','#21','','2022-08-16 16:24:01','2022-08-16 16:24:01'),(12,68,'kurunegala@gocheeta.com','0778524690','0459641380','#360,  2nd Floor','Main Road','2022-08-16 16:25:55','2022-08-16 16:25:39'),(13,69,'jaffna@gocheeta.com','0787569840','0982546987','#620','','2022-08-16 16:27:17','2022-08-16 16:27:17');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-12 23:07:18
+-- Dump completed on 2022-08-16 22:13:15

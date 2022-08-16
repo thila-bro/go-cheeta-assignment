@@ -266,6 +266,13 @@
                         <span key="t-calendar">Driver</span>
                     </a>
                 </li>
+                
+                <li>
+                    <a href="/assignment-client/admin/views/distance/all.jsp" class="waves-effect">
+                        <i class="bx bx-calendar"></i>
+                        <span key="t-calendar">Distance</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

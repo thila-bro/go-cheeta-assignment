@@ -10,6 +10,7 @@ import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.DBUtil;
+import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
@@ -35,6 +36,11 @@ public class AdminWebService {
     @WebMethod(operationName = "getCities")
     public List<City> getCities() {
         return this.adminBL.getCities();
+    }
+    
+    @WebMethod(operationName = "getCitiesWithOutSelectedId")
+    public List<City> getCitiesWithOutSelectedId(@WebParam(name = "id") int id) {
+        return this.adminBL.getCitiesWithOutSelectedId(id);
     }
     
     @WebMethod(operationName = "deleteCity")
@@ -131,6 +137,7 @@ public class AdminWebService {
         return this.adminBL.addBranchAdmin(branchId, firstName, lastName, email, mobile, password);
     }
     
+    @WebMethod(operationName = "updateBranchAdmin")
     public boolean updateBranchAdmin(@WebParam(name = "adminId") int adminId, @WebParam(name = "driverId") int branchId,@WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "password") String password) {
         return this.adminBL.updateBranchAdmin(adminId, branchId, firstName, lastName, email, mobile, password);
     }
@@ -173,5 +180,15 @@ public class AdminWebService {
     @WebMethod(operationName = "updateVehicle")
     public boolean updateVehicle(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo) {
         return this.adminBL.updateVehicle(vehicleId, driverId, vehicleTypeId, vehilceNo);
+    }
+    
+    @WebMethod(operationName = "addDestination")
+    public boolean addDestination(@WebParam(name = "sourceId") int sourceId, @WebParam(name = "destinationId") int destinationId, @WebParam(name = "distance") String distance) {
+        return this.adminBL.addDestination(sourceId, destinationId, distance);
+    }
+        
+    @WebMethod(operationName = "getDistanceBySourceIdAndDestinationId")
+    public Distance getDistanceBySourceIdAndDestinationId(@WebParam(name = "sourceId") int sourceId, @WebParam(name = "destinationId") int destinationId) {
+        return this.adminBL.getDistanceBySourceIdAndDestinationId(sourceId, destinationId);
     }
 }
