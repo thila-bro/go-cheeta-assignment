@@ -24,6 +24,7 @@
 <xs:complexContent>
 <xs:extension base="tns:person">
 <xs:sequence>
+<xs:element name="branchId" type="xs:int"/>
 <xs:element name="licenseExpireDate" type="xs:string" minOccurs="0"/>
 <xs:element name="licenseId" type="xs:string" minOccurs="0"/>
 <xs:element name="nationalId" type="xs:string" minOccurs="0"/>

@@ -11,11 +11,12 @@
     int vehicleTypeId   = Integer.parseInt(request.getParameter("vehicle_type"));
     int driverId        = Integer.parseInt(request.getParameter("driver"));
     String registerNo   = request.getParameter("register_no");
+    double ratePerKm    = Double.parseDouble(request.getParameter("rate_kilo_meter"));
     
     
     if(!registerNo.isEmpty() && (vehicleTypeId != 0) && (driverId != 0)) {
         HttpSession ses = request.getSession();
-        if (admin_proxy.updateVehicle(vehilceId, driverId, vehicleTypeId, registerNo)) {
+        if (admin_proxy.updateVehicle(vehilceId, driverId, vehicleTypeId, registerNo, ratePerKm)) {
             ses.setAttribute("success", "Vehicle updated Successfully");
         } else {
             ses.setAttribute("error", "Vehicle updated unsuccessful.");

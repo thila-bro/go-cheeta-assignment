@@ -59,6 +59,15 @@
                                                     <input class="form-control" name="type" type="text" placeholder="Enter Vehicle Type" data-parsley-length="[2,40]" value="<% out.print(vehicleType.getVehicleType()); %>" required>
                                                 </div>
                                             </div>
+                                                
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Initial Cost (Rs.)</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="initial_cost" type="text" placeholder="Enter Vehicle Type Initial Cost" data-parsley-length="[2,10]" value="<% out.print(vehicleType.getInitialCost()); %>" required>
+                                                </div>
+                                            </div>
+                                                
+                                                
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">
                                                     <input name="id" type="hidden"value="<% out.print(vehicleType.getVehilceTypeId()); %>">

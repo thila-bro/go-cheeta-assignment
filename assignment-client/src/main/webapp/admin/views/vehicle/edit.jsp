@@ -83,6 +83,13 @@
                                                     <input class="form-control" name="register_no" type="text" placeholder="Enter Register No." data-parsley-length="[2,40]" value="<% out.print(vehicle.getRegisterNo()); %>" required>
                                                 </div>
                                             </div>
+                                                
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Rate per Km</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="rate_kilo_meter" type="text" placeholder="Enter Rate per kilo meter" data-parsley-length="[2,10]" value="<% out.print(vehicle.getRatePerKm()); %>" required>
+                                                </div>
+                                            </div>
                                                     
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">

@@ -10,11 +10,12 @@
 <%
 
     String type = request.getParameter("type");
+    double cost = Double.parseDouble(request.getParameter("initial_cost"));
     
     
     if(!type.isEmpty()) {
         HttpSession ses = request.getSession();
-        if (admin_proxy.addVehicleType(type)) {
+        if (admin_proxy.addVehicleType(type, cost)) {
             ses.setAttribute("success", "Type added Successfully");
         } else {
             ses.setAttribute("error", "Type add unsuccessful.");

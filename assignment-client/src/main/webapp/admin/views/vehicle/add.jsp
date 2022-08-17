@@ -3,6 +3,7 @@
     Created on : 9 Aug 2022, 10:54:19
     Author     : thilanmaduranga
 --%>
+<%@page import="assignment.Branch"%>
 <%@page import="assignment.Vehicle"%>
 <%@page import="assignment.Driver"%>
 <%@page import="assignment.VehicleType"%>
@@ -76,14 +77,21 @@
                                                 </div>
                                             </div>
                                                     
-                                                    
-                                                    
                                             <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Register No.</label>
                                                 <div class="col-md-10">
                                                     <input class="form-control" name="register_no" type="text" placeholder="Enter Register No." data-parsley-length="[2,40]" required>
                                                 </div>
                                             </div>
+                                                    
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Rate per Km</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="rate_kilo_meter" type="text" placeholder="Enter Rate per kilo meter" data-parsley-length="[2,10]" required>
+                                                </div>
+                                            </div>
+                                                    
+                                                    
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">
                                                     <button class="btn btn-primary" type="submit">Save</button>
@@ -110,6 +118,8 @@
                                                     <th>Register No.</th>
                                                     <th>Type</th>
                                                     <th>Driver</th>
+                                                    <th>Branch</th>
+                                                    <th>Km Rate</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -119,12 +129,16 @@
                                                 <% List<Vehicle> vehicles = admin_proxy.getVehicles(); %>
                                                 <% for(Vehicle vehicle: vehicles){ %>
                                                 <% Driver driver = admin_proxy.getDriverById(vehicle.getDriverId()); %>
+                                                <% Branch branch = admin_proxy.getBranchById(driver.getBranchId()); %>
+                                                <% City city  = admin_proxy.getCityById(branch.getCityId()); %>
                                                 <% VehicleType vehicleType = admin_proxy.getVehicleTypeById(vehicle.getTypeId()); %>
                                                 <tr>
                                                     <td><% out.print(vehicles.indexOf(vehicle)+1); %></td>
                                                     <td><% out.print(vehicle.getRegisterNo()); %></td>
                                                     <td><% out.print(vehicleType.getVehicleType()); %></td>
                                                     <td><% out.print(driver.getFirstName() + " " + driver.getLastName()); %></td>
+                                                    <td><% out.print(city.getName()); %></td>
+                                                    <td><% out.print(vehicle.getRatePerKm()); %></td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(vehicle.getVehicleId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
                                                         <a href="/assignment-client/admin/controller/vehicle/deleteVehicle.jsp?id=<% out.print(vehicle.getVehicleId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>
