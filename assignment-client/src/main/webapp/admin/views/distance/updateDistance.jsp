@@ -4,12 +4,14 @@
     Author     : thilanmaduranga
 --%>
 
+<%@page import="assignment.Distance"%>
 <%@page import="java.util.List"%>
 <%@page import="assignment.City"%>
 <%@include file="../../includes/wsdlAdminConenction.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% City sourceCity = admin_proxy.getCityById(Integer.parseInt(request.getParameter("source_city"))); %>
 <% City destinationCity = admin_proxy.getCityById(Integer.parseInt(request.getParameter("destination_city"))); %>
+<% Distance distance = admin_proxy.getDistanceBySourceIdAndDestinationId(sourceCity.getCityId(), destinationCity.getCityId()); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +47,9 @@
                                             <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Enter City Distance</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" name="distance" type="text" placeholder="Enter City Distance" autofocus data-parsley-length="[1,4]" required>
+                                                    <input class="form-control" name="distance" type="text" placeholder="Enter City Distance" autofocus data-parsley-length="[1,4]" value="<% if(distance != null) { 
+                                                                                                                                                                                                out.print(distance.getDistance());
+                                                                                                                                                                                            } %>" required>
                                                 </div>
                                             </div>                                        
                                             

@@ -11,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-
+    int branchId            = Integer.parseInt(request.getParameter("branch_id"));
     String firstName        = request.getParameter("first_name");
     String lastName         = request.getParameter("last_name") ;
     String email            = request.getParameter("email");
@@ -28,7 +28,7 @@
     
     if(!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !mobile.isEmpty() && !drivingLicense.isEmpty() && !licenseExpireDate.isEmpty() && !nic.isEmpty()) {
         HttpSession ses = request.getSession();
-        if (admin_proxy.updateDriver(driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDateFromatted.toString(), nic)) {
+        if (admin_proxy.updateDriver(branchId, driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDateFromatted.toString(), nic)) {
             ses.setAttribute("success", "Driver updated Successfully");
         } else {
             ses.setAttribute("error", "Driver updated unsuccessful.");

@@ -48,12 +48,22 @@
                                         <h4 class="card-title">Add New Type</h4>
 
                                         <form action="/assignment-client/admin/controller/vehicle/addType.jsp" method="post" class="custom-validation">
+                                            
                                             <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Vehicle Type</label>
                                                 <div class="col-md-10">
                                                     <input class="form-control" name="type" type="text" placeholder="Enter Vehicle Type" data-parsley-length="[2,40]" required>
                                                 </div>
                                             </div>
+                                            
+                                            <div class="mb-3 row">
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Initial Cost (Rs.)</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="initial_cost" type="text" placeholder="Enter Vehicle Type Initial Cost" data-parsley-length="[2,10]" required>
+                                                </div>
+                                            </div>
+                                            
+                                            
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">
                                                     <button class="btn btn-primary" type="submit">Save</button>
@@ -78,6 +88,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Type</th>
+                                                    <th>Cost (Rs.)</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -89,6 +100,7 @@
                                                 <tr>
                                                     <td><% out.print(vehicleTypes.indexOf(vehicleType)+1); %></td>
                                                     <td><% out.print(vehicleType.getVehicleType()); %></td>
+                                                    <td><% out.print(vehicleType.getInitialCost()); %></td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(vehicleType.getVehilceTypeId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
                                                         <a href="/assignment-client/admin/controller/vehicle/deleteVehicleType.jsp?id=<% out.print(vehicleType.getVehilceTypeId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>

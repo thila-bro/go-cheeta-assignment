@@ -4,11 +4,13 @@
     Author     : thilan
 --%>
 
+<%@page import="assignment.Branch"%>
 <%@page import="assignment.Driver"%>
 <%@page import="assignment.VehicleType"%>
 <%@page import="java.util.List"%>
 <%@page import="assignment.City"%>
 <%@include file="../../includes/wsdlAdminConenction.jsp" %>
+<% List<Branch> branches = admin_proxy.getBranches(); %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,11 +56,17 @@
                                         <form action="/assignment-client/admin/controller/driver/add.jsp" method="post" class="custom-validation">
                                             
                                             <div class="mb-3 row">
-                                                <label for="example-text-input" class="col-md-2 col-form-label">Select Driver Branch</label>
+                                                <label for="branch-id" class="col-md-2 col-form-label">Select Branch</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" name="first_name" type="text" placeholder="Enter Driver First Name" data-parsley-length="[2,40]" required>
+                                                    <select class="form-control select2" name="branch_id" required>
+                                                        <option>Select</option>
+                                                        <% for(Branch branch : branches){ %>
+                                                        <option value="<% out.print(branch.getBranchId()); %>"><% out.print(branch.getName()); %></option>
+                                                        <% } %>
+                                                        
+                                                    </select>
                                                 </div>
-                                            </div>
+                                            </div>                                                                                 
                                             
                                             <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Driver First Name</label>
@@ -133,6 +141,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Branch</th>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>E-mail</th>
@@ -148,8 +157,11 @@
                                             <tbody>
                                                 <% List<Driver> drivers = admin_proxy.getDrivers(); %>
                                                 <% for(Driver driver: drivers){ %>
+                                                <% Branch branch = admin_proxy.getBranchById(driver.getBranchId()); %>
+                                                <% City city = admin_proxy.getCityById(branch.getCityId()); %>
                                                 <tr>
                                                     <td><% out.print(drivers.indexOf(driver)+1); %></td>
+                                                    <td><% out.print(city.getName()); %></td>
                                                     <td><% out.print(driver.getFirstName()); %></td>
                                                     <td><% out.print(driver.getLastName()); %></td>
                                                     <td><% out.print(driver.getEmail()); %></td>

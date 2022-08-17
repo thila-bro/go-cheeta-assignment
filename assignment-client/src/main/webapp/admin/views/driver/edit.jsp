@@ -6,6 +6,8 @@
 
 
 
+<%@page import="java.util.List"%>
+<%@page import="assignment.Branch"%>
 <%@page import="java.text.DateFormatSymbols"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
@@ -14,6 +16,7 @@
 <%@page import="assignment.Driver"%>
 <%@include file="../../includes/wsdlAdminConenction.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% List<Branch> branches = admin_proxy.getBranches(); %>
 <% int driverId = Integer.parseInt(request.getParameter("id"));
     Driver driver = admin_proxy.getDriverById(driverId);
     
@@ -23,7 +26,7 @@
     int myMonth    = Integer.parseInt(explodedDate[1]) - 1;
     String date     = explodedDate[2];
     String month = "";
-    
+
     DateFormatSymbols dfs = new DateFormatSymbols();
     String[] months = dfs.getMonths();
     if (myMonth >= 0 && myMonth <= 11) {
@@ -73,6 +76,22 @@
                                         <h4 class="card-title">Update Driver</h4>
 
                                         <form action="/assignment-client/admin/controller/driver/update.jsp" method="post" class="custom-validation">
+                                            
+                                            <div class="mb-3 row">
+                                                <label for="branch-id" class="col-md-2 col-form-label">Select Branch</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control select2" name="branch_id" required>
+                                                        <option>Select</option>
+                                                        <% for(Branch branch : branches){ %>
+                                                        <option value="<% out.print(branch.getBranchId()); %>" <%
+                                                            if (branch.getBranchId() == driver.getBranchId()) {
+                                                                out.print("selected");
+                                                            } %>><% out.print(branch.getName()); %></option>
+                                                        <% } %>
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
                                             
                                             <div class="mb-3 row">
                                                 <label for="example-text-input" class="col-md-2 col-form-label">Driver First Name</label>
