@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.30-0ubuntu0.20.04.2
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,11 +27,12 @@ CREATE TABLE `vehicles` (
   `driver_id` int DEFAULT NULL,
   `type_id` int DEFAULT NULL,
   `register_no` varchar(45) DEFAULT NULL,
+  `rate_per_km` double DEFAULT NULL,
   `availability` tinyint DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `vehicles` (
 
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (2,1,4,'BI 8978',1,'2022-08-09 09:50:41','2022-08-09 09:50:41'),(3,8,15,'d dwe dw',1,'2022-08-09 10:13:22','2022-08-09 10:13:22'),(7,3,5,'d dwe dw',1,'2022-08-09 10:33:22','2022-08-09 10:33:22'),(8,11,7,'d dwe dw',1,'2022-08-09 10:44:19','2022-08-09 10:44:19'),(9,10,6,'d dwe dw',1,'2022-08-09 10:44:49','2022-08-10 05:39:33');
+INSERT INTO `vehicles` VALUES (1,13,19,'AAW 8765',50,1,'2022-08-17 08:23:46','2022-08-17 09:06:00'),(2,12,19,'UA 5678',50,1,'2022-08-17 08:24:13','2022-08-17 09:10:58');
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-16 22:13:15
+-- Dump completed on 2022-08-18 21:03:17

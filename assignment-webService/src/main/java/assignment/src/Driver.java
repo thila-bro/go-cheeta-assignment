@@ -9,15 +9,25 @@ package assignment.src;
  * @author thilan
  */
 public class Driver extends Person {
+    private int branchId;
     private String licenseId;
     private String licenseExpireDate;
     private String nationalId;
 
-    public Driver(String licenseId, String licenseExpireDate, String nationalId, int id, String firstName, String lastName, String email, String mobile) {
+    public Driver(int branchId, String licenseId, String licenseExpireDate, String nationalId, int id, String firstName, String lastName, String email, String mobile) {
         super(id, firstName, lastName, email, mobile);
+        this.branchId = branchId;
         this.licenseId = licenseId;
         this.licenseExpireDate = licenseExpireDate;
         this.nationalId = nationalId;
+    }
+
+    public int getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(int branchId) {
+        this.branchId = branchId;
     }
 
     public String getLicenseId() {

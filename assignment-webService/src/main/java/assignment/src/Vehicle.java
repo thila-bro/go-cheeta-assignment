@@ -14,13 +14,15 @@ public class Vehicle {
     private int driverId;
     private String registerNo;
     private boolean availability;
+    private double ratePerKm;
 
-    public Vehicle(int vehicleId, int typeId, int driverId, String registerNo, boolean availability) {
+    public Vehicle(int vehicleId, int typeId, int driverId, String registerNo, boolean availability, double ratePerKm) {
         this.vehicleId = vehicleId;
         this.typeId = typeId;
         this.driverId = driverId;
         this.registerNo = registerNo;
         this.availability = availability;
+        this.ratePerKm = ratePerKm;
     }
 
     public int getVehicleId() {
@@ -61,5 +63,13 @@ public class Vehicle {
 
     public void setAvailability(boolean availability) {
         this.availability = availability;
+    }
+
+    public double getRatePerKm() {
+        return ratePerKm;
+    }
+
+    public void setRatePerKm(double ratePerKm) {
+        this.ratePerKm = ratePerKm;
     }
 }

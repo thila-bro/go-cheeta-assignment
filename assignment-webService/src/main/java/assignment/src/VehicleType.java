@@ -11,10 +11,12 @@ package assignment.src;
 public class VehicleType {
     private int vehilceTypeId;
     private String vehicleType;
+    private double initialCost;
 
-    public VehicleType(int vehilceTypeId, String vehicleType) {
+    public VehicleType(int vehilceTypeId, String vehicleType, double initialCost) {
         this.vehilceTypeId = vehilceTypeId;
         this.vehicleType = vehicleType;
+        this.initialCost = initialCost;
     }
 
     public int getVehilceTypeId() {
@@ -31,5 +33,13 @@ public class VehicleType {
 
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    public double getInitialCost() {
+        return initialCost;
+    }
+
+    public void setInitialCost(double initialCost) {
+        this.initialCost = initialCost;
     }
 }

@@ -6,6 +6,7 @@ package assignment.bl;
 
 import assignment.src.DBUtil;
 import assignment.src.Driver;
+import assignment.src.SelectedVehicle;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class CustomerBL {
         return this.util.authCustomer(mobile, password);
     }
 
-    public List<Driver> getDriversByTypeId(int typeId) {
-        return this.util.getDriversByTypeId(typeId);
+    public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId) {
+        return this.util.getDriversByTypeIdAndSouceCity(typeId, cityId);
     }
 }

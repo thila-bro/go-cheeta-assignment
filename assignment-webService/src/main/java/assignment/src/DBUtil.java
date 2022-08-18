@@ -53,7 +53,7 @@ public interface DBUtil {
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
-   public List<Driver> getDriversByTypeId(int typeId);
+   public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId);
 
     
 

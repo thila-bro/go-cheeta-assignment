@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.30-0ubuntu0.20.04.2
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,10 +25,11 @@ DROP TABLE IF EXISTS `vehicle_types`;
 CREATE TABLE `vehicle_types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(45) DEFAULT NULL,
+  `initial_cost` double DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE `vehicle_types` (
 
 LOCK TABLES `vehicle_types` WRITE;
 /*!40000 ALTER TABLE `vehicle_types` DISABLE KEYS */;
-INSERT INTO `vehicle_types` VALUES (4,'bike','2022-08-04 16:32:51','2022-08-04 16:32:51'),(5,'car','2022-08-04 16:32:54','2022-08-04 16:32:54'),(6,'van','2022-08-04 16:32:56','2022-08-04 16:32:56'),(7,'bus','2022-08-04 16:32:59','2022-08-04 16:32:59'),(19,'tuk tuk','2022-08-16 16:12:13','2022-08-16 16:12:20');
+INSERT INTO `vehicle_types` VALUES (4,'bike',50,'2022-08-04 16:32:51','2022-08-17 07:38:40'),(5,'car',300,'2022-08-04 16:32:54','2022-08-17 07:38:33'),(6,'van',1000,'2022-08-04 16:32:56','2022-08-17 07:38:49'),(7,'bus',2000,'2022-08-04 16:32:59','2022-08-17 07:38:54'),(19,'tuk tuk',100,'2022-08-16 16:12:13','2022-08-17 07:38:20');
 /*!40000 ALTER TABLE `vehicle_types` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-16 22:13:15
+-- Dump completed on 2022-08-18 21:03:18
