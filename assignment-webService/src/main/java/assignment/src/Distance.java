@@ -9,14 +9,24 @@ package assignment.src;
  * @author thilanmaduranga
  */
 public class Distance {
+    private int distanceId;
     private int destinationId;
     private int sourceId;
     private String distance;
 
-    public Distance(int destinationId, int sourceId, String distance) {
+    public Distance(int distanceId, int destinationId, int sourceId, String distance) {
+        this.distanceId = distanceId;
         this.destinationId = destinationId;
         this.sourceId = sourceId;
         this.distance = distance;
+    }
+
+    public int getDistanceId() {
+        return distanceId;
+    }
+
+    public void setDistanceId(int distanceId) {
+        this.distanceId = distanceId;
     }
 
     public int getDestinationId() {

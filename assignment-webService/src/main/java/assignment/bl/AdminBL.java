@@ -73,8 +73,8 @@ public class AdminBL {
         return this.util.getBranchById(branch_id);
     }
     
-    public boolean addVehicleType(String name) {
-        VehicleType type = new VehicleType(0, name);
+    public boolean addVehicleType(String name, double initialCost) {
+        VehicleType type = new VehicleType(0, name, initialCost);
         return this.util.addVehicleType(type);
     }
     
@@ -90,13 +90,13 @@ public class AdminBL {
         return this.util.getVehicleTypeById(vehicleType);
     }
     
-    public boolean updateVehicleType(int id, String name) {
-        VehicleType type = new VehicleType(id, name);
+    public boolean updateVehicleType(int id, String name,double initialCost) {
+        VehicleType type = new VehicleType(id, name, initialCost);
         return this.util.updateVehicleType(type);
     }
     
-    public boolean addDriver(String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
-        Driver driver = new Driver(drivingLicense, licenseExpireDate, nic, 0, firstName, lastName, email, mobile);
+    public boolean addDriver(int branchId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
+        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, 0, firstName, lastName, email, mobile);
         return this.util.addDriver(driver);
     }
     
@@ -112,8 +112,8 @@ public class AdminBL {
         return this.util.getDriverById(driverId);
     }
     
-    public boolean updateDriver(int driverId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
-        Driver driver = new Driver(drivingLicense, licenseExpireDate, nic, driverId, firstName, lastName, email, mobile);
+    public boolean updateDriver(int branchId, int driverId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
+        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, driverId, firstName, lastName, email, mobile);
         return this.util.updateDriver(driver);
     }
 
@@ -139,8 +139,8 @@ public class AdminBL {
         return this.util.deleteAdmin(adminId);
     }
 
-    public boolean addVehicle(int driverId, int vehicleTypeId, String vehilceNo) {
-        Vehicle vehilce = new Vehicle(0, vehicleTypeId, driverId, vehilceNo, true);
+    public boolean addVehicle(int driverId, int vehicleTypeId, String vehilceNo, double ratePerKm) {
+        Vehicle vehilce = new Vehicle(0, vehicleTypeId, driverId, vehilceNo, true, ratePerKm);
         return this.util.addVehicle(vehilce);
     }
 
@@ -156,13 +156,13 @@ public class AdminBL {
         return this.util.getVehicleById(vehicleId);
     }
 
-    public boolean updateVehicle(int vehicleId, int driverId, int vehicleTypeId, String vehilceNo) {
-        Vehicle vehilce = new Vehicle(vehicleId, vehicleTypeId, driverId, vehilceNo, true);
+    public boolean updateVehicle(int vehicleId, int driverId, int vehicleTypeId, String vehilceNo, double ratePerKm) {
+        Vehicle vehilce = new Vehicle(vehicleId, vehicleTypeId, driverId, vehilceNo, true, ratePerKm);
         return this.util.updateVehicle(vehilce);
     }
 
     public boolean addDestination(int sourceId, int destinationId, String cityDistance) {
-        Distance distance = new Distance(destinationId, sourceId, cityDistance);
+        Distance distance = new Distance(0, destinationId, sourceId, cityDistance);
         return this.util.addDestination(distance);
     }
 

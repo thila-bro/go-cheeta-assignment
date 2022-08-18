@@ -4,11 +4,11 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getDriversByTypeId">
-<part name="parameters" element="tns:getDriversByTypeId"/>
+<message name="getDriversByTypeIdAndSouceCity">
+<part name="parameters" element="tns:getDriversByTypeIdAndSouceCity"/>
 </message>
-<message name="getDriversByTypeIdResponse">
-<part name="parameters" element="tns:getDriversByTypeIdResponse"/>
+<message name="getDriversByTypeIdAndSouceCityResponse">
+<part name="parameters" element="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </message>
 <message name="authCustomer">
 <part name="parameters" element="tns:authCustomer"/>
@@ -17,9 +17,9 @@
 <part name="parameters" element="tns:authCustomerResponse"/>
 </message>
 <portType name="CustomerWebService">
-<operation name="getDriversByTypeId">
-<input wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdRequest" message="tns:getDriversByTypeId"/>
-<output wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdResponse" message="tns:getDriversByTypeIdResponse"/>
+<operation name="getDriversByTypeIdAndSouceCity">
+<input wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityRequest" message="tns:getDriversByTypeIdAndSouceCity"/>
+<output wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityResponse" message="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </operation>
 <operation name="authCustomer">
 <input wsam:Action="http://assignment/CustomerWebService/authCustomerRequest" message="tns:authCustomer"/>
@@ -28,7 +28,7 @@
 </portType>
 <binding name="CustomerWebServicePortBinding" type="tns:CustomerWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getDriversByTypeId">
+<operation name="getDriversByTypeIdAndSouceCity">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

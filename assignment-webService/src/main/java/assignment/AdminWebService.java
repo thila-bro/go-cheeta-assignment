@@ -83,8 +83,8 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "addVehicleType")
-    public boolean addVehicleType(@WebParam(name = "name") String name) {
-        return this.adminBL.addVehicleType(name);
+    public boolean addVehicleType(@WebParam(name = "name") String name, @WebParam(name = "initialCost") double initialCost) {
+        return this.adminBL.addVehicleType(name, initialCost);
     }
     
     @WebMethod(operationName = "getVehicleTypes")
@@ -103,13 +103,13 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "updateVehicleType")
-    public boolean updateVehicleType(@WebParam(name = "id") int id, @WebParam(name = "name") String name) {
-        return this.adminBL.updateVehicleType(id, name);
+    public boolean updateVehicleType(@WebParam(name = "id") int id, @WebParam(name = "name") String name, @WebParam(name = "initialCost") double initialCost) {
+        return this.adminBL.updateVehicleType(id, name, initialCost);
     }
     
     @WebMethod(operationName = "addDriver")
-    public boolean addDriver(@WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
-        return this.adminBL.addDriver(firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
+    public boolean addDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
+        return this.adminBL.addDriver(branchId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
     }
     
     @WebMethod(operationName = "getDrivers")
@@ -128,8 +128,8 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "updateDriver")
-    public boolean updateDriver(@WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
-        return this.adminBL.updateDriver(driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
+    public boolean updateDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
+        return this.adminBL.updateDriver(branchId, driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
     }
     
     @WebMethod(operationName = "addBranchAdmin")
@@ -158,8 +158,8 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "addVehicle")
-    public boolean addVehicle(@WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo) {
-        return this.adminBL.addVehicle(driverId, vehicleTypeId, vehilceNo);
+    public boolean addVehicle(@WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo, @WebParam(name = "ratePerKm") double ratePerKm) {
+        return this.adminBL.addVehicle(driverId, vehicleTypeId, vehilceNo, ratePerKm);
     }
     
     @WebMethod(operationName = "getVehicles")
@@ -178,8 +178,8 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "updateVehicle")
-    public boolean updateVehicle(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo) {
-        return this.adminBL.updateVehicle(vehicleId, driverId, vehicleTypeId, vehilceNo);
+    public boolean updateVehicle(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "driverId") int driverId, @WebParam(name = "vehicleTypeId") int vehicleTypeId, @WebParam(name = "vehilceNo") String vehilceNo, @WebParam(name = "ratePerKm") double ratePerKm) {
+        return this.adminBL.updateVehicle(vehicleId, driverId, vehicleTypeId, vehilceNo, ratePerKm);
     }
     
     @WebMethod(operationName = "addDestination")

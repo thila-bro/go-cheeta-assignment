@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.30-0ubuntu0.20.04.2
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,7 +44,7 @@ CREATE TABLE `branches` (
 
 LOCK TABLES `branches` WRITE;
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
-INSERT INTO `branches` VALUES (8,64,'galle@gocheeta.com','0782195255','0912547892','#450/B','Akuressa Road','2022-08-16 16:24:06','2022-08-16 16:19:12'),(9,65,'kandy@gocheeta.com','0768470707','091854521','#32/A, First Floor','Badulla Road','2022-08-16 16:20:27','2022-08-16 16:20:27'),(10,66,'nugegoda@gocheeta.com','0712548640','0112806078','#250','Main Road','2022-08-16 16:25:48','2022-08-16 16:22:38'),(11,67,'gampaha@gocheeta.com','076456987','0248956384','#21','','2022-08-16 16:24:01','2022-08-16 16:24:01'),(12,68,'kurunegala@gocheeta.com','0778524690','0459641380','#360,  2nd Floor','Main Road','2022-08-16 16:25:55','2022-08-16 16:25:39'),(13,69,'jaffna@gocheeta.com','0787569840','0982546987','#620','','2022-08-16 16:27:17','2022-08-16 16:27:17');
+INSERT INTO `branches` VALUES (8,64,'galle@gocheeta.com','0782195255','0912547892','#450/B','Akuressa Road','2022-08-16 10:54:06','2022-08-16 10:49:12'),(9,65,'kandy@gocheeta.com','0768470707','091854521','#32/A, First Floor','Badulla Road','2022-08-16 10:50:27','2022-08-16 10:50:27'),(10,66,'nugegoda@gocheeta.com','0712548640','0112806078','#250','Main Road','2022-08-16 10:55:48','2022-08-16 10:52:38'),(11,67,'gampaha@gocheeta.com','076456987','0248956384','#21','','2022-08-16 10:54:01','2022-08-16 10:54:01'),(12,68,'kurunegala@gocheeta.com','0778524690','0459641380','#360,  2nd Floor','Main Road','2022-08-16 10:55:55','2022-08-16 10:55:39'),(13,69,'jaffna@gocheeta.com','0787569840','0982546987','#620','','2022-08-16 10:57:17','2022-08-16 10:57:17');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-16 22:13:15
+-- Dump completed on 2022-08-18 21:03:17

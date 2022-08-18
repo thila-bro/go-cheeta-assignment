@@ -4,10 +4,7 @@
     Author     : thilan
 --%>
 
-
-
-
-
+<%@page import="assignment.SelectedVehicle"%>
 <%@page import="assignment.Driver"%>
 <%@page import="assignment.Customer"%>
 <%@page import="assignment.VehicleType"%>
@@ -43,9 +40,7 @@
         <div class="main-content">
 
             <div class="page-content">
-                <div class="container-fluid">
-
-                    <?= $page_title ?>
+                <div class="container-fluid">               
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -57,18 +52,18 @@
                                         <!-- Source Location -->
                                         <h3>Source Location</h3>
                                         <section>
-                                            <form>
+                                            <form class="custom-validation">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-floating mb-3">
-                                                            <input type="source_street_address" class="form-control" id="floatingemailInput" placeholder="Enter street address">
+                                                            <input type="text" name="source_address" id="source_address" class="form-control" placeholder="Enter street address" data-parsley-length="[2,40]" required>
                                                             <label for="floatingemailInput">Enter street address</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <div class="form-floating mb-3">
-                                                            <select class="form-select" aria-label="Floating label select example" name="source_city">
+                                                            <select class="form-select" aria-label="Floating label select example" name="source_city" id="source_city" required>
                                                                 <option selected>Select source city</option>
                                                                 <% for (City city : cities) { %>
                                                                 <option value="<% out.print(city.getCityId()); %>"><% out.print(city.getName()); %></option>
@@ -185,24 +180,26 @@
     <script src="/assignment-client/admin/asset/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="/assignment-client/admin/asset/js/form-wizard.init.js"></script>
     <script src="/assignment-client/admin/asset/js/app.js"></script>
-
+    
+    
+    
 
     <script>
         var vehicletype;
+        var sourceCityId;
         function vehilceTypeSelect() {
-            vehicletype = $("#vehilce_type").val();
-            
-            driverList = "<% out.print(admin_proxy.getDrivers()); %>";
+            vehicletype     = $("#vehilce_type").val();
+            sourceCityId    = $("#source_city").val();
             
             <% 
-//                String jsonStr = JSONArray.toJSONString(admin_proxy.getDrivers());
 
                 List<Driver> drivers = admin_proxy.getDrivers();
+                List<SelectedVehicle> vehilces = customerProxy.getDriversByTypeIdAndSouceCity(19, 66);
                 
                 String driverList = "[";
                 
-                for(Driver driver: drivers) {
-                    driverList = driverList + "{'first_name':'"+driver.getFirstName()+"', 'last_name':'"+driver.getLastName()+"', 'email':'"+driver.getEmail()+"', 'mobile':'"+driver.getMobile()+"'},";
+                for(SelectedVehicle vehicle: vehilces) {
+                    driverList = driverList + "{'first_name':'"+vehicle.getDriverFirstName()+"', 'last_name':'"+vehicle.getDriverLastName()+"', 'email':'"+vehicle.getDriverEmail()+"'},";
                 }
                 
                 driverList = driverList + "]";
@@ -210,7 +207,12 @@
                 
             %>
                     
+                    
+                    
+                    
             var driverList = <% out.print(driverList); %>;
+            
+            console.log(driverList);
             
             html = '';
             for(i = 0; i < driverList.length; i++) {

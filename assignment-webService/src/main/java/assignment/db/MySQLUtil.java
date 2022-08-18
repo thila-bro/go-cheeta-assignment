@@ -11,9 +11,12 @@ import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Distance;
 import assignment.src.Driver;
+import assignment.src.SelectedVehicle;
 import assignment.src.User;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.displayNameType;
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.paramValueType;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -289,7 +292,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addVehicleType(VehicleType type) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_vehicle_type`('"+type.getVehicleType()+"');");            
+            this.stmt  = this.con.prepareCall("CALL `add_vehicle_type`('"+type.getVehicleType()+"', "+type.getInitialCost()+");");            
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(Exception e) {
@@ -307,7 +310,7 @@ public class MySQLUtil implements DBUtil {
             List<VehicleType> vehicleTypes = new ArrayList<>();
 
             while (rs.next()) {
-                VehicleType vehicleType = new VehicleType(rs.getInt("id"), rs.getString("type"));
+                VehicleType vehicleType = new VehicleType(rs.getInt("id"), rs.getString("type"), rs.getDouble("initial_cost"));
                 vehicleTypes.add(vehicleType);
             }
             
@@ -338,7 +341,7 @@ public class MySQLUtil implements DBUtil {
             this.rs    = this.stmt.executeQuery("CALL `get_vehicle_type_by_id`('"+vehicleId+"');");
         
             if(rs.next()) {
-                VehicleType vehilceType = new VehicleType(rs.getInt("id"), rs.getString("type"));
+                VehicleType vehilceType = new VehicleType(rs.getInt("id"), rs.getString("type"), rs.getDouble("initial_cost"));
                 return vehilceType;
             } else {
                 return null;
@@ -352,7 +355,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean updateVehicleType(VehicleType vehicleType) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `update_vehicle_category`("+vehicleType.getVehilceTypeId()+", '"+vehicleType.getVehicleType()+"');");
+            this.stmt  = this.con.prepareCall("CALL `update_vehicle_category`("+vehicleType.getVehilceTypeId()+", '"+vehicleType.getVehicleType()+"', "+vehicleType.getInitialCost()+");");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -364,7 +367,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addDriver(Driver driver) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_driver`('"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
+            this.stmt  = this.con.prepareCall("CALL `add_driver`("+driver.getBranchId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -382,7 +385,7 @@ public class MySQLUtil implements DBUtil {
             List<Driver> drivers = new ArrayList<>();
 
             while (rs.next()) {
-                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 drivers.add(driver);
             }
             
@@ -412,8 +415,8 @@ public class MySQLUtil implements DBUtil {
             this.stmt  = this.con.createStatement();
             this.rs    = this.stmt.executeQuery("CALL `get_driver_by_id`("+driverId+");");
         
-            if(rs.next()) {
-                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+            if(rs.next()) {                               
+                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 return driver;
             } else {
                 return null;
@@ -427,7 +430,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean updateDriver(Driver driver) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `update_driver`("+driver.getId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
+            this.stmt  = this.con.prepareCall("CALL `update_driver`("+driver.getBranchId()+", "+driver.getId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -541,7 +544,7 @@ public class MySQLUtil implements DBUtil {
             List<Vehicle> vehicles = new ArrayList<>();
 
             while (rs.next()) {
-                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"));
+                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"), rs.getDouble("rate_per_km"));
                 vehicles.add(vehicle);
             }
             
@@ -572,7 +575,7 @@ public class MySQLUtil implements DBUtil {
             this.rs    = this.stmt.executeQuery("CALL `get_vehicle_by_id`("+vehicleId+");");
         
             if(rs.next()) {
-                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"));
+                Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"), rs.getDouble("rate_per_km"));
                 return vehicle;
             } else {
                 return null;
@@ -586,7 +589,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean updateVehicle(Vehicle vehicle) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `update_vehicle`( "+vehicle.getVehicleId()+", "+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"');");
+            this.stmt  = this.con.prepareCall("CALL `update_vehicle`( "+vehicle.getVehicleId()+", "+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"', "+vehicle.getRatePerKm()+");");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -598,8 +601,14 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addDestination(Distance distance) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_distance`( "+distance.getSourceId()+", "+distance.getDestinationId()+", "+distance.getDistance()+");");
-        
+            Distance oldDistance = this.getDistanceBySourceIdAndDestinationId(distance.getSourceId(), distance.getDestinationId());
+            
+            if(oldDistance == null) {
+                this.stmt  = this.con.prepareCall("CALL `add_distance`("+distance.getSourceId()+", "+distance.getDestinationId()+", "+distance.getDistance()+");");
+            } else {
+                this.stmt  = this.con.prepareCall("CALL `update_distance`("+oldDistance.getDistanceId()+", "+distance.getDistance()+");");
+            }                   
+            
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
             System.out.println(e.getMessage());
@@ -614,7 +623,7 @@ public class MySQLUtil implements DBUtil {
             this.rs    = this.stmt.executeQuery("CALL `get_distance_by_source_and_destination`("+sourceId+", "+destinationId+");");
         
             if(rs.next()) {
-                Distance distance = new Distance(rs.getInt("distination_id"), rs.getInt("source_id"), rs.getString("distance"));
+                Distance distance = new Distance(rs.getInt("id"), rs.getInt("distination_id"), rs.getInt("source_id"), rs.getString("distance"));
                 return distance;
             } else {
                 return null;
@@ -640,19 +649,19 @@ public class MySQLUtil implements DBUtil {
     }
     
     @Override
-    public List<Driver> getDriversByTypeId(int typeId) {
+    public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId) {
         try {
             this.stmt  = this.con.createStatement();
-            this.rs    = this.stmt.executeQuery("CALL `get_drivers`();");
+            this.rs    = this.stmt.executeQuery("CALL `get_drivers_by_type_and_source_id`("+typeId+", "+cityId+");");
 
-            List<Driver> drivers = new ArrayList<>();
+            List<SelectedVehicle> vehicles = new ArrayList<>();            
 
             while (rs.next()) {
-                Driver driver = new Driver(rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
-                drivers.add(driver);
+                SelectedVehicle vehicle = new SelectedVehicle(rs.getInt("cityId"), rs.getString("driverFirstName"), rs.getString("driverLastName"), rs.getString("driverEmail"), rs.getInt("id"), rs.getInt("type_id"), rs.getInt("driver_id"), rs.getString("register_no"), rs.getBoolean("availability"), rs.getDouble("rate_per_km"));
+                vehicles.add(vehicle);
             }
             
-            return drivers;
+            return vehicles;
             
         }catch(SQLException e) {
             System.out.println(e.getMessage());
