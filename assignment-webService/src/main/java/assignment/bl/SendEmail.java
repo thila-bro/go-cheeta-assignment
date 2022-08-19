@@ -19,7 +19,9 @@ import javax.mail.internet.MimeMessage;
  * @author thilan
  */
 public class SendEmail {
-    public static void sendMail() {
+    private Session session;
+    
+    public SendEmail() {
         final String toEmail = "thilanmaduranga73@gmail.com"; // can be any email id 
         
         final String fromEmail = "thilan@zeldivalanka.com"; //requires valid gmail id
@@ -41,10 +43,16 @@ public class SendEmail {
                 return new PasswordAuthentication(fromEmail, password);
             }
         };
-        Session session = Session.getInstance(props, auth);
-        
+        this.session = Session.getInstance(props, auth);
+    }
+    
+    
+    public boolean sendBookingToDriver() {
         String subject = "TLSEmail Testing Subject";
         String body  = "<h1>TLSEmail Testing Body</h1>";
+        
+        final String toEmail = "thilanmaduranga73@gmail.com"; // can be any email id 
+        
         
         try {
             MimeMessage msg = new MimeMessage(session);
@@ -69,8 +77,11 @@ public class SendEmail {
             Transport.send(msg);
 
             System.out.println("EMail Sent Successfully!!");
+            
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
 }

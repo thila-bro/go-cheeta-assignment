@@ -291,6 +291,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="deleteBranch">
+<xs:sequence>
+<xs:element name="branch_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBranchResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="addDestination">
 <xs:sequence>
 <xs:element name="sourceId" type="xs:int"/>
@@ -305,13 +317,14 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteBranch">
+<xs:complexType name="addVehicleType">
 <xs:sequence>
-<xs:element name="branch_id" type="xs:int"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="initialCost" type="xs:double"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteBranchResponse">
+<xs:complexType name="addVehicleTypeResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -324,19 +337,6 @@
 <xs:complexType name="getCitiesResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:city" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addVehicleType">
-<xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-<xs:element name="initialCost" type="xs:double"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addVehicleTypeResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -579,6 +579,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getBranches">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getBranchesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:branch" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="deleteAdmin">
 <xs:sequence>
 <xs:element name="adminId" type="xs:int"/>
@@ -591,13 +601,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getBranches">
+<xs:complexType name="getDrivers">
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="getBranchesResponse">
+<xs:complexType name="getDriversResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:branch" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:driver" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -615,16 +625,6 @@
 <xs:complexType name="addBranchAdminResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getDrivers">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getDriversResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:driver" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

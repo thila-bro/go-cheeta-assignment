@@ -5,6 +5,8 @@
 package assignment;
 
 import assignment.bl.CustomerBL;
+import assignment.bl.PriceCalculation;
+import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
@@ -22,6 +24,13 @@ import javax.jws.WebParam;
 public class CustomerWebService {
     private final DBUtil util = new MySQLUtil();
     private final CustomerBL customerBL = new CustomerBL(util);
+    private final PriceCalculation priceCalculation = new PriceCalculation();
+    private SendEmail sendMail = new SendEmail();
+    
+    @WebMethod(operationName = "sendTestEmail")
+    public boolean sendBookingToDriver() {
+        return this.sendMail.sendBookingToDriver();
+    }
     
     @WebMethod(operationName = "authCustomer")
     public boolean authCustomer(@WebParam(name = "mobile") String mobile, @WebParam(name = "password") String password) {
@@ -31,5 +40,15 @@ public class CustomerWebService {
     @WebMethod(operationName = "getDriversByTypeIdAndSouceCity")
     public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(@WebParam(name = "typeId") int typeId,@WebParam(name = "cityId") int cityId) {
         return this.customerBL.getDriversByTypeIdAndSouceCity(typeId, cityId);
+    }
+    
+    @WebMethod(operationName = "vehiclePriceCalculation")
+    public double vehiclePriceCalculation(@WebParam(name = "initialCost") double initialCost, @WebParam(name = "ratePerKm") double ratePerKm, @WebParam(name = "distance") double distance) {
+        return this.priceCalculation.vehiclePriceCalculation(initialCost, ratePerKm, distance);
+    }
+    
+    @WebMethod(operationName = "addBooking")
+    public boolean addBooking(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "vehicleType") int vehicleType, @WebParam(name = "pickUpCityId") int pickUpCityId, @WebParam(name = "dropOffCityId") int dropOffCityId, @WebParam(name = "pickUpStreet") String pickUpStreet, @WebParam(name = "dropOffStreet") String dropOffStreet, @WebParam(name = "price") double price, @WebParam(name = "distance") double  distance) {
+        return this.customerBL.addBooking(vehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance);
     }
 }

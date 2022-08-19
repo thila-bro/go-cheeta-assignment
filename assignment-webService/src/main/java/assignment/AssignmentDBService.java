@@ -22,6 +22,7 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "AssignmentDBService")
 public class AssignmentDBService {
+    private SendEmail sendMail = new SendEmail();
     /**
      * This is a sample web service operation
      */
@@ -55,11 +56,5 @@ public class AssignmentDBService {
         DBUtil util = new MySQLUtil();
         BL bl = new BL(util);
         return bl.authUser(mobile, password);
-    }
-    
-    
-    @WebMethod(operationName = "sendTestEmail")
-    public void sendTestEmail() {
-        SendEmail.sendMail();
     }
 }

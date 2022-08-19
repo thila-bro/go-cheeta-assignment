@@ -8,6 +8,24 @@
 
 <xs:element name="getDriversByTypeIdAndSouceCityResponse" type="tns:getDriversByTypeIdAndSouceCityResponse"/>
 
+<xs:element name="vehiclePriceCalculation" type="tns:vehiclePriceCalculation"/>
+
+<xs:element name="vehiclePriceCalculationResponse" type="tns:vehiclePriceCalculationResponse"/>
+
+<xs:complexType name="vehiclePriceCalculation">
+<xs:sequence>
+<xs:element name="initialCost" type="xs:double"/>
+<xs:element name="ratePerKm" type="xs:double"/>
+<xs:element name="distance" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vehiclePriceCalculationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="authCustomer">
 <xs:sequence>
 <xs:element name="mobile" type="xs:string" minOccurs="0"/>

@@ -4,6 +4,7 @@
  */
 package assignment.bl;
 
+import assignment.src.Booking;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
 import assignment.src.SelectedVehicle;
@@ -26,5 +27,10 @@ public class CustomerBL {
 
     public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId) {
         return this.util.getDriversByTypeIdAndSouceCity(typeId, cityId);
+    }
+
+    public boolean addBooking(int vehicleId, int vehicleType, int pickUpCityId, int dropOffCityId, String pickUpStreet, String dropOffStreet, double price, double distance) {
+        Booking booking = new Booking(0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0);
+        return this.util.addBooking(booking);
     }
 }

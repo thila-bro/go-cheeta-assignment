@@ -4,18 +4,6 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/AssignmentDBService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getUserByMobile">
-<part name="parameters" element="tns:getUserByMobile"/>
-</message>
-<message name="getUserByMobileResponse">
-<part name="parameters" element="tns:getUserByMobileResponse"/>
-</message>
-<message name="testFunction">
-<part name="parameters" element="tns:testFunction"/>
-</message>
-<message name="testFunctionResponse">
-<part name="parameters" element="tns:testFunctionResponse"/>
-</message>
 <message name="sendTestEmail">
 <part name="parameters" element="tns:sendTestEmail"/>
 </message>
@@ -28,11 +16,17 @@
 <message name="addUserResponse">
 <part name="parameters" element="tns:addUserResponse"/>
 </message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
+<message name="testFunction">
+<part name="parameters" element="tns:testFunction"/>
 </message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
+<message name="testFunctionResponse">
+<part name="parameters" element="tns:testFunctionResponse"/>
+</message>
+<message name="getUserByMobile">
+<part name="parameters" element="tns:getUserByMobile"/>
+</message>
+<message name="getUserByMobileResponse">
+<part name="parameters" element="tns:getUserByMobileResponse"/>
 </message>
 <message name="authUser">
 <part name="parameters" element="tns:authUser"/>
@@ -40,15 +34,13 @@
 <message name="authUserResponse">
 <part name="parameters" element="tns:authUserResponse"/>
 </message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
 <portType name="AssignmentDBService">
-<operation name="getUserByMobile">
-<input wsam:Action="http://assignment/AssignmentDBService/getUserByMobileRequest" message="tns:getUserByMobile"/>
-<output wsam:Action="http://assignment/AssignmentDBService/getUserByMobileResponse" message="tns:getUserByMobileResponse"/>
-</operation>
-<operation name="testFunction">
-<input wsam:Action="http://assignment/AssignmentDBService/testFunctionRequest" message="tns:testFunction"/>
-<output wsam:Action="http://assignment/AssignmentDBService/testFunctionResponse" message="tns:testFunctionResponse"/>
-</operation>
 <operation name="sendTestEmail">
 <input wsam:Action="http://assignment/AssignmentDBService/sendTestEmailRequest" message="tns:sendTestEmail"/>
 <output wsam:Action="http://assignment/AssignmentDBService/sendTestEmailResponse" message="tns:sendTestEmailResponse"/>
@@ -57,35 +49,25 @@
 <input wsam:Action="http://assignment/AssignmentDBService/addUserRequest" message="tns:addUser"/>
 <output wsam:Action="http://assignment/AssignmentDBService/addUserResponse" message="tns:addUserResponse"/>
 </operation>
-<operation name="hello">
-<input wsam:Action="http://assignment/AssignmentDBService/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://assignment/AssignmentDBService/helloResponse" message="tns:helloResponse"/>
+<operation name="testFunction">
+<input wsam:Action="http://assignment/AssignmentDBService/testFunctionRequest" message="tns:testFunction"/>
+<output wsam:Action="http://assignment/AssignmentDBService/testFunctionResponse" message="tns:testFunctionResponse"/>
+</operation>
+<operation name="getUserByMobile">
+<input wsam:Action="http://assignment/AssignmentDBService/getUserByMobileRequest" message="tns:getUserByMobile"/>
+<output wsam:Action="http://assignment/AssignmentDBService/getUserByMobileResponse" message="tns:getUserByMobileResponse"/>
 </operation>
 <operation name="authUser">
 <input wsam:Action="http://assignment/AssignmentDBService/authUserRequest" message="tns:authUser"/>
 <output wsam:Action="http://assignment/AssignmentDBService/authUserResponse" message="tns:authUserResponse"/>
 </operation>
+<operation name="hello">
+<input wsam:Action="http://assignment/AssignmentDBService/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://assignment/AssignmentDBService/helloResponse" message="tns:helloResponse"/>
+</operation>
 </portType>
 <binding name="AssignmentDBServicePortBinding" type="tns:AssignmentDBService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getUserByMobile">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="testFunction">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="sendTestEmail">
 <soap:operation soapAction=""/>
 <input>
@@ -104,7 +86,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="hello">
+<operation name="testFunction">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getUserByMobile">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,6 +105,15 @@
 </output>
 </operation>
 <operation name="authUser">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
