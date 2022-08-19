@@ -43,7 +43,7 @@
 
                                         <h4 class="card-title">Booking Data</h4>
 
-                                        <form action="/assignment-client/customer/controller/booking/confirm.jsp" method="post" class="custom-validation">
+                                        <form action="./selectVehicle.jsp" method="post" class="custom-validation">
                                             
                                             <div class="row border mt-4 mb-4 p-2">
                                                 <div class="col-md-6">

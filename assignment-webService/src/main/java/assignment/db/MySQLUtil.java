@@ -5,6 +5,7 @@
 package assignment.db;
 
 import assignment.src.Admin;
+import assignment.src.Booking;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
@@ -666,6 +667,19 @@ public class MySQLUtil implements DBUtil {
         }catch(SQLException e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    @Override
+    public boolean addBooking(Booking booking) {
+        try {
+                       
+            this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");
+            
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 }

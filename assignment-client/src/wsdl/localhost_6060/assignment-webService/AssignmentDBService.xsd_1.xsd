@@ -89,6 +89,16 @@
 </xs:complexContent>
 </xs:complexType>
 
+<xs:complexType name="sendTestEmail">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="sendTestEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="authUser">
 <xs:sequence>
 <xs:element name="mobile" type="xs:string" minOccurs="0"/>
@@ -100,14 +110,6 @@
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="sendTestEmail">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="sendTestEmailResponse">
-<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="addUser">

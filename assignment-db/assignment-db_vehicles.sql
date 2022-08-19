@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.30-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `vehicles` (
 
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (1,13,19,'AAW 8765',50,1,'2022-08-17 08:23:46','2022-08-17 09:06:00'),(2,12,19,'UA 5678',50,1,'2022-08-17 08:24:13','2022-08-17 09:10:58');
+INSERT INTO `vehicles` VALUES (1,13,19,'AAW 8765',50,1,'2022-08-17 08:23:46','2022-08-17 09:06:00'),(2,12,19,'UA 5678',60,0,'2022-08-17 08:24:13','2022-08-19 17:04:22');
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-18 21:03:17
+-- Dump completed on 2022-08-19 23:41:36
