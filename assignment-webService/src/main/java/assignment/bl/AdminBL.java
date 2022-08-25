@@ -52,12 +52,12 @@ public class AdminBL {
     }
     
     public boolean addBranch(String email,String mobile,String fixed,String address1,String address2,int city) {
-        Branch branch = new Branch(0, email, mobile, fixed, address1, address2, city, "");
+        Branch branch = new Branch(0, email, mobile, fixed, address1, address2, city);
         return this.util.addBranch(branch);
     }
     
     public boolean upadteBranch(int branch_id, String email,String mobile,String fixed,String address1,String address2,int city) {
-        Branch branch = new Branch(branch_id, email, mobile, fixed, address1, address2, city, "");
+        Branch branch = new Branch(branch_id, email, mobile, fixed, address1, address2, city);
         return this.util.upadteBranch(branch);
     }
     

@@ -9,6 +9,7 @@ package assignment.src;
  * @author thilanmaduranga
  */
 public class Booking {
+    private int customerId;
     private int bookingId;
     private int vehicleId;
     private int pickUpCityId;
@@ -20,7 +21,8 @@ public class Booking {
     private double distance;
     private int status;
 
-    public Booking(int bookingId, int vehicleId, int pickUpCityId, int dropOffCityId, int vehicleTypeId, String pickUpStreet, String dropOffStreet, double price, double distance, int status) {
+    public Booking(int customerId, int bookingId, int vehicleId, int pickUpCityId, int dropOffCityId, int vehicleTypeId, String pickUpStreet, String dropOffStreet, double price, double distance, int status) {
+        this.customerId = customerId;
         this.bookingId = bookingId;
         this.vehicleId = vehicleId;
         this.pickUpCityId = pickUpCityId;
@@ -31,6 +33,14 @@ public class Booking {
         this.price = price;
         this.distance = distance;
         this.status = status;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public int getBookingId() {

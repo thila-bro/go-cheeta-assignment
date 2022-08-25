@@ -6,8 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -192,83 +190,12 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
-                        <span key="t-layouts">Layouts</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Vertical</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="layouts-light-sidebar" key="t-light-sidebar">Light Sidebar</a></li>
-                                <li><a href="layouts-compact-sidebar" key="t-compact-sidebar">Compact Sidebar</a></li>
-                                <li><a href="layouts-icon-sidebar" key="t-icon-sidebar">Icon Sidebar</a></li>
-                                <li><a href="layouts-boxed" key="t-boxed-width">Boxed Width</a></li>
-                                <li><a href="layouts-preloader" key="t-preloader">Preloader</a></li>
-                                <li><a href="layouts-colored-sidebar" key="t-colored-sidebar">Colored Sidebar</a></li>
-                                <li><a href="layouts-scrollable" key="t-scrollable">Scrollable></a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Horizontal</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="layouts-horizontal" key="t-horizontal">Horizontal</a></li>
-                                <li><a href="layouts-hori-topbar-light" key="t-topbar-light">Topbar Light</a></li>
-                                <li><a href="layouts-hori-boxed-width" key="t-boxed-width">Boxed Width</a></li>
-                                <li><a href="layouts-hori-preloader" key="t-preloader">Preloader</a></li>
-                                <li><a href="layouts-hori-colored-header" key="t-colored-topbar">Colored Header</a></li>
-                                <li><a href="layouts-hori-scrollable" key="t-scrollable">Scrollable</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="menu-title" key="t-apps">Branch</li>
-
-                <li>
-                    <a href="calendar" class="waves-effect">
+                    <a href="/assignment-client/customer/view/histry/list.jsp" class="waves-effect">
                         <i class="bx bx-calendar"></i>
-                        <span key="t-calendar">Calendar</span>
+                        <span key="t-calendar">Bookings</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-ecommerce"><span>Branch</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/assignment-client/admin/views/branch/city/add.jsp" key="t-products">Branch City</a></li>
-                        <!--<li><a href="/assignment-client/admin/branch/add.jsp" key="t-products">Branch</a></li>-->
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="branch">Branch</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="/assignment-client/admin/views/branch/admin/add.jsp" key="branch">Branch Admin</a></li>
-                                <li><a href="/assignment-client/admin/views/branch/add.jsp" key="branch">Branch</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-vehicles"><span>Vehicles</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/assignment-client/admin/views/vehicle/type/add.jsp" key="t-products">Vehicle Type</a></li>
-                        <li><a href="/assignment-client/admin/views/vehicle/add.jsp" key="t-products">Vehicle</a></li>
-                    </ul>
-                </li>
-                
-                <li>
-                    <a href="/assignment-client/admin/views/driver/add.jsp" class="waves-effect">
-                        <i class="bx bx-calendar"></i>
-                        <span key="t-calendar">Driver</span>
-                    </a>
-                </li>
-
+                               
             </ul>
         </div>
         <!-- Sidebar -->

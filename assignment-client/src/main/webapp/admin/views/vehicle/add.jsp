@@ -120,6 +120,7 @@
                                                     <th>Driver</th>
                                                     <th>Branch</th>
                                                     <th>Km Rate</th>
+                                                    <th>Availability</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -139,6 +140,13 @@
                                                     <td><% out.print(driver.getFirstName() + " " + driver.getLastName()); %></td>
                                                     <td><% out.print(city.getName()); %></td>
                                                     <td><% out.print(vehicle.getRatePerKm()); %></td>
+                                                    <td>
+                                                        <% if(vehicle.isAvailability()) { %>
+                                                            <span class="badge badge-soft-success font-size-12"> Available </span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-soft-danger font-size-12"> Not Available </span>
+                                                        <% } %>
+                                                    </td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(vehicle.getVehicleId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
                                                         <a href="/assignment-client/admin/controller/vehicle/deleteVehicle.jsp?id=<% out.print(vehicle.getVehicleId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>

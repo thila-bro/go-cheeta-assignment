@@ -99,13 +99,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_6060/assignment-webService/AdminWebService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_9090/assignment-webService/AdminWebService.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:6060/assignment-webService/AdminWebService?wsdl</wsdlLocation>
+                            <wsdlLocation>http://localhost:9090/assignment-webService/AdminWebService?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/AdminWebService.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-AdminWebService</id>
@@ -117,13 +117,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_6060/assignment-webService/AssignmentDBService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_9090/assignment-webService/AssignmentDBService.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:6060/assignment-webService/AssignmentDBService?wsdl</wsdlLocation>
+                            <wsdlLocation>http://localhost:9090/assignment-webService/AssignmentDBService?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/AssignmentDBService.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-AssignmentDBService</id>
@@ -135,13 +135,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_6060/assignment-webService/CustomerWebService.wsdl</wsdlFile>
+                                <wsdlFile>localhost_9090/assignment-webService/CustomerWebService.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:6060/assignment-webService/CustomerWebService?wsdl</wsdlLocation>
+                            <wsdlLocation>http://localhost:9090/assignment-webService/CustomerWebService?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/CustomerWebService.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-CustomerWebService</id>

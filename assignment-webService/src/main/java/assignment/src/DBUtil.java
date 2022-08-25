@@ -55,6 +55,7 @@ public interface DBUtil {
    public boolean authCustomer(String mobile, String password);
    public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId);
    public boolean addBooking(Booking booking);
+   public List<Booking> getCustomersBookingsById(int customerId);
 
     
 

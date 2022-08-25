@@ -58,7 +58,7 @@
                                                     <select class="form-control select2" name="branch_id" required>
                                                         <option>Select</option>
                                                         <% for(Branch branch : branches){ %>
-                                                        <option value="<% out.print(branch.getBranchId()); %>"><% out.print(branch.getName()); %></option>
+                                                        <option value="<% out.print(branch.getBranchId()); %>"><% out.print(admin_proxy.getCityById(branch.getCityId()).getName()); %></option>
                                                         <% } %>
                                                         
                                                     </select>
@@ -147,7 +147,7 @@
                                                 <% City city = admin_proxy.getCityById(branch.getCityId()); %>
                                                 <tr>
                                                     <td><% out.print(admins.indexOf(admin)+1); %></td>
-                                                    <td><% out.print(city.getName()); %></td>
+                                                    <td><%= city.getName() %></td>
                                                     <td><% out.print(admin.getFirstName()); %></td>
                                                     <td><% out.print(admin.getLastName()); %></td>
                                                     <td><% out.print(admin.getEmail()); %></td>

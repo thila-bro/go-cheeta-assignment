@@ -8,6 +8,7 @@ import assignment.bl.CustomerBL;
 import assignment.bl.PriceCalculation;
 import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
+import assignment.src.Booking;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
 import assignment.src.SelectedVehicle;
@@ -48,7 +49,12 @@ public class CustomerWebService {
     }
     
     @WebMethod(operationName = "addBooking")
-    public boolean addBooking(@WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "vehicleType") int vehicleType, @WebParam(name = "pickUpCityId") int pickUpCityId, @WebParam(name = "dropOffCityId") int dropOffCityId, @WebParam(name = "pickUpStreet") String pickUpStreet, @WebParam(name = "dropOffStreet") String dropOffStreet, @WebParam(name = "price") double price, @WebParam(name = "distance") double  distance) {
-        return this.customerBL.addBooking(vehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance);
+    public boolean addBooking(@WebParam(name = "customerId") int customerId, @WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "vehicleType") int vehicleType, @WebParam(name = "pickUpCityId") int pickUpCityId, @WebParam(name = "dropOffCityId") int dropOffCityId, @WebParam(name = "pickUpStreet") String pickUpStreet, @WebParam(name = "dropOffStreet") String dropOffStreet, @WebParam(name = "price") double price, @WebParam(name = "distance") double  distance) {
+        return this.customerBL.addBooking(customerId, vehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance);
+    }
+    
+    @WebMethod(operationName = "getCustomersBookingsById")
+    public List<Booking> getCustomersBookingsById(int customerId) {
+        return this.customerBL.getCustomersBookingsById(customerId);
     }
 }
