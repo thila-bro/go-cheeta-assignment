@@ -61,7 +61,8 @@
                                                     <select class="form-control select2" name="branch_id" required>
                                                         <option>Select</option>
                                                         <% for(Branch branch : branches){ %>
-                                                        <option value="<% out.print(branch.getBranchId()); %>"><% out.print(branch.getName()); %></option>
+                                                        <% City city =  admin_proxy.getCityById(branch.getCityId()); %>
+                                                        <option value="<% out.print(branch.getBranchId()); %>"><% out.print(city.getName()); %></option>
                                                         <% } %>
                                                         
                                                     </select>
@@ -148,7 +149,7 @@
                                                     <th>Mobile No.</th>
                                                     <th>NIC</th>
                                                     <th>License No.</th>
-                                                    <th>License Expe.</th>
+                                                    <th>License Expe.</th>                                                    
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -167,7 +168,7 @@
                                                     <td><% out.print(driver.getEmail()); %></td>
                                                     <td><% out.print(driver.getMobile()); %></td>
                                                     <td><% out.print(driver.getNationalId()); %></td>
-                                                    <td><% out.print(driver.getLicenseId()); %></td>
+                                                    <td><% out.print(driver.getLicenseId()); %></td>                                                                                                                                                                                                                                                                 
                                                     <td><% out.print(driver.getLicenseExpireDate()); %></td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(driver.getId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>

@@ -8,22 +8,23 @@ package assignment.src;
  *
  * @author thilan
  */
-public class Branch extends City {
+public class Branch {
     private int branchId;
     private String email;
     private String mobile;
     private String fixed;
     private String address1;
     private String address2;
+    private int cityId;
 
-    public Branch(int branchId, String email, String mobile, String fixed, String address1, String address2, int cityId, String name) {
-        super(cityId, name);
+    public Branch(int branchId, String email, String mobile, String fixed, String address1, String address2, int cityId) {
         this.branchId = branchId;
         this.email = email;
         this.mobile = mobile;
         this.fixed = fixed;
         this.address1 = address1;
         this.address2 = address2;
+        this.cityId = cityId;
     }
 
     public int getBranchId() {
@@ -72,5 +73,13 @@ public class Branch extends City {
 
     public void setAddress2(String address2) {
         this.address2 = address2;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 }

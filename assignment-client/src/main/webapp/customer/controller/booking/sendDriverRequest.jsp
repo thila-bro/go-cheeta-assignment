@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    int userId              = 1;
     int selectedVehicleId   = Integer.parseInt(request.getParameter("selected_vehicle_id"));
     int pickUpCityId        = Integer.parseInt(request.getParameter("pick_up_city_id"));
     int dropOffCityId       = Integer.parseInt(request.getParameter("drop_off_city_id"));
@@ -18,7 +19,7 @@
     double distance         = Double.parseDouble(request.getParameter("distance"));
     
     
-    if(customerProxy.addBooking(selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance)) {
+    if(customerProxy.addBooking(userId, selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance)) {
         out.print(customerProxy.sendTestEmail());
         out.print("<br>");
         out.print("success");

@@ -29,8 +29,12 @@ public class CustomerBL {
         return this.util.getDriversByTypeIdAndSouceCity(typeId, cityId);
     }
 
-    public boolean addBooking(int vehicleId, int vehicleType, int pickUpCityId, int dropOffCityId, String pickUpStreet, String dropOffStreet, double price, double distance) {
-        Booking booking = new Booking(0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0);
+    public boolean addBooking(int customerId, int vehicleId, int vehicleType, int pickUpCityId, int dropOffCityId, String pickUpStreet, String dropOffStreet, double price, double distance) {
+        Booking booking = new Booking(customerId, 0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0);
         return this.util.addBooking(booking);
     }
+
+    public List<Booking> getCustomersBookingsById(int customerId) {
+        return this.util.getCustomersBookingsById(customerId);
+    }    
 }

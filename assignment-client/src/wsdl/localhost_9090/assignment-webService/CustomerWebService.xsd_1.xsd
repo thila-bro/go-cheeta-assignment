@@ -1,16 +1,38 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://assignment/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://assignment/">
 
+<xs:element name="addBooking" type="tns:addBooking"/>
+
+<xs:element name="addBookingResponse" type="tns:addBookingResponse"/>
+
 <xs:element name="authCustomer" type="tns:authCustomer"/>
 
 <xs:element name="authCustomerResponse" type="tns:authCustomerResponse"/>
+
+<xs:element name="getCustomersBookingsById" type="tns:getCustomersBookingsById"/>
+
+<xs:element name="getCustomersBookingsByIdResponse" type="tns:getCustomersBookingsByIdResponse"/>
 
 <xs:element name="getDriversByTypeIdAndSouceCity" type="tns:getDriversByTypeIdAndSouceCity"/>
 
 <xs:element name="getDriversByTypeIdAndSouceCityResponse" type="tns:getDriversByTypeIdAndSouceCityResponse"/>
 
+<xs:element name="sendTestEmail" type="tns:sendTestEmail"/>
+
+<xs:element name="sendTestEmailResponse" type="tns:sendTestEmailResponse"/>
+
 <xs:element name="vehiclePriceCalculation" type="tns:vehiclePriceCalculation"/>
 
 <xs:element name="vehiclePriceCalculationResponse" type="tns:vehiclePriceCalculationResponse"/>
+
+<xs:complexType name="sendTestEmail">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="sendTestEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="vehiclePriceCalculation">
 <xs:sequence>
@@ -34,6 +56,54 @@
 </xs:complexType>
 
 <xs:complexType name="authCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomersBookingsById">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCustomersBookingsByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:booking" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="booking">
+<xs:sequence>
+<xs:element name="bookingId" type="xs:int"/>
+<xs:element name="customerId" type="xs:int"/>
+<xs:element name="distance" type="xs:double"/>
+<xs:element name="dropOffCityId" type="xs:int"/>
+<xs:element name="dropOffStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="pickUpCityId" type="xs:int"/>
+<xs:element name="pickUpStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:double"/>
+<xs:element name="status" type="xs:int"/>
+<xs:element name="vehicleId" type="xs:int"/>
+<xs:element name="vehicleTypeId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addBooking">
+<xs:sequence>
+<xs:element name="customerId" type="xs:int"/>
+<xs:element name="vehicleId" type="xs:int"/>
+<xs:element name="vehicleType" type="xs:int"/>
+<xs:element name="pickUpCityId" type="xs:int"/>
+<xs:element name="dropOffCityId" type="xs:int"/>
+<xs:element name="pickUpStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="dropOffStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:double"/>
+<xs:element name="distance" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addBookingResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>

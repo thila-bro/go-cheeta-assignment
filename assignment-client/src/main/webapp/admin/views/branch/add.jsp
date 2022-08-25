@@ -138,6 +138,7 @@
                                             <tbody>
                                                 <% List<Branch> branches = admin_proxy.getBranches(); %>
                                                 <% for(Branch branch: branches){ %>
+                                                <% City city = admin_proxy.getCityById(branch.getCityId()); %>
                                                 <tr>
                                                     <td><% out.print(branches.indexOf(branch)+1); %></td>
                                                     <td><% out.print(branch.getEmail()); %></td>
@@ -145,7 +146,7 @@
                                                     <td><% out.print(branch.getFixed()); %></td>
                                                     <td><% out.print(branch.getAddress1()); %></td>
                                                     <td><% out.print(branch.getAddress2()); %></td>
-                                                    <td><% out.print(branch.getName()); %></td>
+                                                    <td><% out.print(city.getName()); %></td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(branch.getBranchId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>Edit</a>
                                                         <a href="/assignment-client/admin/controller/branch/deleteBranch.jsp?id=<% out.print(branch.getBranchId()); %>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever-outline align-middle me-1"></i>Delete</a>

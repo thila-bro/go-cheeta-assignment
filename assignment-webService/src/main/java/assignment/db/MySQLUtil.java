@@ -16,8 +16,6 @@ import assignment.src.SelectedVehicle;
 import assignment.src.User;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.displayNameType;
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.paramValueType;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -233,7 +231,7 @@ public class MySQLUtil implements DBUtil {
             List<Branch> branches = new ArrayList<>();
 
             while (rs.next()) {
-                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"), rs.getString("city"));
+                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"));
                 branches.add(branch);
             }
             
@@ -265,7 +263,7 @@ public class MySQLUtil implements DBUtil {
             this.rs    = this.stmt.executeQuery("CALL `get_branch_by_id`('"+branch_id+"');");
         
             if(rs.next()) {
-                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"), "");
+                Branch branch = new Branch(rs.getInt("id"), rs.getString("email"), rs.getString("mobile"), rs.getString("fixed"), rs.getString("address1"), rs.getString("address2"), rs.getInt("city_id"));
                 return branch;
             } else {
                 return null;
@@ -674,12 +672,33 @@ public class MySQLUtil implements DBUtil {
     public boolean addBooking(Booking booking) {
         try {
                        
-            this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");
+            this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getCustomerId()+" "+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");
             
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+    
+    @Override
+    public List<Booking> getCustomersBookingsById(int customerId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_bookings_by_customer_id`("+customerId+");");
+
+            List<Booking> bookings = new ArrayList<>();            
+
+            while (rs.next()) {
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"));
+                bookings.add(booking);
+            }
+            
+            return bookings;
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

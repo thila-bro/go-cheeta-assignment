@@ -28,7 +28,7 @@
         <div id="layout-wrapper">
             
             
-            <%@include file="../../../admin/includes/new/menu.jsp" %>
+            <%@include file="../../../customer/includes/new/menu.jsp" %>
 
             
             <div class="main-content">

@@ -28,11 +28,11 @@
 //            out.print("under developing");
 //        }
 
-        response.sendRedirect("/assignment-client/customer/view/makeBooking.jsp");
+        response.sendRedirect("/assignment-client/customer/view/booking/data.jsp");
 
     } else {
         ses.setAttribute("error", "Login failed. Please try again");
-        response.sendRedirect("/assignment-client/customer/view/login.jsp");
+        response.sendRedirect("/assignment-client/customer/view/booking/data.jsp");
     }
 
 %>
