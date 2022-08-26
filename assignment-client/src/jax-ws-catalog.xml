@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:6060/assignment-webService/AssignmentDBService?wsdl" uri="wsdl/localhost_6060/assignment-webService/AssignmentDBService.wsdl"/>
-    <system systemId="http://localhost:6060/assignment-webService/AssignmentDBService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/AssignmentDBService.xsd_1.xsd"/>
-    <system systemId="http://localhost:6060/assignment-webService/AdminWebService?wsdl" uri="wsdl/localhost_6060/assignment-webService/AdminWebService.wsdl"/>
-    <system systemId="http://localhost:6060/assignment-webService/AdminWebService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/AdminWebService.xsd_1.xsd"/>
-    <system systemId="http://localhost:6060/assignment-webService/CustomerWebService?wsdl" uri="wsdl/localhost_6060/assignment-webService/CustomerWebService.wsdl"/>
-    <system systemId="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/CustomerWebService.xsd_1.xsd"/>
     <system systemId="http://localhost:9090/assignment-webService/AdminWebService?wsdl" uri="wsdl/localhost_9090/assignment-webService/AdminWebService.wsdl"/>
     <system systemId="http://localhost:9090/assignment-webService/AdminWebService?xsd=1" uri="wsdl/localhost_9090/assignment-webService/AdminWebService.xsd_1.xsd"/>
     <system systemId="http://localhost:9090/assignment-webService/AssignmentDBService?wsdl" uri="wsdl/localhost_9090/assignment-webService/AssignmentDBService.wsdl"/>
     <system systemId="http://localhost:9090/assignment-webService/AssignmentDBService?xsd=1" uri="wsdl/localhost_9090/assignment-webService/AssignmentDBService.xsd_1.xsd"/>
     <system systemId="http://localhost:9090/assignment-webService/CustomerWebService?wsdl" uri="wsdl/localhost_9090/assignment-webService/CustomerWebService.wsdl"/>
     <system systemId="http://localhost:9090/assignment-webService/CustomerWebService?xsd=1" uri="wsdl/localhost_9090/assignment-webService/CustomerWebService.xsd_1.xsd"/>
+    <system systemId="http://localhost:6060/assignment-webService/AdminWebService?wsdl" uri="wsdl/localhost_6060/assignment-webService/AdminWebService.wsdl"/>
+    <system systemId="http://localhost:6060/assignment-webService/AdminWebService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/AdminWebService.xsd_1.xsd"/>
+    <system systemId="http://localhost:6060/assignment-webService/AssignmentDBService?wsdl" uri="wsdl/localhost_6060/assignment-webService/AssignmentDBService.wsdl"/>
+    <system systemId="http://localhost:6060/assignment-webService/AssignmentDBService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/AssignmentDBService.xsd_1.xsd"/>
+    <system systemId="http://localhost:6060/assignment-webService/CustomerWebService?wsdl" uri="wsdl/localhost_6060/assignment-webService/CustomerWebService.wsdl"/>
+    <system systemId="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1" uri="wsdl/localhost_6060/assignment-webService/CustomerWebService.xsd_1.xsd"/>
 </catalog>
