@@ -22,6 +22,12 @@
 <message name="vehiclePriceCalculationResponse">
 <part name="parameters" element="tns:vehiclePriceCalculationResponse"/>
 </message>
+<message name="getCustomersBookingsById">
+<part name="parameters" element="tns:getCustomersBookingsById"/>
+</message>
+<message name="getCustomersBookingsByIdResponse">
+<part name="parameters" element="tns:getCustomersBookingsByIdResponse"/>
+</message>
 <message name="addBooking">
 <part name="parameters" element="tns:addBooking"/>
 </message>
@@ -46,6 +52,10 @@
 <operation name="vehiclePriceCalculation">
 <input wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationRequest" message="tns:vehiclePriceCalculation"/>
 <output wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationResponse" message="tns:vehiclePriceCalculationResponse"/>
+</operation>
+<operation name="getCustomersBookingsById">
+<input wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdRequest" message="tns:getCustomersBookingsById"/>
+<output wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdResponse" message="tns:getCustomersBookingsByIdResponse"/>
 </operation>
 <operation name="addBooking">
 <input wsam:Action="http://assignment/CustomerWebService/addBookingRequest" message="tns:addBooking"/>
@@ -77,6 +87,15 @@
 </output>
 </operation>
 <operation name="vehiclePriceCalculation">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getCustomersBookingsById">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
