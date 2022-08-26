@@ -1,65 +1,71 @@
-<%@include file="./includes/html/header.html" %>    
+<%-- 
+    Document   : index
+    Created on : 26 Aug 2022, 12:58:35
+    Author     : thilanmaduranga
+--%>
 
-    <title>Go Cheeta - Login</title>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<head>
+    <title>Go Cheeta Booking System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="/assignment-client/asset/img/branding/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/css/main.css">
+    <!--===============================================================================================-->
+    <script src="https://kit.fontawesome.com/4026b91700.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div style="height: 100vh; width: 100vw; display: grid;">
-        <div class="align-self-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 offset-md-4 bg-dark shadow rounded p-4">
-                        <h1 class="text-center">Go Cheeta</h1>
-                        <form action="controllers/userLogin.jsp" method="post" id="loginForm">
-                            <div class="form-group">
-                                <label for="mobile" class="form-lable">Enter Mobile Number</label>
-                                <input type="text" name="user_mobile" class="form-control" placeholder="Enter Your Mobile Number" maxlength="40" minlength="5">
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/assignment-client/asset/index_page/images/bg-01.jpg');">						
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/assignment-client/index-admin-login.jsp">
+                        <div class="wrap-login100 p-t-30 p-b-50">
+                            <span class="login100-form-title p-b-41">
+                                Admin Pannel
+                            </span>
+                            <div class="login100-form p-5">
+                                <i class="fa-solid fa-user-lock"></i>
                             </div>
-                            <div class="form-group mt-2">
-                                <label for="password">Enter Password</label>
-                                <input type="password" name="user_password" class="form-control" placeholder="Enter Your Password" maxlength="40" minlength="3">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/assignment-client/customer/view/login.jsp">
+                        <div class="wrap-login100 p-t-30 p-b-50">
+                            <span class="login100-form-title p-b-41">
+                                Customer Pannel
+                            </span>
+                            <div class="login100-form p-5">
+                                <i class="fa-solid fa-users-line"></i>
                             </div>
-                            <div class="form-group mt-2 d-grid">
-                                <button type="submit" class="btn btn-success">Login</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="wrap-login100 p-t-30 p-b-50">
+                            <span class="login100-form-title p-b-41">
+                                Driver Pannel
+                            </span>
+                            <div class="login100-form p-5">
+                                <i class="fa-solid fa-car"></i>
                             </div>
-                            <div class="from-group mt-2" style="display: flex; justify-content: space-around;">
-                                <a href="#">Fogot Password</a>
-                                <a href="./register_1.jsp">Create Account</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
+
         </div>
     </div>
-    
-    	
-    <%@include file="./includes/html/import-js.html" %>
-    <%@include file="./includes/messages/saveSessionResponse.jsp" %>
-    
-    
-        <script>
-            $(function() {
-                var loginForm = $("#loginForm");
-                
-                if(loginForm.length) {
-                    loginForm.validate({
-                        rules: {
-                            user_mobile: {
-                                required: true
-                            }, user_password: {
-                                required: true
-                            }
-                        },
-                        messages: {
-                            user_mobile: {
-                                required: "Mobile number required!"
-                            }, user_password: {
-                                required: "Password required"
-                            }
-                        }
-                    })
-                }
-            })
-        </script>
+
 </body>
 </html>

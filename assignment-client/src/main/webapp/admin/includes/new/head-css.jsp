@@ -3,6 +3,7 @@
     Created on : Aug 2, 2022, 4:13:01 PM
     Author     : thilan
 --%>
+<link rel="icon" type="image/png" href="/assignment-client/asset/img/branding/favicon.png"/>
 
 <!--<link href="/assignment-client/admin/asset/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />-->
 <link href="/assignment-client/admin/asset/css/bootstrap-dark.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
