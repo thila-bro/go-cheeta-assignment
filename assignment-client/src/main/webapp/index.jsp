@@ -13,12 +13,12 @@
     <!--===============================================================================================-->	
     <link rel="icon" type="image/png" href="/assignment-client/asset/img/branding/favicon.png"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assignment-client/admin/asset/css/bootstrap-dark.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/css/util.css">
     <link rel="stylesheet" type="text/css" href="/assignment-client/asset/index_page/css/main.css">
     <!--===============================================================================================-->
-    <script src="https://kit.fontawesome.com/4026b91700.js" crossorigin="anonymous"></script>
+    <script src="/assignment-client/asset/index_page/js/font-awsome.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
