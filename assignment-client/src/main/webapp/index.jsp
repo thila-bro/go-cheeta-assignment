@@ -24,11 +24,16 @@
 
     <div class="limiter">
         <div class="container-login100" style="background-image: url('/assignment-client/asset/index_page/images/bg-01.jpg');">						
-
+            
             <div class="row">
+                <span class="main-title">Go Cheeta Taxi Service</span>
+            </div>
+            
+            <div class="row">
+                
                 <div class="col-md-4">
                     <a href="/assignment-client/admin/controller/cookieCheck.jsp">
-                        <div class="wrap-login100 p-t-30 p-b-50">
+                        <div class="wrap-login100 p-b-50">
                             <span class="login100-form-title p-b-41">
                                 Admin Pannel
                             </span>
@@ -40,7 +45,7 @@
                 </div>
                 <div class="col-md-4">
                     <a href="/assignment-client/customer/view/login.jsp">
-                        <div class="wrap-login100 p-t-30 p-b-50">
+                        <div class="wrap-login100 p-b-50">
                             <span class="login100-form-title p-b-41">
                                 Customer Pannel
                             </span>
@@ -52,7 +57,7 @@
                 </div>
                 <div class="col-md-4">
                     <a href="#">
-                        <div class="wrap-login100 p-t-30 p-b-50">
+                        <div class="wrap-login100 p-b-50">
                             <span class="login100-form-title p-b-41">
                                 Driver Pannel
                             </span>

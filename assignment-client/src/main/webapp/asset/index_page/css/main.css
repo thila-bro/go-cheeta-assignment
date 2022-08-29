@@ -143,6 +143,16 @@ ul, li {
   margin: 0 auto;
 }
 
+.main-title {
+  font-family: Ubuntu-Bold;
+  font-size: 64px;
+  color: #eee;
+  /*line-height: 1.2;*/
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+}
+
 .login100-form-title {
   font-family: Ubuntu-Bold;
   font-size: 28px;
@@ -150,7 +160,6 @@ ul, li {
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
-
   display: block;
 }
 
