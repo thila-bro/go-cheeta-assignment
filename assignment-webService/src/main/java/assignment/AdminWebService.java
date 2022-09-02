@@ -9,6 +9,7 @@ import assignment.db.MySQLUtil;
 import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
+import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Distance;
 import assignment.src.Driver;
@@ -25,10 +26,17 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "AdminWebService")
 public class AdminWebService {
-    private final DBUtil util = new MySQLUtil();
-    private final AdminBL adminBL = new AdminBL(util);
+    private static final AdminWebService instance = new AdminWebService();   
+    private final DBUtil util = MySQLUtil.getInstance();
+    private final AdminBL adminBL = AdminBL.getInstance();
     
-    @WebMethod(operationName = "addCity")
+    
+//    @WebMethod(operationName = "getInstance");
+    public static AdminWebService getInstance() {
+        return instance;
+    }
+    
+//    @WebMethod(operationName = "addCity");
     public boolean addCity(@WebParam(name = "name") String name) {
         return this.adminBL.addCity(name);
     }
@@ -190,5 +198,25 @@ public class AdminWebService {
     @WebMethod(operationName = "getDistanceBySourceIdAndDestinationId")
     public Distance getDistanceBySourceIdAndDestinationId(@WebParam(name = "sourceId") int sourceId, @WebParam(name = "destinationId") int destinationId) {
         return this.adminBL.getDistanceBySourceIdAndDestinationId(sourceId, destinationId);
+    }
+    
+    @WebMethod(operationName = "getCustomers")
+    public List<Customer> getCustomers() {
+        return this.adminBL.getCustomers();
+    }
+    
+    @WebMethod(operationName = "deleteCustomer")
+    public boolean deleteCustomer(@WebParam(name = "customerId") int customerId) {
+        return this.adminBL.deleteCustomer(customerId);
+    }
+    
+    @WebMethod(operationName = "getCustomerById")
+    public Customer getCustomerById(@WebParam(name = "customerId") int customerId) {
+        return this.adminBL.getCustomerById(customerId);
+    }
+    
+//    @WebMethod(operationName = "updateCustomer")
+    public boolean updateCustomer(int customerId, String firstName, String lastName, String email) {
+        return this.adminBL.updateCustomer(customerId, firstName, lastName, email);
     }
 }

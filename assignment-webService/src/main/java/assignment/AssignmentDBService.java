@@ -5,6 +5,7 @@
 package assignment;
 
 
+import assignment.bl.AdminBL;
 import assignment.bl.BL;
 import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
@@ -22,6 +23,7 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "AssignmentDBService")
 public class AssignmentDBService {
+    private final BL bl = BL.getInstance();
     private SendEmail sendMail = new SendEmail();
     /**
      * This is a sample web service operation
@@ -32,30 +34,22 @@ public class AssignmentDBService {
     }
     
     public List<Customer> testFunction() {
-        DBUtil util = new MySQLUtil();
-        BL bl = new BL(util);
-        return bl.getCustomers();
+        return this.bl.getCustomers();
     }
         
     @WebMethod(operationName = "addUser")
     public boolean addUser(@WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "password") String password,@WebParam(name = "mobile") String mobile,@WebParam(name = "type") int type) {
-        DBUtil util = new MySQLUtil();
-        BL bl = new BL(util);
-        return bl.addUser(firstName, lastName, email, password, mobile, type);
+        return this.bl.addUser(firstName, lastName, email, password, mobile, type);
     }
     
     @WebMethod(operationName = "getUserByMobile")
     public User getUserByMobile(@WebParam(name = "mobile") String mobile) {
-        DBUtil util = new MySQLUtil();
-        BL bl = new BL(util);
-        return bl.getUserByMobile(mobile);
+        return this.bl.getUserByMobile(mobile);
     }
     
     @WebMethod(operationName = "authUser")
     public boolean authUser(@WebParam(name = "mobile") String mobile, @WebParam(name = "password") String password) {
-        DBUtil util = new MySQLUtil();
-        BL bl = new BL(util);
-        return bl.authUser(mobile, password);
+        return this.bl.authUser(mobile, password);
     }
     
 //    public 

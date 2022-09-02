@@ -4,35 +4,11 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="sendTestEmail">
-<part name="parameters" element="tns:sendTestEmail"/>
-</message>
-<message name="sendTestEmailResponse">
-<part name="parameters" element="tns:sendTestEmailResponse"/>
-</message>
 <message name="getDriversByTypeIdAndSouceCity">
 <part name="parameters" element="tns:getDriversByTypeIdAndSouceCity"/>
 </message>
 <message name="getDriversByTypeIdAndSouceCityResponse">
 <part name="parameters" element="tns:getDriversByTypeIdAndSouceCityResponse"/>
-</message>
-<message name="vehiclePriceCalculation">
-<part name="parameters" element="tns:vehiclePriceCalculation"/>
-</message>
-<message name="vehiclePriceCalculationResponse">
-<part name="parameters" element="tns:vehiclePriceCalculationResponse"/>
-</message>
-<message name="getCustomersBookingsById">
-<part name="parameters" element="tns:getCustomersBookingsById"/>
-</message>
-<message name="getCustomersBookingsByIdResponse">
-<part name="parameters" element="tns:getCustomersBookingsByIdResponse"/>
-</message>
-<message name="addBooking">
-<part name="parameters" element="tns:addBooking"/>
-</message>
-<message name="addBookingResponse">
-<part name="parameters" element="tns:addBookingResponse"/>
 </message>
 <message name="authCustomer">
 <part name="parameters" element="tns:authCustomer"/>
@@ -40,35 +16,59 @@
 <message name="authCustomerResponse">
 <part name="parameters" element="tns:authCustomerResponse"/>
 </message>
+<message name="vehiclePriceCalculation">
+<part name="parameters" element="tns:vehiclePriceCalculation"/>
+</message>
+<message name="vehiclePriceCalculationResponse">
+<part name="parameters" element="tns:vehiclePriceCalculationResponse"/>
+</message>
+<message name="addBooking">
+<part name="parameters" element="tns:addBooking"/>
+</message>
+<message name="addBookingResponse">
+<part name="parameters" element="tns:addBookingResponse"/>
+</message>
+<message name="getCustomersBookingsById">
+<part name="parameters" element="tns:getCustomersBookingsById"/>
+</message>
+<message name="getCustomersBookingsByIdResponse">
+<part name="parameters" element="tns:getCustomersBookingsByIdResponse"/>
+</message>
+<message name="sendTestEmail">
+<part name="parameters" element="tns:sendTestEmail"/>
+</message>
+<message name="sendTestEmailResponse">
+<part name="parameters" element="tns:sendTestEmailResponse"/>
+</message>
 <portType name="CustomerWebService">
-<operation name="sendTestEmail">
-<input wsam:Action="http://assignment/CustomerWebService/sendTestEmailRequest" message="tns:sendTestEmail"/>
-<output wsam:Action="http://assignment/CustomerWebService/sendTestEmailResponse" message="tns:sendTestEmailResponse"/>
-</operation>
 <operation name="getDriversByTypeIdAndSouceCity">
 <input wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityRequest" message="tns:getDriversByTypeIdAndSouceCity"/>
 <output wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityResponse" message="tns:getDriversByTypeIdAndSouceCityResponse"/>
-</operation>
-<operation name="vehiclePriceCalculation">
-<input wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationRequest" message="tns:vehiclePriceCalculation"/>
-<output wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationResponse" message="tns:vehiclePriceCalculationResponse"/>
-</operation>
-<operation name="getCustomersBookingsById">
-<input wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdRequest" message="tns:getCustomersBookingsById"/>
-<output wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdResponse" message="tns:getCustomersBookingsByIdResponse"/>
-</operation>
-<operation name="addBooking">
-<input wsam:Action="http://assignment/CustomerWebService/addBookingRequest" message="tns:addBooking"/>
-<output wsam:Action="http://assignment/CustomerWebService/addBookingResponse" message="tns:addBookingResponse"/>
 </operation>
 <operation name="authCustomer">
 <input wsam:Action="http://assignment/CustomerWebService/authCustomerRequest" message="tns:authCustomer"/>
 <output wsam:Action="http://assignment/CustomerWebService/authCustomerResponse" message="tns:authCustomerResponse"/>
 </operation>
+<operation name="vehiclePriceCalculation">
+<input wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationRequest" message="tns:vehiclePriceCalculation"/>
+<output wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationResponse" message="tns:vehiclePriceCalculationResponse"/>
+</operation>
+<operation name="addBooking">
+<input wsam:Action="http://assignment/CustomerWebService/addBookingRequest" message="tns:addBooking"/>
+<output wsam:Action="http://assignment/CustomerWebService/addBookingResponse" message="tns:addBookingResponse"/>
+</operation>
+<operation name="getCustomersBookingsById">
+<input wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdRequest" message="tns:getCustomersBookingsById"/>
+<output wsam:Action="http://assignment/CustomerWebService/getCustomersBookingsByIdResponse" message="tns:getCustomersBookingsByIdResponse"/>
+</operation>
+<operation name="sendTestEmail">
+<input wsam:Action="http://assignment/CustomerWebService/sendTestEmailRequest" message="tns:sendTestEmail"/>
+<output wsam:Action="http://assignment/CustomerWebService/sendTestEmailResponse" message="tns:sendTestEmailResponse"/>
+</operation>
 </portType>
 <binding name="CustomerWebServicePortBinding" type="tns:CustomerWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="sendTestEmail">
+<operation name="getDriversByTypeIdAndSouceCity">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -77,7 +77,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getDriversByTypeIdAndSouceCity">
+<operation name="authCustomer">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -95,15 +95,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getCustomersBookingsById">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="addBooking">
 <soap:operation soapAction=""/>
 <input>
@@ -113,7 +104,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="authCustomer">
+<operation name="getCustomersBookingsById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="sendTestEmail">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

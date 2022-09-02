@@ -4,9 +4,11 @@
  */
 package assignment.bl;
 
+import assignment.db.MySQLUtil;
 import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
+import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Distance;
 import assignment.src.Driver;
@@ -19,11 +21,16 @@ import java.util.List;
  * @author thilan
  */
 public class AdminBL {
-    private final DBUtil util;
-
-    public AdminBL(DBUtil util) {
-        this.util = util;
+    private final DBUtil util = MySQLUtil.getInstance();
+    private static final AdminBL instance = new AdminBL();
+    
+    public static AdminBL getInstance() {
+        return instance;
     }
+
+//    private AdminBL() {
+////        this.util = util;
+//    }
     
     public boolean addCity(String name) {
         City city = new City(0, name);
@@ -168,5 +175,22 @@ public class AdminBL {
 
     public Distance getDistanceBySourceIdAndDestinationId(int sourceId, int destinationId) {
         return this.util.getDistanceBySourceIdAndDestinationId(sourceId, destinationId);
+    }
+
+    public List<Customer> getCustomers() {
+        return this.util.getCustomers();
+    }
+
+    public boolean deleteCustomer(int customerId) {
+        return this.util.deleteCustomer(customerId);
+    }
+
+    public Customer getCustomerById(int customerId) {
+        return this.util.getCustomerById(customerId);
+    }
+
+    public boolean updateCustomer(int customerId, String firstName, String lastName, String email) {
+        Customer customer = new Customer("", "", customerId, firstName, lastName, email);
+        return this.util.updateCustomer(customer);
     }
 }

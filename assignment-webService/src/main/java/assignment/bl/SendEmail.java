@@ -48,8 +48,10 @@ public class SendEmail {
     
     
     public boolean sendBookingToDriver() {
+        
         String subject = "TLSEmail Testing Subject";
-        String body  = "<h1>TLSEmail Testing Body</h1>";
+//        String body  = "<h1>TLSEmail Testing Body</h1>";
+        String body = "<a href=\"localhost\">Click on Me</a>";
         
         final String toEmail = "thilanmaduranga73@gmail.com"; // can be any email id 
         

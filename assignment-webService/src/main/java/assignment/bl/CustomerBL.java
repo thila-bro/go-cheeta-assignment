@@ -4,6 +4,7 @@
  */
 package assignment.bl;
 
+import assignment.db.MySQLUtil;
 import assignment.src.Booking;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
@@ -15,10 +16,14 @@ import java.util.List;
  * @author thilan
  */
 public class CustomerBL {
-    private DBUtil util;
+    private static final CustomerBL instance = new CustomerBL();
+    private DBUtil util = MySQLUtil.getInstance();
 
-    public CustomerBL(DBUtil util) {
-        this.util = util;
+    private CustomerBL() {
+    }
+    
+    public static CustomerBL getInstance() {
+        return instance;
     }
 
     public boolean authCustomer(String mobile, String password) {
@@ -30,6 +35,7 @@ public class CustomerBL {
     }
 
     public boolean addBooking(int customerId, int vehicleId, int vehicleType, int pickUpCityId, int dropOffCityId, String pickUpStreet, String dropOffStreet, double price, double distance) {
+        System.out.println("saving failed in customer bl");
         Booking booking = new Booking(customerId, 0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0);
         return this.util.addBooking(booking);
     }

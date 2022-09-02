@@ -18,6 +18,27 @@
     double price            = Double.parseDouble(request.getParameter("price"));
     double distance         = Double.parseDouble(request.getParameter("distance"));
     
+//    out.print(selectedVehicleId);
+//    out.print("<br>");
+//    out.print(pickUpCityId);
+//    out.print("<br>");
+//    out.print(pickUpStreet);
+//    out.print("<br>");
+//    out.print(dropOffCityId);
+//    out.print("<br>");
+//    out.print(dropOffStreet);
+//    out.print("<br>");
+//    out.print(vehicleType);
+//    out.print("<br>");
+//    out.print(price);
+//    out.print("<br>");
+//    out.print(distance);
+//    out.print("<br>");
+    
+//    out.print(customerProxy.addBooking(userId, selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance));
+    
+
+//out.print(request.getServerName() + ":" + request.getServerPort());
     
     if(customerProxy.addBooking(userId, selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance)) {
         out.print(customerProxy.sendTestEmail());
