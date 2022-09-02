@@ -28,6 +28,7 @@ function showFormSuccess(msg) {
             toast.addEventListener('mouseenter', Swal.stopTimer);
             toast.addEventListener('mouseleave', Swal.resumeTimer);
         }
+        
     });
 
     Toast.fire({

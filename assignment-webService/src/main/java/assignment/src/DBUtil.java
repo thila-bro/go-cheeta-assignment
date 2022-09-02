@@ -58,6 +58,8 @@ public interface DBUtil {
    public List<SelectedVehicle> getDriversByTypeIdAndSouceCity(int typeId, int cityId);
    public boolean addBooking(Booking booking);
    public List<Booking> getCustomersBookingsById(int customerId);
+   public boolean addCustomer(Customer customer);
+   public Customer getCustomerByMobileAndPassword(String mobile, String pasword);
    
     
 }
