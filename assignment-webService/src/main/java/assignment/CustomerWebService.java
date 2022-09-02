@@ -10,7 +10,6 @@ import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
 import assignment.src.Booking;
 import assignment.src.DBUtil;
-import assignment.src.Driver;
 import assignment.src.SelectedVehicle;
 import java.util.List;
 import javax.jws.WebService;
@@ -23,8 +22,8 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "CustomerWebService")
 public class CustomerWebService {
-    private final DBUtil util = new MySQLUtil();
-    private final CustomerBL customerBL = new CustomerBL(util);
+    private final DBUtil util = MySQLUtil.getInstance();
+    private final CustomerBL customerBL = CustomerBL.getInstance();
     private final PriceCalculation priceCalculation = new PriceCalculation();
     private SendEmail sendMail = new SendEmail();
     
@@ -50,6 +49,7 @@ public class CustomerWebService {
     
     @WebMethod(operationName = "addBooking")
     public boolean addBooking(@WebParam(name = "customerId") int customerId, @WebParam(name = "vehicleId") int vehicleId, @WebParam(name = "vehicleType") int vehicleType, @WebParam(name = "pickUpCityId") int pickUpCityId, @WebParam(name = "dropOffCityId") int dropOffCityId, @WebParam(name = "pickUpStreet") String pickUpStreet, @WebParam(name = "dropOffStreet") String dropOffStreet, @WebParam(name = "price") double price, @WebParam(name = "distance") double  distance) {
+        System.out.println("saving failed in customer webs services ");
         return this.customerBL.addBooking(customerId, vehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance);
     }
     

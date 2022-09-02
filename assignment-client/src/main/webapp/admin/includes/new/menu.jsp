@@ -230,6 +230,13 @@
                         <span key="t-calendar">Calendar</span>
                     </a>
                 </li>
+                
+                <li>
+                    <a href="/assignment-client/admin/views/customer/all.jsp" class="waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span key="t-calendar">Customer</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

@@ -30,17 +30,22 @@ import java.util.List;
  * @author thilan
  */
 public class MySQLUtil implements DBUtil {
+    private static final MySQLUtil instance = new MySQLUtil();
     private Connection con;
     private Statement stmt;
     private ResultSet rs;
 
-    public MySQLUtil() {
+    private MySQLUtil() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/assignment-db?allowPublicKeyRetrieval=true&useSSL=false&user=root&password=password");
         } catch(ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public static MySQLUtil getInstance() {
+        return instance;
     }
     
     @Override
@@ -52,7 +57,7 @@ public class MySQLUtil implements DBUtil {
             List<Customer> customers = new ArrayList<>();
 
             while (rs.next()) {
-                Customer customer = new Customer(rs.getString("mobile"), rs.getString("password"), rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"));
+                Customer customer = new Customer(rs.getString("mobile"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
                 customers.add(customer);
             }
             
@@ -633,6 +638,50 @@ public class MySQLUtil implements DBUtil {
         }
     }
     
+    @Override
+    public boolean deleteCustomer(int customerId) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `delete_customer`('"+customerId+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public Customer getCustomerById(int customerId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_customer_by_id`('"+customerId+"');");
+            
+            if(rs.next()) {
+                Customer customer = new Customer(rs.getString("mobile"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
+                return customer;
+            } else {
+                return null;
+            }
+            
+            
+        } catch(SQLException e) {
+            System.out.print(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateCustomer(Customer customer) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `update_customer`( "+customer.getId()+", '"+customer.getFirstName()+"', '"+customer.getLastName()+"', '"+customer.getEmail()+"');");
+        
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } 
+    }
+    
     // customer area
     @Override
     public boolean authCustomer(String mobile, String password) {
@@ -671,11 +720,11 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addBooking(Booking booking) {
         try {
-                       
-            this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getCustomerId()+" "+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");
             
+            this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getCustomerId()+", "+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");            
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
+            System.out.println("saving failed in mysql");
             System.out.println(e.getMessage());
             return false;
         }

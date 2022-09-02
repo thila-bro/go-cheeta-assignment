@@ -4,11 +4,11 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/AssignmentDBService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="addUser">
-<part name="parameters" element="tns:addUser"/>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
 </message>
-<message name="addUserResponse">
-<part name="parameters" element="tns:addUserResponse"/>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
 </message>
 <message name="authUser">
 <part name="parameters" element="tns:authUser"/>
@@ -16,11 +16,11 @@
 <message name="authUserResponse">
 <part name="parameters" element="tns:authUserResponse"/>
 </message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
+<message name="addUser">
+<part name="parameters" element="tns:addUser"/>
 </message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
+<message name="addUserResponse">
+<part name="parameters" element="tns:addUserResponse"/>
 </message>
 <message name="testFunction">
 <part name="parameters" element="tns:testFunction"/>
@@ -35,17 +35,17 @@
 <part name="parameters" element="tns:getUserByMobileResponse"/>
 </message>
 <portType name="AssignmentDBService">
-<operation name="addUser">
-<input wsam:Action="http://assignment/AssignmentDBService/addUserRequest" message="tns:addUser"/>
-<output wsam:Action="http://assignment/AssignmentDBService/addUserResponse" message="tns:addUserResponse"/>
+<operation name="hello">
+<input wsam:Action="http://assignment/AssignmentDBService/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://assignment/AssignmentDBService/helloResponse" message="tns:helloResponse"/>
 </operation>
 <operation name="authUser">
 <input wsam:Action="http://assignment/AssignmentDBService/authUserRequest" message="tns:authUser"/>
 <output wsam:Action="http://assignment/AssignmentDBService/authUserResponse" message="tns:authUserResponse"/>
 </operation>
-<operation name="hello">
-<input wsam:Action="http://assignment/AssignmentDBService/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://assignment/AssignmentDBService/helloResponse" message="tns:helloResponse"/>
+<operation name="addUser">
+<input wsam:Action="http://assignment/AssignmentDBService/addUserRequest" message="tns:addUser"/>
+<output wsam:Action="http://assignment/AssignmentDBService/addUserResponse" message="tns:addUserResponse"/>
 </operation>
 <operation name="testFunction">
 <input wsam:Action="http://assignment/AssignmentDBService/testFunctionRequest" message="tns:testFunction"/>
@@ -58,7 +58,7 @@
 </portType>
 <binding name="AssignmentDBServicePortBinding" type="tns:AssignmentDBService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="addUser">
+<operation name="hello">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -76,7 +76,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="hello">
+<operation name="addUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

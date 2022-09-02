@@ -4,6 +4,7 @@
  */
 package assignment.bl;
 
+import assignment.db.MySQLUtil;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.User;
@@ -15,10 +16,15 @@ import java.util.List;
  * @author thilan
  */
 public class BL {
-    private DBUtil util;
+    private static final BL instance = new BL();
+    private DBUtil util = MySQLUtil.getInstance();
 
-    public BL(DBUtil util) {
-        this.util = util;
+//    public BL(DBUtil util) {
+//        this.util = util;
+//    }
+    
+    public static BL getInstance() {
+        return instance;
     }
     
     public boolean addUser(String firstName, String lastName, String email, String password, String mobile, int type) {
