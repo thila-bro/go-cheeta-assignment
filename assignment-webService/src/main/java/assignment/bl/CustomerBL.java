@@ -6,6 +6,7 @@ package assignment.bl;
 
 import assignment.db.MySQLUtil;
 import assignment.src.Booking;
+import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
 import assignment.src.SelectedVehicle;
@@ -43,4 +44,13 @@ public class CustomerBL {
     public List<Booking> getCustomersBookingsById(int customerId) {
         return this.util.getCustomersBookingsById(customerId);
     }    
+
+    public boolean addCustomer(String mobile, String fristName, String lastName, String email, String password) {
+        Customer customer = new Customer(mobile, password, 0, fristName, lastName, email);
+        return this.util.addCustomer(customer);
+    }
+
+    public Customer getCustomerByMobileAndPassword(String mobile, String pasword) {
+        return this.util.getCustomerByMobileAndPassword(mobile, pasword);
+    }
 }

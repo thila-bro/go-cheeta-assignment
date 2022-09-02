@@ -52,10 +52,11 @@
                                                     <select class="form-control select2" name="branch_id" required>
                                                         <option>Select</option>
                                                         <% for(Branch branch : branches){ %>
+                                                        <% City city = admin_proxy.getCityById(branch.getCityId()); %>
                                                         <option value="<% out.print(branch.getBranchId()); %>" <%
                                                             if (branch.getBranchId() == admin.getBranchId()) {
                                                                 out.print("selected");
-                                                            } %>><% out.print(branch.getName()); %></option>
+                                                            } %>><% out.print(city.getName()); %></option>
                                                         <% } %>
                                                         
                                                     </select>

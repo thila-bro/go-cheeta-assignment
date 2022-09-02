@@ -9,6 +9,7 @@ import assignment.bl.PriceCalculation;
 import assignment.bl.SendEmail;
 import assignment.db.MySQLUtil;
 import assignment.src.Booking;
+import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.SelectedVehicle;
 import java.util.List;
@@ -56,5 +57,15 @@ public class CustomerWebService {
     @WebMethod(operationName = "getCustomersBookingsById")
     public List<Booking> getCustomersBookingsById(int customerId) {
         return this.customerBL.getCustomersBookingsById(customerId);
+    }
+    
+    @WebMethod(operationName = "addCustomer")
+    public boolean addCustomer(@WebParam(name = "mobile") String mobile, @WebParam(name = "fristName") String fristName, @WebParam(name = "lastName") String lastName, @WebParam(name = "email") String email, @WebParam(name = "password") String password) {
+        return this.customerBL.addCustomer(mobile, fristName, lastName, email, password);
+    }
+    
+    @WebMethod(operationName = "getCustomerByMobileAndPassword")
+    public Customer getCustomerByMobileAndPassword(@WebParam(name = "mobile") String mobile, @WebParam(name = "pasword") String pasword) {
+        return this.customerBL.getCustomerByMobileAndPassword(mobile, pasword);
     }
 }

@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                    <img src="/assignment-client/asset/img/profile-img.png" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <a href="/" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="assets/images/logo-light.svg" alt="" class="rounded-circle" height="34">
+                                            <img src="/assignment-client/asset/img/branding/logo.png" alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
@@ -48,7 +48,7 @@
                                 <a href="/" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="assets/images/logo.png" alt="" class="" height="45">
+                                            <img src="/assignment-client/asset/img/branding/logo.png" alt="" class="" height="45">
                                         </span>
                                     </div>
                                 </a>
@@ -57,13 +57,13 @@
                                 <form class="form-horizontal" action="/assignment-client/customer/controller/login.jsp" method="post">
                                     <div class="mb-3">
                                         <label for="mobile" class="form-label">Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" placeholder="Enter mobile" autofocus>
+                                        <input type="text" class="form-control" name="mobile" placeholder="Enter mobile" required autofocus>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon" name="password">
+                                            <input type="password" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon" required name="password">
                                             <button class="btn btn-light " type="button" name="password" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
                                     </div>
@@ -75,6 +75,9 @@
                                     <div class="mt-4 text-center">
                                         <a href="<?= route_to('password.request') ?>" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
                                     </div>
+                                    <div class="mt-4 text-center">
+                                        <a href="./register.jsp" class="fw-medium text-primary"> Sign In here</a>
+                                    </div>
                                 </form>
                             </div>
 
@@ -85,8 +88,8 @@
                         <div>
                             <!-- <p>Don't have an account ? <a href="auth-register" class="fw-medium text-primary"> Signup now </a> </p> -->
                             <p>© <script>
-                                    document.write(new Date().getFullYear())
-                                </script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                    document.write(new Date().getFullYear());
+                                </script> TopUp Advanced Programming <i class="mdi mdi-heart text-danger"></i> <br /> by B T MADURANGA (NG/BSCSD/07/12)</p>
                         </div>
                     </div>
 

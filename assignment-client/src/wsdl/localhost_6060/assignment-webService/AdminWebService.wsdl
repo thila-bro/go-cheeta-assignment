@@ -4,17 +4,23 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/AdminWebService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getDistanceBySourceIdAndDestinationId">
+<part name="parameters" element="tns:getDistanceBySourceIdAndDestinationId"/>
+</message>
+<message name="getDistanceBySourceIdAndDestinationIdResponse">
+<part name="parameters" element="tns:getDistanceBySourceIdAndDestinationIdResponse"/>
+</message>
 <message name="getCitiesWithOutSelectedId">
 <part name="parameters" element="tns:getCitiesWithOutSelectedId"/>
 </message>
 <message name="getCitiesWithOutSelectedIdResponse">
 <part name="parameters" element="tns:getCitiesWithOutSelectedIdResponse"/>
 </message>
-<message name="getDistanceBySourceIdAndDestinationId">
-<part name="parameters" element="tns:getDistanceBySourceIdAndDestinationId"/>
+<message name="addCity">
+<part name="parameters" element="tns:addCity"/>
 </message>
-<message name="getDistanceBySourceIdAndDestinationIdResponse">
-<part name="parameters" element="tns:getDistanceBySourceIdAndDestinationIdResponse"/>
+<message name="addCityResponse">
+<part name="parameters" element="tns:addCityResponse"/>
 </message>
 <message name="getCustomerById">
 <part name="parameters" element="tns:getCustomerById"/>
@@ -33,18 +39,6 @@
 </message>
 <message name="deleteCustomerResponse">
 <part name="parameters" element="tns:deleteCustomerResponse"/>
-</message>
-<message name="addCity">
-<part name="parameters" element="tns:addCity"/>
-</message>
-<message name="addCityResponse">
-<part name="parameters" element="tns:addCityResponse"/>
-</message>
-<message name="getDrivers">
-<part name="parameters" element="tns:getDrivers"/>
-</message>
-<message name="getDriversResponse">
-<part name="parameters" element="tns:getDriversResponse"/>
 </message>
 <message name="getCities">
 <part name="parameters" element="tns:getCities"/>
@@ -226,14 +220,24 @@
 <message name="getCustomersResponse">
 <part name="parameters" element="tns:getCustomersResponse"/>
 </message>
+<message name="getDrivers">
+<part name="parameters" element="tns:getDrivers"/>
+</message>
+<message name="getDriversResponse">
+<part name="parameters" element="tns:getDriversResponse"/>
+</message>
 <portType name="AdminWebService">
+<operation name="getDistanceBySourceIdAndDestinationId">
+<input wsam:Action="http://assignment/AdminWebService/getDistanceBySourceIdAndDestinationIdRequest" message="tns:getDistanceBySourceIdAndDestinationId"/>
+<output wsam:Action="http://assignment/AdminWebService/getDistanceBySourceIdAndDestinationIdResponse" message="tns:getDistanceBySourceIdAndDestinationIdResponse"/>
+</operation>
 <operation name="getCitiesWithOutSelectedId">
 <input wsam:Action="http://assignment/AdminWebService/getCitiesWithOutSelectedIdRequest" message="tns:getCitiesWithOutSelectedId"/>
 <output wsam:Action="http://assignment/AdminWebService/getCitiesWithOutSelectedIdResponse" message="tns:getCitiesWithOutSelectedIdResponse"/>
 </operation>
-<operation name="getDistanceBySourceIdAndDestinationId">
-<input wsam:Action="http://assignment/AdminWebService/getDistanceBySourceIdAndDestinationIdRequest" message="tns:getDistanceBySourceIdAndDestinationId"/>
-<output wsam:Action="http://assignment/AdminWebService/getDistanceBySourceIdAndDestinationIdResponse" message="tns:getDistanceBySourceIdAndDestinationIdResponse"/>
+<operation name="addCity">
+<input wsam:Action="http://assignment/AdminWebService/addCityRequest" message="tns:addCity"/>
+<output wsam:Action="http://assignment/AdminWebService/addCityResponse" message="tns:addCityResponse"/>
 </operation>
 <operation name="getCustomerById">
 <input wsam:Action="http://assignment/AdminWebService/getCustomerByIdRequest" message="tns:getCustomerById"/>
@@ -246,14 +250,6 @@
 <operation name="deleteCustomer">
 <input wsam:Action="http://assignment/AdminWebService/deleteCustomerRequest" message="tns:deleteCustomer"/>
 <output wsam:Action="http://assignment/AdminWebService/deleteCustomerResponse" message="tns:deleteCustomerResponse"/>
-</operation>
-<operation name="addCity">
-<input wsam:Action="http://assignment/AdminWebService/addCityRequest" message="tns:addCity"/>
-<output wsam:Action="http://assignment/AdminWebService/addCityResponse" message="tns:addCityResponse"/>
-</operation>
-<operation name="getDrivers">
-<input wsam:Action="http://assignment/AdminWebService/getDriversRequest" message="tns:getDrivers"/>
-<output wsam:Action="http://assignment/AdminWebService/getDriversResponse" message="tns:getDriversResponse"/>
 </operation>
 <operation name="getCities">
 <input wsam:Action="http://assignment/AdminWebService/getCitiesRequest" message="tns:getCities"/>
@@ -375,9 +371,22 @@
 <input wsam:Action="http://assignment/AdminWebService/getCustomersRequest" message="tns:getCustomers"/>
 <output wsam:Action="http://assignment/AdminWebService/getCustomersResponse" message="tns:getCustomersResponse"/>
 </operation>
+<operation name="getDrivers">
+<input wsam:Action="http://assignment/AdminWebService/getDriversRequest" message="tns:getDrivers"/>
+<output wsam:Action="http://assignment/AdminWebService/getDriversResponse" message="tns:getDriversResponse"/>
+</operation>
 </portType>
 <binding name="AdminWebServicePortBinding" type="tns:AdminWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getDistanceBySourceIdAndDestinationId">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="getCitiesWithOutSelectedId">
 <soap:operation soapAction=""/>
 <input>
@@ -387,7 +396,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getDistanceBySourceIdAndDestinationId">
+<operation name="addCity">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -415,24 +424,6 @@
 </output>
 </operation>
 <operation name="deleteCustomer">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="addCity">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getDrivers">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -703,6 +694,15 @@
 </output>
 </operation>
 <operation name="getCustomers">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getDrivers">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

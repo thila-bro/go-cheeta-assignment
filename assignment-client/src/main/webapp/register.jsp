@@ -56,27 +56,27 @@
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_1" id="veri_1"
                                             onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(2)"
-                                            autofocus>
+                                            autofocus required>
                                     </div>
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_2" id="veri_2"
-                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(3)">
+                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(3)" required>
                                     </div>
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_3" id="veri_3"
-                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(4)">
+                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(4)" required>
                                     </div>
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_4" id="veri_4"
-                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(5)">
+                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(5)" required>
                                     </div>
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_5" id="veri_5"
-                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(6)">
+                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(6)" required>
                                     </div>
                                     <div class="col-2">
                                         <input type="text" class="form-control" name="veri_6" id="veri_6"
-                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(0)">
+                                            onkeypress="return isNumberKey(event)" maxlength="1" onkeyup="nextFocus(0)" required>
                                     </div>
                                 </div>
                                 <div class="form-group mt-4 d-grid">

@@ -4,6 +4,8 @@
  */
 package assignment.db;
 
+import assignment.bl.AdminBL;
+import assignment.bl.AuthBL;
 import assignment.src.Admin;
 import assignment.src.Booking;
 import assignment.src.Branch;
@@ -446,7 +448,8 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addBranchAdmin(Admin admin) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_admin`("+admin.getBranchId()+", '"+admin.getFirstName()+"', '"+admin.getLastName()+"', '"+admin.getMobile()+"', '"+admin.getEmail()+"', '"+admin.getPassword()+"');");
+            String hashPassword = AuthBL.generateSha256(admin.getPassword(), admin.getEmail());
+            this.stmt  = this.con.prepareCall("CALL `add_branch_admin`("+admin.getBranchId()+", '"+admin.getFirstName()+"', '"+admin.getLastName()+"', '"+admin.getMobile()+"', '"+admin.getEmail()+"', '"+hashPassword+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -464,15 +467,6 @@ public class MySQLUtil implements DBUtil {
             List<Admin> admins = new ArrayList<>();
 
             while (rs.next()) {
-                System.err.println(rs.getInt("branch_id"));
-                System.err.println(rs.getString("password"));
-                System.err.println(rs.getString("first_name"));
-                System.err.println(rs.getString("last_name"));
-                System.err.println(rs.getString("email"));
-                System.err.println(rs.getString("mobile"));
-                System.err.println(rs.getString("id"));
-                
-                
                 Admin admin = new Admin(rs.getInt("branch_id"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 admins.add(admin);
             }
@@ -686,8 +680,9 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean authCustomer(String mobile, String password) {
         try {
+            String hashPassword = AuthBL.generateSha256(password, mobile);
             this.stmt = this.con.createStatement();
-            this.rs   = this.stmt.executeQuery("CALL `auth_customer`('"+mobile+"', '"+password+"');");
+            this.rs   = this.stmt.executeQuery("CALL `auth_customer`('"+mobile+"', '"+hashPassword+"');");
             
             return rs.next();
         } catch(SQLException e) {
@@ -724,7 +719,6 @@ public class MySQLUtil implements DBUtil {
             this.stmt  = this.con.prepareCall("CALL `add_booking`("+booking.getCustomerId()+", "+booking.getVehicleId()+", "+booking.getPickUpCityId()+", "+booking.getDropOffCityId()+", "+booking.getVehicleTypeId()+", '"+booking.getPickUpStreet()+"', '"+booking.getDropOffStreet()+"', '"+booking.getPrice()+"', '"+booking.getDistance()+"');");            
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
-            System.out.println("saving failed in mysql");
             System.out.println(e.getMessage());
             return false;
         }
@@ -745,6 +739,41 @@ public class MySQLUtil implements DBUtil {
             
             return bookings;
             
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean addCustomer(Customer customer) {
+        try {
+            String hashPassword = AuthBL.generateSha256(customer.getPassword(), customer.getMobile());
+            this.stmt  = this.con.prepareCall("CALL `add_customer`('"+customer.getFirstName()+"', '"+customer.getLastName()+"', '"+hashPassword+"', '"+customer.getEmail()+"', '"+customer.getMobile()+"');");            
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public Customer getCustomerByMobileAndPassword(String mobile, String password) {
+        try {
+            String hashPassword = AuthBL.generateSha256(password, mobile);
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `auth_customer`('"+mobile+"', '"+hashPassword+"');");
+            
+//            System.out.println(hashPassword);
+//        
+            if(rs.next()) {
+                Customer customer = new Customer(rs.getString("mobile"), password, rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
+                return customer;
+
+//                return null;
+            } else {
+                return null;
+            }
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return null;

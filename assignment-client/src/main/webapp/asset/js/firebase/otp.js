@@ -9,7 +9,7 @@ function getVerificationCode() {
     phoneNumber = $('#country_code').val() + removeFirstZero(mboile_number);
     appVerifier = window.recaptchaVerifier;
     timer();
-    // verificationCodeSendSuccess()
+     verificationCodeSendSuccess()
 
     progressing("Sending OTP...", "Please wait...");
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -33,6 +33,7 @@ function getVerificationCode() {
 
 function verificationCodeSendSuccess() {
     $("#mobileNumberView").hide();
+    $("#show_mobile_number").html(phoneNumber);
     $("#varificationCodeView").show();
     nextFocus(1);
 }
