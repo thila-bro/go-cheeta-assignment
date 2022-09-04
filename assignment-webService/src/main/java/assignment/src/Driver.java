@@ -13,13 +13,15 @@ public class Driver extends Person {
     private String licenseId;
     private String licenseExpireDate;
     private String nationalId;
+    private String password;
 
-    public Driver(int branchId, String licenseId, String licenseExpireDate, String nationalId, int id, String firstName, String lastName, String email, String mobile) {
+    public Driver(int branchId, String licenseId, String licenseExpireDate, String nationalId, String password, int id, String firstName, String lastName, String email, String mobile) {
         super(id, firstName, lastName, email, mobile);
         this.branchId = branchId;
         this.licenseId = licenseId;
         this.licenseExpireDate = licenseExpireDate;
         this.nationalId = nationalId;
+        this.password = password;
     }
 
     public int getBranchId() {
@@ -52,5 +54,13 @@ public class Driver extends Person {
 
     public void setNationalId(String nationalId) {
         this.nationalId = nationalId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

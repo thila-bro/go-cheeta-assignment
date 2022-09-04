@@ -51,6 +51,21 @@ public class MySQLUtil implements DBUtil {
     }
     
     @Override
+    public boolean authAdmin(String email, String password) {
+        try {
+            
+            String hashPassword = AuthBL.generateSha256(password, email);
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `auth_admin`('"+email+"', '"+hashPassword+"');");
+        
+            return this.rs.next();
+        } catch(SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    @Override
     public List<Customer> getCustomers() {
         try {
             this.stmt  = this.con.createStatement();
@@ -102,20 +117,6 @@ public class MySQLUtil implements DBUtil {
             return null;
         }
     }
-    
-    @Override
-    public boolean authUser(String mobile, String password) {
-        try {
-            this.stmt = this.con.createStatement();
-            this.rs   = this.stmt.executeQuery("CALL `assignment-db`.`auth_user`('"+mobile+"', '"+password+"');");
-            
-            return rs.next();
-        } catch(SQLException e) {
-            System.err.println(e.getMessage());
-            return false;
-        }
-    }
-    
     
     
    
@@ -373,7 +374,8 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addDriver(Driver driver) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_driver`("+driver.getBranchId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
+            String hashPassword = AuthBL.generateSha256(driver.getPassword(), driver.getEmail());
+            this.stmt  = this.con.prepareCall("CALL `add_driver`("+driver.getBranchId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"', '"+hashPassword+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -391,7 +393,7 @@ public class MySQLUtil implements DBUtil {
             List<Driver> drivers = new ArrayList<>();
 
             while (rs.next()) {
-                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 drivers.add(driver);
             }
             
@@ -422,7 +424,7 @@ public class MySQLUtil implements DBUtil {
             this.rs    = this.stmt.executeQuery("CALL `get_driver_by_id`("+driverId+");");
         
             if(rs.next()) {                               
-                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                Driver driver = new Driver(rs.getInt("branch_id"), rs.getString("license_no"), rs.getString("license_expire_date"), rs.getString("nic"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
                 return driver;
             } else {
                 return null;
@@ -436,7 +438,9 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean updateDriver(Driver driver) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `update_driver`("+driver.getBranchId()+", "+driver.getId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"');");
+            
+            String hashPassword = AuthBL.generateSha256(driver.getPassword(), driver.getPassword());
+            this.stmt  = this.con.prepareCall("CALL `update_driver`("+driver.getBranchId()+", "+driver.getId()+", '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getEmail()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+driver.getLicenseExpireDate()+"', '"+hashPassword+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -777,6 +781,23 @@ public class MySQLUtil implements DBUtil {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    
+    // driver arae
+    @Override
+    public boolean authDriver(String email, String password) {
+        try {
+            
+            String hashPassword = AuthBL.generateSha256(password, email);
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `assignment-db`.`auth_driver`('"+email+"', '"+hashPassword+"');");
+        
+            return this.rs.next();
+        } catch(SQLException e) {
+            System.out.println(e);
+            return false;
         }
     }
 }

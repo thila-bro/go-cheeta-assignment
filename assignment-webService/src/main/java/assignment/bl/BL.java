@@ -36,10 +36,6 @@ public class BL {
         return this.util.getCustomers();
     }
     
-    public boolean authUser(String mobile,String password) {
-        return this.util.authUser(mobile, password);
-    }
-    
     public User getUserByMobile(String mobile) {
         return this.util.getUserByMobile(mobile);
     }

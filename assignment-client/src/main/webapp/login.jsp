@@ -22,7 +22,7 @@
                                 <button type="submit" class="btn btn-success">Login</button>
                             </div>
                             <div class="from-group mt-2" style="display: flex; justify-content: space-around;">
-                                <a href="#">Fogot Password</a>
+                                <a href="/assignment-client/driver/view/login.jsp">Fogot Password</a>
                                 <a href="./register_1.jsp">Create Account</a>
                             </div>
                         </form>
