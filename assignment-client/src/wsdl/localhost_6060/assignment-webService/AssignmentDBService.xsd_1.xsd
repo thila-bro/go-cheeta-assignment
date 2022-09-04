@@ -4,10 +4,6 @@
 
 <xs:element name="addUserResponse" type="tns:addUserResponse"/>
 
-<xs:element name="authUser" type="tns:authUser"/>
-
-<xs:element name="authUserResponse" type="tns:authUserResponse"/>
-
 <xs:element name="getUserByMobile" type="tns:getUserByMobile"/>
 
 <xs:element name="getUserByMobileResponse" type="tns:getUserByMobileResponse"/>
@@ -83,19 +79,6 @@
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="authUser">
-<xs:sequence>
-<xs:element name="mobile" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="authUserResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="addUser">

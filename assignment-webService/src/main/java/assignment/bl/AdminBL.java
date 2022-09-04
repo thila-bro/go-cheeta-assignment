@@ -27,10 +27,10 @@ public class AdminBL {
     public static AdminBL getInstance() {
         return instance;
     }
-
-//    private AdminBL() {
-////        this.util = util;
-//    }
+    
+    public boolean authAdmin(String email, String password) {
+        return this.util.authAdmin(email, password);
+    }
     
     public boolean addCity(String name) {
         City city = new City(0, name);
@@ -103,7 +103,9 @@ public class AdminBL {
     }
     
     public boolean addDriver(int branchId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
-        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, 0, firstName, lastName, email, mobile);
+        Branch branch  = this.getBranchById(branchId);
+        City city = this.getCityById(branch.getCityId());
+        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, city.getName(), 0, firstName, lastName, email, mobile);
         return this.util.addDriver(driver);
     }
     
@@ -119,8 +121,8 @@ public class AdminBL {
         return this.util.getDriverById(driverId);
     }
     
-    public boolean updateDriver(int branchId, int driverId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic) {
-        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, driverId, firstName, lastName, email, mobile);
+    public boolean updateDriver(int branchId, int driverId, String firstName, String lastName, String email, String mobile, String drivingLicense, String licenseExpireDate, String nic, String password) {
+        Driver driver = new Driver(branchId, drivingLicense, licenseExpireDate, nic, password, driverId, firstName, lastName, email, mobile);
         return this.util.updateDriver(driver);
     }
 

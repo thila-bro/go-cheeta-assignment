@@ -28,6 +28,10 @@
 
 <xs:element name="addVehicleTypeResponse" type="tns:addVehicleTypeResponse"/>
 
+<xs:element name="authAdmin" type="tns:authAdmin"/>
+
+<xs:element name="authAdminResponse" type="tns:authAdminResponse"/>
+
 <xs:element name="deleteAdmin" type="tns:deleteAdmin"/>
 
 <xs:element name="deleteAdminResponse" type="tns:deleteAdminResponse"/>
@@ -285,10 +289,24 @@
 <xs:element name="drivingLicense" type="xs:string" minOccurs="0"/>
 <xs:element name="licenseExpireDate" type="xs:string" minOccurs="0"/>
 <xs:element name="nic" type="xs:string" minOccurs="0"/>
+<xs:element name="passoword" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="updateDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authAdmin">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authAdminResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -481,6 +499,7 @@
 <xs:element name="licenseExpireDate" type="xs:string" minOccurs="0"/>
 <xs:element name="licenseId" type="xs:string" minOccurs="0"/>
 <xs:element name="nationalId" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
@@ -673,6 +692,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getDrivers">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getDriversResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:driver" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="addBranchAdmin">
 <xs:sequence>
 <xs:element name="driverId" type="xs:int"/>
@@ -687,16 +716,6 @@
 <xs:complexType name="addBranchAdminResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getDrivers">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getDriversResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:driver" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

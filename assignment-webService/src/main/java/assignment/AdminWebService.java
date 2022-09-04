@@ -5,13 +5,10 @@
 package assignment;
 
 import assignment.bl.AdminBL;
-import assignment.bl.AuthBL;
-import assignment.db.MySQLUtil;
 import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
-import assignment.src.DBUtil;
 import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.Vehicle;
@@ -28,11 +25,8 @@ import javax.jws.WebParam;
 @WebService(serviceName = "AdminWebService")
 public class AdminWebService {
     private static final AdminWebService instance = new AdminWebService();   
-    private final DBUtil util = MySQLUtil.getInstance();
     private final AdminBL adminBL = AdminBL.getInstance();
     
-    
-//    @WebMethod(operationName = "getInstance");
     public static AdminWebService getInstance() {
         return instance;
     }
@@ -40,6 +34,10 @@ public class AdminWebService {
 //    @WebMethod(operationName = "addCity");
     public boolean addCity(@WebParam(name = "name") String name) {
         return this.adminBL.addCity(name);
+    }
+        
+    public boolean authAdmin(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
+        return this.adminBL.authAdmin(email, password);
     }
     
     @WebMethod(operationName = "getCities")
@@ -117,7 +115,7 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "addDriver")
-    public boolean addDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
+    public boolean addDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@ WebParam(name = "licenseExpireDate") String licenseExpireDate, @WebParam(name = "nic") String nic) {
         return this.adminBL.addDriver(branchId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
     }
     
@@ -137,8 +135,8 @@ public class AdminWebService {
     }
     
     @WebMethod(operationName = "updateDriver")
-    public boolean updateDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic) {
-        return this.adminBL.updateDriver(branchId, driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic);
+    public boolean updateDriver(@WebParam(name = "branchId") int branchId, @WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName,@WebParam(name = "lastName") String lastName,@WebParam(name = "email") String email,@WebParam(name = "mobile") String mobile,@WebParam(name = "drivingLicense") String drivingLicense,@WebParam(name = "licenseExpireDate") String licenseExpireDate,@WebParam(name = "nic") String nic, @WebParam(name = "passoword") String passoword) {
+        return this.adminBL.updateDriver(branchId, driverId, firstName, lastName, email, mobile, drivingLicense, licenseExpireDate, nic, passoword);
     }
     
     @WebMethod(operationName = "addBranchAdmin")

@@ -9,7 +9,8 @@
 <%
 
     boolean isSuper = false;
-
+    HttpSession ses = request.getSession();
+    
     for (Cookie cookie : request.getCookies()) {
         if (cookie.getName().equals("ISADMIN")) {
             if (Boolean.parseBoolean(cookie.getValue()) == true) {
@@ -19,9 +20,10 @@
     }
 
     if (isSuper) {
+        ses.setAttribute("success", "Login using cookies. Welcome");
         response.sendRedirect("/assignment-client/admin/index.jsp");
     } else {
-        response.sendRedirect("/assignment-client/index-admin-login.jsp");
+        response.sendRedirect("/assignment-client/admin/login.jsp");
     }
 
 %>

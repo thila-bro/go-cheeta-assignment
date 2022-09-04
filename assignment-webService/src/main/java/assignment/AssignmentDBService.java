@@ -46,11 +46,4 @@ public class AssignmentDBService {
     public User getUserByMobile(@WebParam(name = "mobile") String mobile) {
         return this.bl.getUserByMobile(mobile);
     }
-    
-    @WebMethod(operationName = "authUser")
-    public boolean authUser(@WebParam(name = "mobile") String mobile, @WebParam(name = "password") String password) {
-        return this.bl.authUser(mobile, password);
-    }
-    
-//    public 
 }

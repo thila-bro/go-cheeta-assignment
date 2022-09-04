@@ -13,9 +13,9 @@ public interface DBUtil {
    public List<Customer> getCustomers();
    public boolean addUser(User customer);
    public User getUserByMobile(String mobile);
-   public boolean authUser(String mobile, String password);
    
    // admin area 
+   public boolean authAdmin(String email, String password);
    public boolean addCity(City city);
    public List<City> getCities();
    public List<City> getCitiesWithOutSelectedId(int id);
@@ -60,6 +60,11 @@ public interface DBUtil {
    public List<Booking> getCustomersBookingsById(int customerId);
    public boolean addCustomer(Customer customer);
    public Customer getCustomerByMobileAndPassword(String mobile, String pasword);
+
+   // driver area 
+   public boolean authDriver(String email, String password);
+
+    
    
     
 }
