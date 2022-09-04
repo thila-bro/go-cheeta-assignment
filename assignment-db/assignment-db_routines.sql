@@ -29,11 +29,11 @@
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_booking`(
-IN vehicle_id int, IN pick_up_city_id int, IN drop_off_city_id int, IN vehicle_type_id int, IN pick_up_street varchar(100), IN drop_off_street varchar(100), IN price double, IN distance double
+IN customer_id int, IN vehicle_id int, IN pick_up_city_id int, IN drop_off_city_id int, IN vehicle_type_id int, IN pick_up_street varchar(100), IN drop_off_street varchar(100), IN price double, IN distance double
 )
 BEGIN
-INSERT INTO `bookings` (`vehicle_id`, `pick_up_city_id`, `drop_off_city_id`, `vehicle_type_id`, `pick_up_street`, `drop_off_street`, `price`, `distance`) 
-VALUES (vehicle_id, pick_up_city_id, drop_off_city_id, vehicle_type_id, pick_up_street, drop_off_street, price, distance);
+INSERT INTO `bookings` (`customer_id`, `vehicle_id`, `pick_up_city_id`, `drop_off_city_id`, `vehicle_type_id`, `pick_up_street`, `drop_off_street`, `price`, `distance`) 
+VALUES (customer_id, vehicle_id, pick_up_city_id, drop_off_city_id, vehicle_type_id, pick_up_street, drop_off_street, price, distance);
 
 UPDATE vehicles 
 SET vehicles.availability = false
@@ -60,6 +60,28 @@ IN city_id int, IN email varchar(45), IN mobile varchar(20), IN fixed varchar(20
 BEGIN
 INSERT INTO `branches` (`city_id`, `email`, `mobile`, `fixed`, `address1`, `address2`) 
 VALUES (city_id, email, mobile, fixed, address1, address2);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_branch_admin` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_branch_admin`(
+IN branch_id int, IN first_name varchar(45), IN last_name varchar(45), IN mobile varchar(45), IN email varchar(45), IN password varchar(256)
+)
+BEGIN
+INSERT INTO `admins` (`branch_id`, `first_name`, `last_name`, `mobile`, `email`, `password`) 
+VALUES (branch_id, first_name, last_name, mobile, email, password);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -99,10 +121,10 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_customer`(
-IN first_name varchar(45), IN last_name varchar(45), IN password varchar(45), IN email varchar(45), IN mobile varchar(45)
+IN first_name varchar(45), IN last_name varchar(45), IN password varchar(256), IN email varchar(45), IN mobile varchar(45)
 )
 BEGIN
-INSERT INTO `customer` (`first_name`, `last_name`, `email`, `mobile`, `password`) 
+INSERT INTO `customers` (`first_name`, `last_name`, `email`, `mobile`, `password`) 
 VALUES (first_name, last_name, email, mobile, password);
 END ;;
 DELIMITER ;
@@ -143,11 +165,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_driver`(
-IN branch_id int, IN frist_name varchar(45), IN last_name varchar(45), IN mobile varchar(20), IN email varchar(45), IN license_no varchar(45), IN nic varchar(25), IN license_expire_date varchar(45)
+IN branch_id int, IN frist_name varchar(45), IN last_name varchar(45), IN mobile varchar(20), IN email varchar(45), IN license_no varchar(45), IN nic varchar(25), IN license_expire_date varchar(45), IN password varchar(256)
 )
 BEGIN
-INSERT INTO `drivers` (`branch_id`, `first_name`, `last_name`, `mobile`, `email`, `license_no`, `nic`, `license_expire_date`) 
-VALUES (branch_id, frist_name, last_name, mobile, email, license_no, nic, license_expire_date);
+INSERT INTO `drivers` (`branch_id`, `first_name`, `last_name`, `mobile`, `email`, `license_no`, `nic`, `license_expire_date`, `password`) 
+VALUES (branch_id, frist_name, last_name, mobile, email, license_no, nic, license_expire_date, password);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -198,6 +220,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `auth_admin` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `auth_admin`(
+IN email varchar(45), IN password varchar(256)
+)
+BEGIN
+SELECT * FROM admins
+WHERE admins.email = email AND admins.password = password;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `auth_customer` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -209,10 +253,32 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `auth_customer`(
-IN mobile varchar(45), IN password varchar(45)
+IN mobile varchar(45), IN password varchar(256)
 )
 BEGIN
-SELECT * FROM customers WHERE customers.mobile = mobile AND customers.password = password;
+SELECT * FROM customers WHERE customers.mobile LIKE CONCAT('%', mobile) AND customers.password = password;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `auth_driver` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `auth_driver`(
+IN email varchar(45), IN password varchar(256)
+)
+BEGIN
+SELECT * FROM drivers
+WHERE drivers.email = email AND drivers.password = password;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -720,11 +786,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_driver`(
-IN branch_id int, IN driver_id int, IN frist_name varchar(45), IN last_name varchar(45), IN mobile varchar(20), IN email varchar(45), IN license_no varchar(45), IN nic varchar(25), IN license_expire_date varchar(45)
+IN branch_id int, IN driver_id int, IN frist_name varchar(45), IN last_name varchar(45), IN mobile varchar(20), IN email varchar(45), IN license_no varchar(45), IN nic varchar(25), IN license_expire_date varchar(45), IN password varchar(256)
 )
 BEGIN
 UPDATE `drivers` 
-SET `branch_id` = branch_id, `first_name` = frist_name, `last_name` = last_name, `mobile` = mobile, `email` = email, `license_no` = license_no, `nic` = nic, `license_expire_date` = license_expire_date 
+SET `branch_id` = branch_id, `first_name` = frist_name, `last_name` = last_name, `mobile` = mobile, `email` = email, `license_no` = license_no, `nic` = nic, `license_expire_date` = license_expire_date, `password` = password
 WHERE (`id` = driver_id);
 END ;;
 DELIMITER ;
@@ -784,4 +850,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-25 23:22:19
+-- Dump completed on 2022-09-04 21:41:57
