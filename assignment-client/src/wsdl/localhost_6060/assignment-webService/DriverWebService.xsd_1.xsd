@@ -4,6 +4,10 @@
 
 <xs:element name="authDriverResponse" type="tns:authDriverResponse"/>
 
+<xs:element name="getDriverByEmail" type="tns:getDriverByEmail"/>
+
+<xs:element name="getDriverByEmailResponse" type="tns:getDriverByEmailResponse"/>
+
 <xs:complexType name="authDriver">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -14,6 +18,42 @@
 <xs:complexType name="authDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverByEmail">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverByEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driver">
+<xs:complexContent>
+<xs:extension base="tns:person">
+<xs:sequence>
+<xs:element name="branchId" type="xs:int"/>
+<xs:element name="licenseExpireDate" type="xs:string" minOccurs="0"/>
+<xs:element name="licenseId" type="xs:string" minOccurs="0"/>
+<xs:element name="nationalId" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="person">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="mobile" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

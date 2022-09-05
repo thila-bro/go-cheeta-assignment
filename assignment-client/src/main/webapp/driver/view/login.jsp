@@ -10,7 +10,7 @@
 
 <head>
 
-    <title>Customer Login</title>
+    <title>Driver Login</title>
 
     <%@include file="../../admin/includes/new/head-css.jsp" %>
 
