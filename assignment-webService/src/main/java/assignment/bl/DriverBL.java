@@ -6,6 +6,7 @@ package assignment.bl;
 
 import assignment.db.MySQLUtil;
 import assignment.src.DBUtil;
+import assignment.src.Driver;
 
 /**
  *
@@ -21,6 +22,10 @@ public class DriverBL {
 
     public boolean authDriver(String email, String password) {
         return this.util.authDriver(email, password);
+    }
+
+    public Driver getDriverByEmail(String email) {
+        return this.util.getDriverByEmail(email);
     }
        
     

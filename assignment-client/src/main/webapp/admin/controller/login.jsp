@@ -20,8 +20,8 @@
 
     if (admin_proxy.authAdmin(email, password)) {
 //        User user = proxy.getUserByMobile(mobile);
-        Cookie userMobileCookie = new Cookie("EMAIL", email);
-        response.addCookie(userMobileCookie);
+        Cookie userEmail = new Cookie("EMAIL", email);
+        
 
         Date expdate = new Date();
         expdate.setTime(expdate.getTime() + (3600 * 1));
@@ -35,13 +35,16 @@
         Cookie isSuper = new Cookie("ISSUPER", "true");
         isAdmin.setPath("/");
         isSuper.setPath("/");
+        userEmail.setPath("/");
         isAdmin.setMaxAge(60 * 60 * 24);//set for 1 day
         isSuper.setMaxAge(60 * 60 * 24);//set for 1 day
+        userEmail.setMaxAge(60 * 60 * 24);
 
 //            isAdmin.setMaxAge(0);
 //            isSuper.setMaxAge(0);
         response.addCookie(isAdmin);
         response.addCookie(isSuper);
+        response.addCookie(userEmail);
         
         ses.setAttribute("success", "Login Success. Welcome");
         response.sendRedirect("/assignment-client/admin/index.jsp");

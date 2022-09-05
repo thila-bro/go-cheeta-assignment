@@ -4,6 +4,12 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/DriverWebService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getDriverByEmail">
+<part name="parameters" element="tns:getDriverByEmail"/>
+</message>
+<message name="getDriverByEmailResponse">
+<part name="parameters" element="tns:getDriverByEmailResponse"/>
+</message>
 <message name="authDriver">
 <part name="parameters" element="tns:authDriver"/>
 </message>
@@ -11,6 +17,10 @@
 <part name="parameters" element="tns:authDriverResponse"/>
 </message>
 <portType name="DriverWebService">
+<operation name="getDriverByEmail">
+<input wsam:Action="http://assignment/DriverWebService/getDriverByEmailRequest" message="tns:getDriverByEmail"/>
+<output wsam:Action="http://assignment/DriverWebService/getDriverByEmailResponse" message="tns:getDriverByEmailResponse"/>
+</operation>
 <operation name="authDriver">
 <input wsam:Action="http://assignment/DriverWebService/authDriverRequest" message="tns:authDriver"/>
 <output wsam:Action="http://assignment/DriverWebService/authDriverResponse" message="tns:authDriverResponse"/>
@@ -18,6 +28,15 @@
 </portType>
 <binding name="DriverWebServicePortBinding" type="tns:DriverWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getDriverByEmail">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="authDriver">
 <soap:operation soapAction=""/>
 <input>

@@ -63,8 +63,5 @@ public interface DBUtil {
 
    // driver area 
    public boolean authDriver(String email, String password);
-
-    
-   
-    
+   public Driver getDriverByEmail(String email);
 }

@@ -5,6 +5,7 @@
 package assignment;
 
 import assignment.bl.DriverBL;
+import assignment.src.Driver;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -25,5 +26,10 @@ public class DriverWebService {
     @WebMethod(operationName = "authDriver")
     public boolean authDriver(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
         return this.driverBL.authDriver(email, password);
+    }
+    
+    @WebMethod(operationName = "getDriverByEmail")
+    public Driver getDriverByEmail(@WebParam(name = "email") String email) {
+        return this.driverBL.getDriverByEmail(email);
     }
 }

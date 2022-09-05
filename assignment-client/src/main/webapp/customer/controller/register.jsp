@@ -17,7 +17,7 @@
     
     HttpSession ses = request.getSession();
     if(customerProxy.addCustomer(mobile, firstName, lastName, email, password)) {
-        ses.setAttribute("success", "Register Success.");
+        ses.setAttribute("success", "Register Success");
     } else {
         ses.setAttribute("error", "Login failed. Please try again");
     }   
