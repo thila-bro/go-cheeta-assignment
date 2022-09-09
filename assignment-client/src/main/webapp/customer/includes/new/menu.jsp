@@ -17,6 +17,8 @@
             lastName = cookie.getValue();
         }
     }
+    
+///assignment-client/customer/controller/logout.jsp
 
 %>
 <!DOCTYPE html>

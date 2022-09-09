@@ -5,12 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../admin/includes/new/adminSession.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <title>Customer Login</title>
+    <title>Admin Login</title>
 
     <%@include file="../admin/includes/new/head-css.jsp" %>
     
@@ -147,7 +148,24 @@
     <script src="/assignment-client/admin/asset/js/app.js"></script>
     
     
+    <script>
+        <%
 
+        HttpSession ssesLogout = request.getSession();
+
+        if (ssesLogout.getAttribute("loginSessionExpire") != null) {
+
+    %>
+
+    var message = `<% out.print(ssesLogout.getAttribute("loginSessionExpire")); %>`;
+    formError(message);
+
+    <%
+            ssesLogout.removeAttribute("loginSessionExpire");
+        }
+    %>
+
+    </script>
     
     
 </body>

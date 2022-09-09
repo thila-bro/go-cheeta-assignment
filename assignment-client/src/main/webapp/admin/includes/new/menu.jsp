@@ -3,9 +3,31 @@
     Created on : Aug 2, 2022, 4:25:30 PM
     Author     : thilan
 --%>
-
+<%@include file="./adminSession.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+
+    boolean isLogin = false;
+//    HttpSession ses = request.getSession();
+    
+    for (Cookie cookie : request.getCookies()) {
+        if (cookie.getName().equals("ISADMINLOGIN")) {
+            if (Boolean.parseBoolean(cookie.getValue()) == true) {
+                isLogin = true;
+            }
+        }
+    }
+    
+    if(!isLogin) {
+        ses.setAttribute("loginSessionExpire", "Session expired. Please login");
+        response.sendRedirect("/assignment-client/admin/login.jsp");
+    }
+
+
+%>
+
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -155,7 +177,7 @@
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="/logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                    <a class="dropdown-item text-danger" href="/assignment-client/admin/controller/logout.jsp"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
             </div>
         </div>

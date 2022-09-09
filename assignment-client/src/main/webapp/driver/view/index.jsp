@@ -685,7 +685,7 @@
     </div>
     <!-- END layout-wrapper -->        
 
-    <%@include file="../../admin/includes/new/scripts.jsp" %>
+    <%@include file="../../driver/include/scripts.jsp" %>
 
     <!-- apexcharts -->
     <script src="/assignment-client/admin/asset/js/apexcharts.min.js"></script>

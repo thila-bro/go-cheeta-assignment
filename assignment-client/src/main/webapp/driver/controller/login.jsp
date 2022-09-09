@@ -19,21 +19,25 @@
     
     if(driverProxy.authDriver(email, password)) {
         Driver driver = driverProxy.getDriverByEmail(email);
+        Cookie isLogin      = new Cookie("ISDRIVERLOGIN", "true");
         Cookie userEmail    = new Cookie("EMAIL", email);
         Cookie userID       = new Cookie("DRIVERID", String.valueOf(driver.getId()));
         Cookie firstName    = new Cookie("FIRSTNAME", driver.getFirstName());
         Cookie lastName     = new Cookie("LASTNAME", driver.getLastName());
         
+        isLogin.setPath("/");
         userEmail.setPath("/");
         userID.setPath("/");
         firstName.setPath("/");
         lastName.setPath("/");
         
+        isLogin.setMaxAge(60 * 60 * 24);
         userEmail.setMaxAge(60 * 60 *24);
         userID.setMaxAge(60 *60 * 24);
         firstName.setMaxAge(60 * 60 * 24);
         lastName.setMaxAge(60 * 60 * 24);
         
+        response.addCookie(isLogin);
         response.addCookie(userEmail);
         response.addCookie(userID);
         response.addCookie(firstName);
@@ -42,7 +46,7 @@
         ses.setAttribute("success", "Driver Login Success");
         response.sendRedirect("/assignment-client/driver/view/index.jsp");
     } else {
-        ses.setAttribute("error", "Login failed. Please try again");
+        ses.setAttribute("error", "Driver Login failed. Please try again");
         response.sendRedirect("/assignment-client/driver/view/login.jsp");
     }
     
