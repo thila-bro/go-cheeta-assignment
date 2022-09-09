@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% HttpSession ses = request.getSession(); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,9 +100,29 @@
     </div>
     <!-- end account-pages -->
 
-    <%@include file="../../admin/includes/new/scripts.jsp" %>
+    <%@include file="../../driver/include/scripts.jsp" %>
     <!-- App js -->
     <script src="/assignment-client/admin/asset/js/app.js"></script>
+    
+    <script>
+        <%
+
+        HttpSession ssesLogout = request.getSession();
+        HttpSession sess = request.getSession();
+
+        if (ssesLogout.getAttribute("loginSessionExpire") != null) {
+
+    %>
+
+    var message = `<% out.print(ssesLogout.getAttribute("loginSessionExpire")); %>`;
+    formError(message);
+
+    <%
+            ssesLogout.removeAttribute("loginSessionExpire");
+        }
+    %>
+
+    </script>
     
 </body>
 

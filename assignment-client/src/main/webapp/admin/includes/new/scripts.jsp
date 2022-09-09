@@ -71,28 +71,28 @@
 <script>
     <%
 
-        HttpSession ses = request.getSession();
+        HttpSession adminSession = request.getSession();
 
-        if (ses.getAttribute("success") != null) {
+        if (adminSession.getAttribute("success") != null) {
 
     %>
 
-    var message = `<% out.print(ses.getAttribute("success")); %>`;
+    var message = `<% out.print(adminSession.getAttribute("success")); %>`;
     formSuccess(message);
 
     <%
-            ses.removeAttribute("success");
+            adminSession.removeAttribute("success");
         }
 
-        if (ses.getAttribute("error") != null) {
+        if (adminSession.getAttribute("error") != null) {
 
     %>
 
-    var message = `<% out.print(ses.getAttribute("error")); %>`;
+    var message = `<% out.print(adminSession.getAttribute("error")); %>`;
     formError(message);
 
     <%
-            ses.removeAttribute("error");
+            adminSession.removeAttribute("error");
         }
 
 

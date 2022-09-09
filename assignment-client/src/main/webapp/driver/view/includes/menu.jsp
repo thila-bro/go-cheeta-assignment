@@ -5,6 +5,33 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    boolean isLogin     = false; 
+    String firstName    = "";
+    String lastName     = "";
+    String email        = "";
+    String userID       = "";
+    
+    HttpSession ses = request.getSession();
+    
+    for (Cookie cookie : request.getCookies()) {
+        if (cookie.getName().equals("ISDRIVERLOGIN")) {
+            if (Boolean.parseBoolean(cookie.getValue()) == true) {
+                isLogin = true;
+            }
+        } else if (cookie.getName().equals("FIRSTNAME")) {
+            firstName = cookie.getValue();
+        } else if (cookie.getName().equals("LASTNAME")) {
+            lastName = cookie.getValue();
+        }
+    }
+    
+    if (!isLogin) {
+        ses.setAttribute("loginSessionExpire", "Session expired. Please login");
+        response.sendRedirect("/assignment-client/admin/login.jsp");
+    }
+
+%>
 <!DOCTYPE html>
 <header id="page-topbar">
     <div class="navbar-header">
@@ -145,7 +172,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="/assignment-client/admin/asset/img/avatar-3.jpg" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry"><%= firstName + " " + lastName %></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -155,7 +182,7 @@
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="/logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                    <a class="dropdown-item text-danger" href="/assignment-client/driver/controller/logout.jsp"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
             </div>
         </div>

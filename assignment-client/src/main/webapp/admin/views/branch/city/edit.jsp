@@ -6,7 +6,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="assignment.City"%>
-<%@include file="../../includes/wsdlAdminConenction.jsp" %>
+<%@include file="../../../includes/wsdlAdminConenction.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import="assignment.City"%>
@@ -22,7 +22,7 @@
     <head>
         
         <title>Go Cheeta - Edit City</title>        
-        <%@include file="../../../admin/includes/new/head-css.jsp" %>
+        <%@include file="../../../includes/new/head-css.jsp" %>
     </head>
 
     <body data-sidebar="dark">
@@ -31,7 +31,7 @@
         <div id="layout-wrapper">
             
             
-            <%@include file="../../../admin/includes/new/menu.jsp" %>
+            <%@include file="../../../includes/new/menu.jsp" %>
 
             
             <div class="main-content">
@@ -75,14 +75,14 @@
 
                 
                 
-                <%@include file="../../../admin/includes/new/footer.jsp" %>
+                <%@include file="../../../includes/new/footer.jsp" %>
             </div>
             <!-- end main content-->
 
         </div>
         <!-- END layout-wrapper -->        
 
-        <%@include file="../../../admin/includes/new/scripts.jsp" %>
+        <%@include file="../../../includes/new/scripts.jsp" %>
         
         <script src="/assignment-client/admin/asset/libs/parsleyjs/parsley.min.js"></script>
         <script src="/assignment-client/admin/asset/js/form-validation.init.js"></script>

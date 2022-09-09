@@ -17,7 +17,7 @@
 
     if (customerProxy.authCustomer(mobile, password)) {
             Customer customer = customerProxy.getCustomerByMobileAndPassword(mobile, password);
-            Cookie isLogin          = new Cookie("ISLOGIN", "true");
+            Cookie isLogin          = new Cookie("ISCUSTOMERLOGIN", "true");
             Cookie firstNameCookie  = new Cookie("FIRSTNAME", customer.getFirstName());
             Cookie lastNameCookie   = new Cookie("LASTNAME", customer.getLastName());
             Cookie mobileCookie     = new Cookie("MOBILE", customer.getMobile());
@@ -40,9 +40,9 @@
             response.addCookie(lastNameCookie);
             response.addCookie(mobileCookie);
             response.addCookie(emailCookie);
-
+        
+        ses.setAttribute("success", "Customer Login Success. Welcome");
         response.sendRedirect("/assignment-client/customer/view/booking/data.jsp");
-
     } else {
         ses.setAttribute("error", "Login failed. Please try again");
         response.sendRedirect("/assignment-client/customer/view/login.jsp");

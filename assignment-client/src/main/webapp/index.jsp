@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="/assignment-client/customer/view/login.jsp" target="_blank">
+                    <a href="/assignment-client/customer/controller/customerCookieCheck.jsp" target="_blank">
                         <div class="wrap-login100 p-b-50">
                             <span class="login100-form-title p-b-41">
                                 Customer Pannel
@@ -56,7 +56,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="/assignment-client/driver/view/login.jsp" target="_blank">
+                    <a href="/assignment-client/driver/controller/driverCookieCheck.jsp" target="_blank">
                         <div class="wrap-login100 p-b-50">
                             <span class="login100-form-title p-b-41">
                                 Driver Pannel

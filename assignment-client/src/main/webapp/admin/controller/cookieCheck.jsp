@@ -8,18 +8,18 @@
 <!DOCTYPE html>
 <%
 
-    boolean isSuper = false;
+    boolean isLogin = false;
     HttpSession ses = request.getSession();
     
     for (Cookie cookie : request.getCookies()) {
-        if (cookie.getName().equals("ISADMIN")) {
+        if (cookie.getName().equals("ISADMINLOGIN")) {
             if (Boolean.parseBoolean(cookie.getValue()) == true) {
-                isSuper = true;
+                isLogin = true;
             }
         }
     }
 
-    if (isSuper) {
+    if (isLogin) {
         ses.setAttribute("success", "Login using cookies. Welcome");
         response.sendRedirect("/assignment-client/admin/index.jsp");
     } else {
