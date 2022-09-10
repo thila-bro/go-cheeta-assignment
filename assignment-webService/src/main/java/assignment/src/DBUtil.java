@@ -60,8 +60,12 @@ public interface DBUtil {
    public List<Booking> getCustomersBookingsById(int customerId);
    public boolean addCustomer(Customer customer);
    public Customer getCustomerByMobileAndPassword(String mobile, String pasword);
+   public boolean addFeedback(Feedback feedback);
 
    // driver area 
    public boolean authDriver(String email, String password);
    public Driver getDriverByEmail(String email);
+   public List<Booking> getDriverBookings(int driverId);
+   public boolean driverBookingAccept(int bookingId);
+   public boolean driverBookingComplete(int bookingId);
 }

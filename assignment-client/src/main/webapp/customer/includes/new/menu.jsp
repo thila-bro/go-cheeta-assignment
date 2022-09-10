@@ -9,16 +9,17 @@
 <%
     String firstName    = "";
     String lastName     = "";
+    int customerId      = 0;
     
     for (Cookie cookie : request.getCookies()) {
         if (cookie.getName().equals("FIRSTNAME")) {
             firstName = cookie.getValue();
         } else if (cookie.getName().equals("LASTNAME")) {
             lastName = cookie.getValue();
+        } else if (cookie.getName().equals("CUSTOMERID")) {
+            customerId = Integer.parseInt(cookie.getValue());
         }
     }
-    
-///assignment-client/customer/controller/logout.jsp
 
 %>
 <!DOCTYPE html>
@@ -171,7 +172,7 @@
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="/logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                    <a class="dropdown-item text-danger" href="/assignment-client/customer/controller/logout.jsp"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
             </div>
         </div>

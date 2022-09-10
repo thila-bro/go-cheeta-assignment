@@ -20,10 +20,10 @@
     if(driverProxy.authDriver(email, password)) {
         Driver driver = driverProxy.getDriverByEmail(email);
         Cookie isLogin      = new Cookie("ISDRIVERLOGIN", "true");
-        Cookie userEmail    = new Cookie("EMAIL", email);
+        Cookie userEmail    = new Cookie("DRIVEREMAIL", email);
         Cookie userID       = new Cookie("DRIVERID", String.valueOf(driver.getId()));
-        Cookie firstName    = new Cookie("FIRSTNAME", driver.getFirstName());
-        Cookie lastName     = new Cookie("LASTNAME", driver.getLastName());
+        Cookie firstName    = new Cookie("DRIVERFIRSTNAME", driver.getFirstName());
+        Cookie lastName     = new Cookie("DRIVERLASTNAME", driver.getLastName());
         
         isLogin.setPath("/");
         userEmail.setPath("/");

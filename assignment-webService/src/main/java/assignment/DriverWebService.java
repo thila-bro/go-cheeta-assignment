@@ -5,7 +5,9 @@
 package assignment;
 
 import assignment.bl.DriverBL;
+import assignment.src.Booking;
 import assignment.src.Driver;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -31,5 +33,20 @@ public class DriverWebService {
     @WebMethod(operationName = "getDriverByEmail")
     public Driver getDriverByEmail(@WebParam(name = "email") String email) {
         return this.driverBL.getDriverByEmail(email);
+    }
+    
+    @WebMethod(operationName = "getDriverBookings")
+    public List<Booking> getDriverBookings(@WebParam(name = "driverId") int driverId) {
+        return this.driverBL.getDriverBookings(driverId);
+    }
+    
+    @WebMethod(operationName = "driverBookingAccept")
+    public boolean driverBookingAccept(@WebParam(name = "bookingId") int bookingId) {
+        return this.driverBL.driverBookingAccept(bookingId);
+    }
+    
+    @WebMethod(operationName = "driverBookingComplete")
+    public boolean driverBookingComplete(@WebParam(name = "bookingId") int bookingId) {
+        return this.driverBL.driverBookingComplete(bookingId);
     }
 }

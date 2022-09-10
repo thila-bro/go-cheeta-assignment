@@ -17,24 +17,28 @@
 
     if (customerProxy.authCustomer(mobile, password)) {
             Customer customer = customerProxy.getCustomerByMobileAndPassword(mobile, password);
+            Cookie customerId       = new Cookie("CUSTOMERID", String.valueOf(customer.getId()));
             Cookie isLogin          = new Cookie("ISCUSTOMERLOGIN", "true");
             Cookie firstNameCookie  = new Cookie("FIRSTNAME", customer.getFirstName());
             Cookie lastNameCookie   = new Cookie("LASTNAME", customer.getLastName());
             Cookie mobileCookie     = new Cookie("MOBILE", customer.getMobile());
             Cookie emailCookie      = new Cookie("EMAIL", customer.getEmail());
             
+            customerId.setPath("/");
             isLogin.setPath("/");
             firstNameCookie.setPath("/");
             lastNameCookie.setPath("/");
             mobileCookie.setPath("/");
             emailCookie.setPath("/");
             
+            customerId.setMaxAge(60*60*24);
             isLogin.setMaxAge(60*60*24);//set for 1 day
             firstNameCookie.setMaxAge(60*60*24);
             lastNameCookie.setMaxAge(60*60*24);
             mobileCookie.setMaxAge(60*60*24);
             emailCookie.setMaxAge(60*60*24);
             
+            response.addCookie(customerId);
             response.addCookie(isLogin);
             response.addCookie(firstNameCookie);
             response.addCookie(lastNameCookie);

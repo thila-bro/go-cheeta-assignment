@@ -8,6 +8,10 @@
 
 <xs:element name="addCustomerResponse" type="tns:addCustomerResponse"/>
 
+<xs:element name="addFeedback" type="tns:addFeedback"/>
+
+<xs:element name="addFeedbackResponse" type="tns:addFeedbackResponse"/>
+
 <xs:element name="authCustomer" type="tns:authCustomer"/>
 
 <xs:element name="authCustomerResponse" type="tns:authCustomerResponse"/>
@@ -121,6 +125,7 @@
 <xs:element name="distance" type="xs:double"/>
 <xs:element name="dropOffCityId" type="xs:int"/>
 <xs:element name="dropOffStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="feedBackStatus" type="xs:boolean"/>
 <xs:element name="pickUpCityId" type="xs:int"/>
 <xs:element name="pickUpStreet" type="xs:string" minOccurs="0"/>
 <xs:element name="price" type="xs:double"/>
@@ -161,6 +166,20 @@
 </xs:complexType>
 
 <xs:complexType name="addBookingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFeedback">
+<xs:sequence>
+<xs:element name="bookingId" type="xs:int"/>
+<xs:element name="tripRate" type="xs:int"/>
+<xs:element name="feedback" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFeedbackResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>

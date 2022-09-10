@@ -19,10 +19,14 @@
             if (Boolean.parseBoolean(cookie.getValue()) == true) {
                 isLogin = true;
             }
-        } else if (cookie.getName().equals("FIRSTNAME")) {
+        } else if (cookie.getName().equals("DRIVERFIRSTNAME")) {
             firstName = cookie.getValue();
-        } else if (cookie.getName().equals("LASTNAME")) {
+        } else if (cookie.getName().equals("DRIVERLASTNAME")) {
             lastName = cookie.getValue();
+        } else if (cookie.getName().equals("DRIVEREMAIL")) {
+            email = cookie.getValue();
+        } else if (cookie.getName().equals("DRIVERID")) {
+            userID = cookie.getValue();
         }
     }
     

@@ -5,8 +5,10 @@
 package assignment.bl;
 
 import assignment.db.MySQLUtil;
+import assignment.src.Booking;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
+import java.util.List;
 
 /**
  *
@@ -26,6 +28,18 @@ public class DriverBL {
 
     public Driver getDriverByEmail(String email) {
         return this.util.getDriverByEmail(email);
+    }
+
+    public List<Booking> getDriverBookings(int driverId) {
+        return this.util.getDriverBookings(driverId);
+    }
+
+    public boolean driverBookingAccept(int bookingId) {
+        return this.util.driverBookingAccept(bookingId);
+    }
+
+    public boolean driverBookingComplete(int bookingId) {
+        return  this.util.driverBookingComplete(bookingId);
     }
        
     

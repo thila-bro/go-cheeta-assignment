@@ -72,7 +72,7 @@
 
 
                                             <tbody>
-                                                <% List<Booking> bookings = customerProxy.getCustomersBookingsById(1); %>
+                                                <% List<Booking> bookings = customerProxy.getCustomersBookingsById(4); %>
                                                 <% for(Booking booking: bookings){ %>
                                                 <% VehicleType vehicleType = admin_proxy.getVehicleTypeById(booking.getVehicleTypeId()); %>
                                                 <% Vehicle vehicle = admin_proxy.getVehicleById(2); %>
@@ -94,14 +94,18 @@
                                                         <% if(booking.getStatus() == 0){ %>
                                                             <span class="badge badge-soft-warning font-size-12"> starting </span>
                                                         <% } else if(booking.getStatus() == 1) { %>
-                                                            <span class="badge badge-soft-danger font-size-12"> declined </span>
+                                                            <span class="badge badge-soft-success font-size-12"> Accepted </span>
                                                         <% } else if(booking.getStatus() == 2) { %>
+                                                            <span class="badge badge-soft-danger font-size-12"> declined </span>
+                                                        <% } else if(booking.getStatus() == 3) { %>
                                                             <span class="badge badge-soft-success font-size-12"> completed </span>
                                                         <% } %>
                                                     </td>
                                                     <td>
                                                         <a href="./edit.jsp?id=<% out.print(booking.getBookingId()); %>" class="btn btn-sm btn-warning"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>invoice</a>
-                                                        <a href="./edit.jsp?id=<% out.print(booking.getBookingId()); %>" class="btn btn-sm btn-primary"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>feedback</a>
+                                                        <% if(!booking.isFeedBackStatus()) { %>
+                                                            <a href="../feedback/newFeedback.jsp?booking_id=<% out.print(booking.getBookingId()); %>" class="btn btn-sm btn-primary"><i class="mdi mdi-file-document-edit-outline align-middle me-1"></i>feedback</a>
+                                                        <% } %>
                                                     </td>
                                                 </tr>
                                                 <% } %>

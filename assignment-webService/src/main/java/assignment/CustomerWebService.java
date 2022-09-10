@@ -68,4 +68,9 @@ public class CustomerWebService {
     public Customer getCustomerByMobileAndPassword(@WebParam(name = "mobile") String mobile, @WebParam(name = "pasword") String pasword) {
         return this.customerBL.getCustomerByMobileAndPassword(mobile, pasword);
     }
+    
+    @WebMethod(operationName = "addFeedback")
+    public boolean addFeedback(@WebParam(name = "bookingId") int bookingId, @WebParam(name = "tripRate") int tripRate, @WebParam(name = "feedback") String feedback) {
+        return this.customerBL.addFeedback(bookingId, tripRate, feedback);
+    }
 }

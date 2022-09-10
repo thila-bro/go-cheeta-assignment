@@ -20,8 +20,9 @@ public class Booking {
     private double price;
     private double distance;
     private int status;
+    private boolean feedBackStatus;
 
-    public Booking(int customerId, int bookingId, int vehicleId, int pickUpCityId, int dropOffCityId, int vehicleTypeId, String pickUpStreet, String dropOffStreet, double price, double distance, int status) {
+    public Booking(int customerId, int bookingId, int vehicleId, int pickUpCityId, int dropOffCityId, int vehicleTypeId, String pickUpStreet, String dropOffStreet, double price, double distance, int status, boolean feedBackStatus) {
         this.customerId = customerId;
         this.bookingId = bookingId;
         this.vehicleId = vehicleId;
@@ -33,6 +34,7 @@ public class Booking {
         this.price = price;
         this.distance = distance;
         this.status = status;
+        this.feedBackStatus = feedBackStatus;
     }
 
     public int getCustomerId() {
@@ -121,5 +123,13 @@ public class Booking {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public boolean isFeedBackStatus() {
+        return feedBackStatus;
+    }
+
+    public void setFeedBackStatus(boolean feedBackStatus) {
+        this.feedBackStatus = feedBackStatus;
     }
 }

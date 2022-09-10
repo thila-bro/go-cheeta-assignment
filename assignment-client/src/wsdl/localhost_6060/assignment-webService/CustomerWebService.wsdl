@@ -4,11 +4,11 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="addCustomer">
-<part name="parameters" element="tns:addCustomer"/>
+<message name="addFeedback">
+<part name="parameters" element="tns:addFeedback"/>
 </message>
-<message name="addCustomerResponse">
-<part name="parameters" element="tns:addCustomerResponse"/>
+<message name="addFeedbackResponse">
+<part name="parameters" element="tns:addFeedbackResponse"/>
 </message>
 <message name="sendTestEmail">
 <part name="parameters" element="tns:sendTestEmail"/>
@@ -40,6 +40,12 @@
 <message name="getCustomerByMobileAndPasswordResponse">
 <part name="parameters" element="tns:getCustomerByMobileAndPasswordResponse"/>
 </message>
+<message name="addCustomer">
+<part name="parameters" element="tns:addCustomer"/>
+</message>
+<message name="addCustomerResponse">
+<part name="parameters" element="tns:addCustomerResponse"/>
+</message>
 <message name="addBooking">
 <part name="parameters" element="tns:addBooking"/>
 </message>
@@ -53,9 +59,9 @@
 <part name="parameters" element="tns:authCustomerResponse"/>
 </message>
 <portType name="CustomerWebService">
-<operation name="addCustomer">
-<input wsam:Action="http://assignment/CustomerWebService/addCustomerRequest" message="tns:addCustomer"/>
-<output wsam:Action="http://assignment/CustomerWebService/addCustomerResponse" message="tns:addCustomerResponse"/>
+<operation name="addFeedback">
+<input wsam:Action="http://assignment/CustomerWebService/addFeedbackRequest" message="tns:addFeedback"/>
+<output wsam:Action="http://assignment/CustomerWebService/addFeedbackResponse" message="tns:addFeedbackResponse"/>
 </operation>
 <operation name="sendTestEmail">
 <input wsam:Action="http://assignment/CustomerWebService/sendTestEmailRequest" message="tns:sendTestEmail"/>
@@ -77,6 +83,10 @@
 <input wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordRequest" message="tns:getCustomerByMobileAndPassword"/>
 <output wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordResponse" message="tns:getCustomerByMobileAndPasswordResponse"/>
 </operation>
+<operation name="addCustomer">
+<input wsam:Action="http://assignment/CustomerWebService/addCustomerRequest" message="tns:addCustomer"/>
+<output wsam:Action="http://assignment/CustomerWebService/addCustomerResponse" message="tns:addCustomerResponse"/>
+</operation>
 <operation name="addBooking">
 <input wsam:Action="http://assignment/CustomerWebService/addBookingRequest" message="tns:addBooking"/>
 <output wsam:Action="http://assignment/CustomerWebService/addBookingResponse" message="tns:addBookingResponse"/>
@@ -88,7 +98,7 @@
 </portType>
 <binding name="CustomerWebServicePortBinding" type="tns:CustomerWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="addCustomer">
+<operation name="addFeedback">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -134,6 +144,15 @@
 </output>
 </operation>
 <operation name="getCustomerByMobileAndPassword">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addCustomer">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

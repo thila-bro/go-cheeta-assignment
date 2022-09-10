@@ -19,7 +19,7 @@
     }
     
     ses.setAttribute("success", "Customer Logout Success");
-    response.sendRedirect("/assignment-client/driver/view/login.jsp");
+    response.sendRedirect("/assignment-client/customer/view/login.jsp");
 
 
 %>

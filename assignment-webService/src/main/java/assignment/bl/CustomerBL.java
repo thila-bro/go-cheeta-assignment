@@ -8,7 +8,7 @@ import assignment.db.MySQLUtil;
 import assignment.src.Booking;
 import assignment.src.Customer;
 import assignment.src.DBUtil;
-import assignment.src.Driver;
+import assignment.src.Feedback;
 import assignment.src.SelectedVehicle;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class CustomerBL {
     private static final CustomerBL instance = new CustomerBL();
-    private DBUtil util = MySQLUtil.getInstance();
+    private final DBUtil util = MySQLUtil.getInstance();
 
     private CustomerBL() {
     }
@@ -37,7 +37,7 @@ public class CustomerBL {
 
     public boolean addBooking(int customerId, int vehicleId, int vehicleType, int pickUpCityId, int dropOffCityId, String pickUpStreet, String dropOffStreet, double price, double distance) {
         System.out.println("saving failed in customer bl");
-        Booking booking = new Booking(customerId, 0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0);
+        Booking booking = new Booking(customerId, 0, vehicleId, pickUpCityId, dropOffCityId, vehicleType, pickUpStreet, dropOffStreet, price, distance, 0, false);
         return this.util.addBooking(booking);
     }
 
@@ -52,5 +52,10 @@ public class CustomerBL {
 
     public Customer getCustomerByMobileAndPassword(String mobile, String pasword) {
         return this.util.getCustomerByMobileAndPassword(mobile, pasword);
+    }
+
+    public boolean addFeedback(int bookingId, int tripRate, String userFeedback) {
+        Feedback feedback = new Feedback(0, bookingId, tripRate, userFeedback);
+        return this.util.addFeedback(feedback);
     }
 }

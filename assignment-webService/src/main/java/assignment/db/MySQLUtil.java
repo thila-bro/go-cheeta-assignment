@@ -14,6 +14,7 @@ import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Distance;
 import assignment.src.Driver;
+import assignment.src.Feedback;
 import assignment.src.SelectedVehicle;
 import assignment.src.User;
 import assignment.src.Vehicle;
@@ -528,7 +529,7 @@ public class MySQLUtil implements DBUtil {
     @Override
     public boolean addVehicle(Vehicle vehicle) {
         try {
-            this.stmt  = this.con.prepareCall("CALL `add_vehicle`("+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"');");
+            this.stmt  = this.con.prepareCall("CALL `add_vehicle`("+vehicle.getDriverId()+", "+vehicle.getTypeId()+", '"+vehicle.getRegisterNo()+"', '"+vehicle.getRatePerKm()+"');");
         
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
@@ -737,7 +738,7 @@ public class MySQLUtil implements DBUtil {
             List<Booking> bookings = new ArrayList<>();            
 
             while (rs.next()) {
-                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"));
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"), rs.getBoolean("feedback_status"));
                 bookings.add(booking);
             }
             
@@ -780,6 +781,16 @@ public class MySQLUtil implements DBUtil {
         }
     }
     
+    public boolean addFeedback(Feedback feedback) {
+        try {
+            this.stmt  = this.con.prepareCall("CALL `add_feedback`('"+feedback.getBookingId()+"', '"+feedback.getTripRate()+"', '"+feedback.getFeedback()+"');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     
     // driver arae
     @Override
@@ -788,7 +799,7 @@ public class MySQLUtil implements DBUtil {
             
             String hashPassword = AuthBL.generateSha256(password, email);
             this.stmt = this.con.createStatement();
-            this.rs   = this.stmt.executeQuery("CALL `assignment-db`.`auth_driver`('"+email+"', '"+hashPassword+"');");
+            this.rs   = this.stmt.executeQuery("CALL `auth_driver`('"+email+"', '"+hashPassword+"');");
         
             return this.rs.next();
         } catch(SQLException e) {
@@ -812,6 +823,49 @@ public class MySQLUtil implements DBUtil {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    @Override
+    public List<Booking> getDriverBookings(int driverId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_bookings_by_driver_id`("+driverId+");");
+
+            List<Booking> bookings = new ArrayList<>();            
+
+            while (rs.next()) {
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"), rs.getBoolean("feedback_status"));
+                bookings.add(booking);
+            }
+            
+            return bookings;
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean driverBookingAccept(int bookingId) {
+        try {
+            this.stmt = this.con.prepareCall("CALL `driver_booking_accept`('" + bookingId + "');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean driverBookingComplete(int bookingId) {
+        try {
+            this.stmt = this.con.prepareCall("CALL `driver_booking_complete`('" + bookingId + "');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 }

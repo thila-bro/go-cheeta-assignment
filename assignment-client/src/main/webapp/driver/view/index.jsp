@@ -4,7 +4,13 @@
     Author     : thilan
 --%>
 
+<%@page import="assignment.City"%>
+<%@page import="assignment.Customer"%>
+<%@page import="assignment.Booking"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../include/wsdlDriverConnection.jsp" %>
+<%@include file="../../admin/includes/wsdlAdminConenction.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +29,6 @@
 
 
             <%@include file="./includes/menu.jsp" %>
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -377,203 +382,60 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end row -->
+                        
 
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-4">Latest Transaction</h4>
+                                        <h4 class="card-title mb-4">Latest Booking</h4>
                                         <div class="table-responsive">
                                             <table class="table align-middle table-nowrap mb-0">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th style="width: 20px;">
-                                                            <div class="form-check font-size-16 align-middle">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck01">
-                                                                <label class="form-check-label" for="transactionCheck01"></label>
-                                                            </div>
-                                                        </th>
-                                                        <th class="align-middle">Order ID</th>
-                                                        <th class="align-middle">Billing Name</th>
-                                                        <th class="align-middle">Date</th>
-                                                        <th class="align-middle">Total</th>
-                                                        <th class="align-middle">Payment Status</th>
-                                                        <th class="align-middle">Payment Method</th>
-                                                        <th class="align-middle">View Details</th>
+                                                        <th class="align-middle">Booking ID</th>
+                                                        <th class="align-middle">Customer</th>
+                                                        <th class="align-middle">Mobile</th>
+                                                        <th class="align-middle">Drop city</th>
+                                                        <th class="align-middle">Price</th>
+                                                        <th class="align-middle">Distance</th>
+                                                        <th class="align-middle">Status</th>
+                                                        <th class="align-middle">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <% List<Booking> bookings = driverProxy.getDriverBookings(Integer.parseInt(userID)); %>
+                                                    <% for (Booking booking : bookings) { %>
+                                                    <% City dropCity = admin_proxy.getCityById(booking.getDropOffCityId()); %>
+                                                    <% Customer customer = admin_proxy.getCustomerById(booking.getCustomerId());%>
                                                     <tr>
+                                                        <td><%= booking.getBookingId()%></td>
+                                                        <td><%= customer.getFirstName() + " " + customer.getLastName()%></td>
+                                                        <td><a href="tel:<%= customer.getMobile() %>"><%= customer.getMobile() %></td>
+                                                        <td><%= dropCity.getName()%></td>
+                                                        <td>Rs. <%= booking.getPrice()%></td>
+                                                        <td><%= booking.getDistance()%> Km</td>
                                                         <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck02">
-                                                                <label class="form-check-label" for="transactionCheck02"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a> </td>
-                                                        <td>Neal Matthews</td>
-                                                        <td>
-                                                            07 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $400
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-mastercard me-1"></i> Mastercard
+                                                            <% if(booking.getStatus() == 0) { %>
+                                                                <span class="badge badge-pill badge-soft-warning font-size-11">Pending</span>
+                                                            <% } else if(booking.getStatus() == 1){ %>
+                                                                <span class="badge badge-pill badge-soft-success font-size-11">On Trip</span>
+                                                            <% } else if(booking.getStatus() == 2) { %>
+                                                                <span class="badge badge-pill badge-soft-danger font-size-11">Declined</span>
+                                                            <% } else if(booking.getStatus() == 3) { %>
+                                                                <span class="badge badge-pill badge-soft-success font-size-11">Completed</span>
+                                                            <% } %>
                                                         </td>
                                                         <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
+                                                            <% if(booking.getStatus() == 0){ %>
+                                                                <a href="/assignment-client/driver/controller/booking/accept.jsp?booking_id=<%= booking.getBookingId() %>" class="btn btn-success btn-sm btn-rounded waves-effect waves-light">Approve</a>
+                                                                <a href="/assignment-client/driver/controller/booking/reject.jsp?booking_id=<%= booking.getBookingId() %>" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light">Declined</a>
+                                                            <% } else if(booking.getStatus() == 1){ %>
+                                                                <a href="/assignment-client/driver/controller/booking/complete.jsp?booking_id=<%= booking.getBookingId() %>" class="btn btn-success btn-sm btn-rounded waves-effect waves-light">Complete</a>
+                                                            <% } %>
                                                         </td>
                                                     </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck03">
-                                                                <label class="form-check-label" for="transactionCheck03"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2541</a> </td>
-                                                        <td>Jamal Burnett</td>
-                                                        <td>
-                                                            07 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $380
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-danger font-size-11">Chargeback</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-visa me-1"></i> Visa
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck04">
-                                                                <label class="form-check-label" for="transactionCheck04"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2542</a> </td>
-                                                        <td>Juan Mitchell</td>
-                                                        <td>
-                                                            06 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $384
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck05">
-                                                                <label class="form-check-label" for="transactionCheck05"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2543</a> </td>
-                                                        <td>Barry Dick</td>
-                                                        <td>
-                                                            05 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $412
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck06">
-                                                                <label class="form-check-label" for="transactionCheck06"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2544</a> </td>
-                                                        <td>Ronald Taylor</td>
-                                                        <td>
-                                                            04 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $404
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-warning font-size-11">Refund</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-visa me-1"></i> Visa
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="transactionCheck07">
-                                                                <label class="form-check-label" for="transactionCheck07"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2545</a> </td>
-                                                        <td>Jacob Hunter</td>
-                                                        <td>
-                                                            04 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $392
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                                View Details
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                <% }%>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -587,92 +449,6 @@
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
-                <!-- Transaction Modal -->
-                <div class="modal fade transaction-detailModal" tabindex="-1" role="dialog" aria-labelledby="transaction-detailModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="transaction-detailModalLabel">Order Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                                <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Product</th>
-                                                <th scope="col">Product Name</th>
-                                                <th scope="col">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div>
-                                                        <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div>
-                                                        <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
-                                                        <p class="text-muted mb-0">$ 225 x 1</p>
-                                                    </div>
-                                                </td>
-                                                <td>$ 255</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <div>
-                                                        <img src="assets/images/product/img-4.png" alt="" class="avatar-sm">
-                                                    </div>
-                                                </th>
-                                                <td>
-                                                    <div>
-                                                        <h5 class="text-truncate font-size-14">Phone patterned cases</h5>
-                                                        <p class="text-muted mb-0">$ 145 x 1</p>
-                                                    </div>
-                                                </td>
-                                                <td>$ 145</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Sub Total:</h6>
-                                                </td>
-                                                <td>
-                                                    $ 400
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Shipping:</h6>
-                                                </td>
-                                                <td>
-                                                    Free
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h6 class="m-0 text-right">Total:</h6>
-                                                </td>
-                                                <td>
-                                                    $ 400
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end modal -->
             </div>
             <!-- End Page-content -->
 

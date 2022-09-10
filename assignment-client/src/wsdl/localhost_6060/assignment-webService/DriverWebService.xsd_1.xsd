@@ -4,9 +4,74 @@
 
 <xs:element name="authDriverResponse" type="tns:authDriverResponse"/>
 
+<xs:element name="driverBookingAccept" type="tns:driverBookingAccept"/>
+
+<xs:element name="driverBookingAcceptResponse" type="tns:driverBookingAcceptResponse"/>
+
+<xs:element name="driverBookingComplete" type="tns:driverBookingComplete"/>
+
+<xs:element name="driverBookingCompleteResponse" type="tns:driverBookingCompleteResponse"/>
+
+<xs:element name="getDriverBookings" type="tns:getDriverBookings"/>
+
+<xs:element name="getDriverBookingsResponse" type="tns:getDriverBookingsResponse"/>
+
 <xs:element name="getDriverByEmail" type="tns:getDriverByEmail"/>
 
 <xs:element name="getDriverByEmailResponse" type="tns:getDriverByEmailResponse"/>
+
+<xs:complexType name="getDriverBookings">
+<xs:sequence>
+<xs:element name="driverId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverBookingsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:booking" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="booking">
+<xs:sequence>
+<xs:element name="bookingId" type="xs:int"/>
+<xs:element name="customerId" type="xs:int"/>
+<xs:element name="distance" type="xs:double"/>
+<xs:element name="dropOffCityId" type="xs:int"/>
+<xs:element name="dropOffStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="feedBackStatus" type="xs:boolean"/>
+<xs:element name="pickUpCityId" type="xs:int"/>
+<xs:element name="pickUpStreet" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:double"/>
+<xs:element name="status" type="xs:int"/>
+<xs:element name="vehicleId" type="xs:int"/>
+<xs:element name="vehicleTypeId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverBookingAccept">
+<xs:sequence>
+<xs:element name="bookingId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverBookingAcceptResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverBookingComplete">
+<xs:sequence>
+<xs:element name="bookingId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="driverBookingCompleteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="authDriver">
 <xs:sequence>
