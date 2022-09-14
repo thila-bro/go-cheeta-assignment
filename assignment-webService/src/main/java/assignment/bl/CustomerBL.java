@@ -58,4 +58,14 @@ public class CustomerBL {
         Feedback feedback = new Feedback(0, bookingId, tripRate, userFeedback);
         return this.util.addFeedback(feedback);
     }
+
+    public Customer getCustomerById(int customerId) {
+        return this.util.getCustomerById(customerId);
+    }
+
+    public boolean updateCustomerProfile(int customerId, String firstName, String lastName, String email, String passowrd) {
+        Customer oldCustomer = this.getCustomerById(customerId);
+        Customer customer = new Customer(oldCustomer.getMobile(), passowrd, customerId, firstName, lastName, email);
+        return this.util.updateCustomerProfile(customer);
+    }
 }

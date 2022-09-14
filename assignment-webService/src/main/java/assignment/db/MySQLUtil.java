@@ -681,6 +681,39 @@ public class MySQLUtil implements DBUtil {
         } 
     }
     
+    @Override
+    public Admin getAdminByEmail(String email) {
+        try {            
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_admin_by_email`('"+email+"');");
+            
+            if(rs.next()) {
+                Admin admin = new Admin(rs.getInt("branch_id"), rs.getString("password"), rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("mobile"));
+                admin.setIsSuper(rs.getBoolean("isSuper"));
+                return admin;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    public boolean updateAdminProfile(Admin admin) {
+        try {
+            String hashPassword = "";
+            if(!admin.getPassword().isEmpty()) {
+                hashPassword = AuthBL.generateSha256(admin.getPassword(), admin.getEmail());
+            }
+            this.stmt  = this.con.prepareCall("CALL `update_admin_profile`("+admin.getId()+", '"+admin.getFirstName()+"', '"+admin.getLastName()+"', '"+admin.getMobile()+"', '"+hashPassword+"');");            
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     // customer area
     @Override
     public boolean authCustomer(String mobile, String password) {
@@ -781,9 +814,25 @@ public class MySQLUtil implements DBUtil {
         }
     }
     
+    @Override
     public boolean addFeedback(Feedback feedback) {
         try {
             this.stmt  = this.con.prepareCall("CALL `add_feedback`('"+feedback.getBookingId()+"', '"+feedback.getTripRate()+"', '"+feedback.getFeedback()+"');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean updateCustomerProfile(Customer customer) {
+        try {
+            String hashPassword = "";
+            if(!customer.getPassword().isEmpty()) {
+                hashPassword = AuthBL.generateSha256(customer.getPassword(), customer.getMobile());
+            }
+            this.stmt  = this.con.prepareCall("CALL `update_customer_profile`('"+customer.getId()+"', '"+customer.getFirstName()+"', '"+customer.getLastName()+"', '"+customer.getEmail()+"', '"+hashPassword+"');");
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch(SQLException e) {
             System.out.println(e.getMessage());
@@ -862,6 +911,21 @@ public class MySQLUtil implements DBUtil {
     public boolean driverBookingComplete(int bookingId) {
         try {
             this.stmt = this.con.prepareCall("CALL `driver_booking_complete`('" + bookingId + "');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean updateDriverProfile(Driver driver) {
+        String hashPassword = "";
+        if(!driver.getPassword().isEmpty()) {
+            hashPassword = AuthBL.generateSha256(driver.getPassword(), driver.getEmail());
+        }
+        try {
+            this.stmt = this.con.prepareCall("CALL `update_driver_profile`('"+driver.getId()+"', '"+driver.getFirstName()+"', '"+driver.getLastName()+"', '"+driver.getMobile()+"', '"+driver.getLicenseId()+"', '"+driver.getNationalId()+"', '"+hashPassword+"');");
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -195,4 +195,14 @@ public class AdminBL {
         Customer customer = new Customer("", "", customerId, firstName, lastName, email);
         return this.util.updateCustomer(customer);
     }
+
+    public Admin getAdminByEmail(String email) {
+        return this.util.getAdminByEmail(email);
+    }
+
+    public boolean updateAdminProfile(int adminId, String firstName, String lastName, String mobile, String password) {
+        Admin oldAdmin = this.getAdminById(adminId);
+        Admin admin = new Admin(0, password, adminId, firstName, lastName, oldAdmin.getEmail(), mobile);
+        return this.util.updateAdminProfile(admin);
+    }
 }

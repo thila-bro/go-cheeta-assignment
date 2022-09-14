@@ -52,6 +52,8 @@ public interface DBUtil {
    public boolean deleteCustomer(int customerId);
    public Customer getCustomerById(int customerId);
    public boolean updateCustomer(Customer customer);
+   public Admin getAdminByEmail(String email);
+   public boolean updateAdminProfile(Admin admin);
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
@@ -61,6 +63,7 @@ public interface DBUtil {
    public boolean addCustomer(Customer customer);
    public Customer getCustomerByMobileAndPassword(String mobile, String pasword);
    public boolean addFeedback(Feedback feedback);
+   public boolean updateCustomerProfile(Customer customer);
 
    // driver area 
    public boolean authDriver(String email, String password);
@@ -68,4 +71,9 @@ public interface DBUtil {
    public List<Booking> getDriverBookings(int driverId);
    public boolean driverBookingAccept(int bookingId);
    public boolean driverBookingComplete(int bookingId);
+
+    
+
+    
+
 }
