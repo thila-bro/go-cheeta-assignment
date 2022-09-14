@@ -6,6 +6,7 @@ package assignment.bl;
 
 import assignment.db.MySQLUtil;
 import assignment.src.Booking;
+import assignment.src.Customer;
 import assignment.src.DBUtil;
 import assignment.src.Driver;
 import java.util.List;
@@ -40,6 +41,16 @@ public class DriverBL {
 
     public boolean driverBookingComplete(int bookingId) {
         return  this.util.driverBookingComplete(bookingId);
+    }
+
+    public Driver getDriverById(int driverId) {
+        return this.util.getDriverById(driverId);
+    }
+
+    public boolean updateDriverProfile(int driverId, String firstName, String lastName, String mobile, String license, String nic, String password) {
+        Driver oldDriver = this.getDriverById(driverId);
+        Driver driver = new Driver(0, license, "", nic, password, driverId, firstName, lastName, oldDriver.getEmail(), mobile);
+        return this.util.updateDriverProfile(driver);
     }
        
     

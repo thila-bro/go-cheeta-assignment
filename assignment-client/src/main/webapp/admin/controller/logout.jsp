@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../includes/new/adminSession.jsp" %>
 <%
+    HttpSession ses = request.getSession();
     for (Cookie cookie : request.getCookies()) {
         if (cookie.getName().equals("ISADMINLOGIN")) {
             cookie.setValue("false");

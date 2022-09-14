@@ -214,8 +214,18 @@ public class AdminWebService {
         return this.adminBL.getCustomerById(customerId);
     }
     
-//    @WebMethod(operationName = "updateCustomer")
+    @WebMethod(operationName = "updateCustomer")
     public boolean updateCustomer(int customerId, String firstName, String lastName, String email) {
         return this.adminBL.updateCustomer(customerId, firstName, lastName, email);
+    }
+    
+    @WebMethod(operationName = "getAdminByEmail")
+    public Admin getAdminByEmail(String email) {
+        return this.adminBL.getAdminByEmail(email);
+    }
+    
+    @WebMethod(operationName = "updateAdmin")
+    public boolean updateAdminProfile(@WebParam(name = "customerId") int adminId, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName,@WebParam(name = "mobile") String mobile, @WebParam(name = "password") String password) {
+        return this.adminBL.updateAdminProfile(adminId, firstName, lastName, mobile, password);
     }
 }

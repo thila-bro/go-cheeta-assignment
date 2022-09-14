@@ -73,4 +73,14 @@ public class CustomerWebService {
     public boolean addFeedback(@WebParam(name = "bookingId") int bookingId, @WebParam(name = "tripRate") int tripRate, @WebParam(name = "feedback") String feedback) {
         return this.customerBL.addFeedback(bookingId, tripRate, feedback);
     }
+    
+    @WebMethod(operationName = "getCustomerById")
+    public Customer getCustomerById(@WebParam(name = "customerId") int customerId) {
+        return this.customerBL.getCustomerById(customerId);
+    }
+    
+    @WebMethod(operationName = "updateCustomerProfile")
+    public boolean updateCustomerProfile(@WebParam(name = "customerId") int customerId, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "email") String email, @WebParam(name = "passowrd") String passowrd) {
+        return this.customerBL.updateCustomerProfile(customerId, firstName, lastName, email, passowrd);
+    }
 }

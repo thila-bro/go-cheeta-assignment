@@ -3,20 +3,30 @@
     Created on : Aug 2, 2022, 4:25:30 PM
     Author     : thilan
 --%>
-<%@include file="./adminSession.jsp" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
 
     boolean isLogin = false;
-//    HttpSession ses = request.getSession();
+    boolean isSuper = false;
+    String email = "";
+    HttpSession ses = request.getSession();
     
     for (Cookie cookie : request.getCookies()) {
         if (cookie.getName().equals("ISADMINLOGIN")) {
             if (Boolean.parseBoolean(cookie.getValue()) == true) {
                 isLogin = true;
             }
+        }
+        if (cookie.getName().equals("ISSUPER")) {
+            if (Boolean.parseBoolean(cookie.getValue()) == true) {
+                isSuper = true;
+            }
+        }
+        if (cookie.getName().equals("EMAIL")) {
+            email = cookie.getValue();
         }
     }
     
@@ -33,7 +43,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="/" class="logo logo-dark">
+                <a href="/assignment-client/admin/controller/cookieCheck.jsp" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="/assignment-client/admin/asset/img/logo.svg" alt="" height="22">
                     </span>
@@ -42,12 +52,13 @@
                     </span>
                 </a>
 
-                <a href="/" class="logo logo-light">
-                    <span class="logo-sm">
+                <a href="/assignment-client/admin/controller/cookieCheck.jsp" class="logo logo-light">
+<!--                    <span class="logo-sm">
                         <img src="/assignment-client/admin/asset/img/logo-light.svg" alt="" height="22">
-                    </span>
+                    </span>-->
                     <span class="logo-lg">
-                        <img src="/assignment-client/admin/asset/img/logo-light.png" alt="" height="19">
+                        <!--<img src="/assignment-client/admin/asset/img/logo-light.png" alt="" height="19">-->
+                        <span style="font-size: 2rem; font-weight: bold">Go Cheeta</span>
                     </span>
                 </a>
             </div>
@@ -59,7 +70,7 @@
 
         <div class="d-flex">
 
-            <div class="dropdown d-inline-block d-lg-none ms-2">
+<!--            <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="mdi mdi-magnify"></i>
                 </button>
@@ -76,12 +87,12 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>-->
 
             
 
             
-            <div class="dropdown d-inline-block">
+<!--            <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
                     <span class="badge bg-danger rounded-pill">3</span>
@@ -162,7 +173,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -172,10 +183,10 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
+                    <a class="dropdown-item" href="/assignment-client/admin/views/profile/update.jsp"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+<!--                    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                    <a class="dropdown-item" href="auth-lock-screen"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
+                    <a class="dropdown-item" href="auth-lock-screen"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>-->
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/assignment-client/admin/controller/logout.jsp"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
                 </div>
@@ -196,9 +207,9 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" key="t-menu">Menu</li>
+                <!--<li class="menu-title" key="t-menu">Menu</li>-->
 
-                <li>
+<!--                <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
                         <span key="t-dashboards">Dashboards</span>
@@ -244,14 +255,14 @@
                     </ul>
                 </li>
 
-                <li class="menu-title" key="t-apps">Branch</li>
+                <li class="menu-title" key="t-apps">Branch</li>-->
 
-                <li>
+<!--                <li>
                     <a href="calendar" class="waves-effect">
                         <i class="bx bx-calendar"></i>
                         <span key="t-calendar">Calendar</span>
                     </a>
-                </li>
+                </li>-->
                 
                 <li>
                     <a href="/assignment-client/admin/views/customer/all.jsp" class="waves-effect">

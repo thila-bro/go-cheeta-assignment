@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../admin/includes/new/adminSession.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
