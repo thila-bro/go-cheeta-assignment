@@ -21,7 +21,7 @@
 
     </head>
 
-    <body data-sidebar="dark">
+    <body data-sidebar="dark" data-keep-enlarged="true" class="vertical-collpsed">
 
         <!-- Begin page -->
         <div id="layout-wrapper">
@@ -97,7 +97,7 @@
                                             
                                             <div class="mb-3 row">
                                                 <div class="col-md-10 offset-2">
-                                                    <input type="hidden" name="admin_id" value="<%= driver.getId() %>">
+                                                    <input type="hidden" name="driver_id" value="<%= driver.getId() %>">
                                                     <button class="btn btn-primary" type="submit">Update</button>
                                                 </div>
                                             </div>

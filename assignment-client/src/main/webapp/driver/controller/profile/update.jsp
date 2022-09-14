@@ -11,9 +11,16 @@
     String firstName    = request.getParameter("first_name");
     String lastName     = request.getParameter("last_name");
     String mobile       = request.getParameter("mobile");
+    String license      = request.getParameter("driving_license");
+    String nic          = request.getParameter("nic");
     String password     = request.getParameter("password");
+    HttpSession ses     = request.getSession();
     
-//    out.print(obj);
+    if(driverProxy.updateDriverProfile(driverId, firstName, lastName, mobile, license, nic, password)) {
+        ses.setAttribute("success", "Profile updated success");
+    } else {
+        ses.setAttribute("error", "Profile updated failed");
+    }
     
-
+    response.sendRedirect("/assignment-client/driver/view/profile/update.jsp");
 %>

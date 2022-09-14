@@ -71,9 +71,6 @@ public interface DBUtil {
    public List<Booking> getDriverBookings(int driverId);
    public boolean driverBookingAccept(int bookingId);
    public boolean driverBookingComplete(int bookingId);
-
-    
-
-    
+   public boolean updateDriverProfile(Driver driver);
 
 }

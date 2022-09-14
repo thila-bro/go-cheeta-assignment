@@ -700,6 +700,7 @@ public class MySQLUtil implements DBUtil {
         }
     }
     
+    @Override
     public boolean updateAdminProfile(Admin admin) {
         try {
             String hashPassword = "";

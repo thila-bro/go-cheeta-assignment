@@ -52,6 +52,4 @@ public class DriverBL {
         Driver driver = new Driver(0, license, "", nic, password, driverId, firstName, lastName, oldDriver.getEmail(), mobile);
         return this.util.updateDriverProfile(driver);
     }
-       
-    
 }
