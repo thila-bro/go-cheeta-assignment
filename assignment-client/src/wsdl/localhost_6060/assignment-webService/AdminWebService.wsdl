@@ -22,6 +22,18 @@
 <message name="updateAdminResponse">
 <part name="parameters" element="tns:updateAdminResponse"/>
 </message>
+<message name="getAllDrivers">
+<part name="parameters" element="tns:getAllDrivers"/>
+</message>
+<message name="getAllDriversResponse">
+<part name="parameters" element="tns:getAllDriversResponse"/>
+</message>
+<message name="getAllCustomers">
+<part name="parameters" element="tns:getAllCustomers"/>
+</message>
+<message name="getAllCustomersResponse">
+<part name="parameters" element="tns:getAllCustomersResponse"/>
+</message>
 <message name="getCustomers">
 <part name="parameters" element="tns:getCustomers"/>
 </message>
@@ -226,11 +238,35 @@
 <message name="updateCustomerResponse">
 <part name="parameters" element="tns:updateCustomerResponse"/>
 </message>
+<message name="getAllVehicleCount">
+<part name="parameters" element="tns:getAllVehicleCount"/>
+</message>
+<message name="getAllVehicleCountResponse">
+<part name="parameters" element="tns:getAllVehicleCountResponse"/>
+</message>
 <message name="getAdminByEmail">
 <part name="parameters" element="tns:getAdminByEmail"/>
 </message>
 <message name="getAdminByEmailResponse">
 <part name="parameters" element="tns:getAdminByEmailResponse"/>
+</message>
+<message name="getAveragePrice">
+<part name="parameters" element="tns:getAveragePrice"/>
+</message>
+<message name="getAveragePriceResponse">
+<part name="parameters" element="tns:getAveragePriceResponse"/>
+</message>
+<message name="getAllRevenue">
+<part name="parameters" element="tns:getAllRevenue"/>
+</message>
+<message name="getAllRevenueResponse">
+<part name="parameters" element="tns:getAllRevenueResponse"/>
+</message>
+<message name="getAllBookingCount">
+<part name="parameters" element="tns:getAllBookingCount"/>
+</message>
+<message name="getAllBookingCountResponse">
+<part name="parameters" element="tns:getAllBookingCountResponse"/>
 </message>
 <message name="getDistanceBySourceIdAndDestinationId">
 <part name="parameters" element="tns:getDistanceBySourceIdAndDestinationId"/>
@@ -256,6 +292,14 @@
 <operation name="updateAdmin">
 <input wsam:Action="http://assignment/AdminWebService/updateAdminRequest" message="tns:updateAdmin"/>
 <output wsam:Action="http://assignment/AdminWebService/updateAdminResponse" message="tns:updateAdminResponse"/>
+</operation>
+<operation name="getAllDrivers">
+<input wsam:Action="http://assignment/AdminWebService/getAllDriversRequest" message="tns:getAllDrivers"/>
+<output wsam:Action="http://assignment/AdminWebService/getAllDriversResponse" message="tns:getAllDriversResponse"/>
+</operation>
+<operation name="getAllCustomers">
+<input wsam:Action="http://assignment/AdminWebService/getAllCustomersRequest" message="tns:getAllCustomers"/>
+<output wsam:Action="http://assignment/AdminWebService/getAllCustomersResponse" message="tns:getAllCustomersResponse"/>
 </operation>
 <operation name="getCustomers">
 <input wsam:Action="http://assignment/AdminWebService/getCustomersRequest" message="tns:getCustomers"/>
@@ -393,9 +437,25 @@
 <input wsam:Action="http://assignment/AdminWebService/updateCustomerRequest" message="tns:updateCustomer"/>
 <output wsam:Action="http://assignment/AdminWebService/updateCustomerResponse" message="tns:updateCustomerResponse"/>
 </operation>
+<operation name="getAllVehicleCount">
+<input wsam:Action="http://assignment/AdminWebService/getAllVehicleCountRequest" message="tns:getAllVehicleCount"/>
+<output wsam:Action="http://assignment/AdminWebService/getAllVehicleCountResponse" message="tns:getAllVehicleCountResponse"/>
+</operation>
 <operation name="getAdminByEmail">
 <input wsam:Action="http://assignment/AdminWebService/getAdminByEmailRequest" message="tns:getAdminByEmail"/>
 <output wsam:Action="http://assignment/AdminWebService/getAdminByEmailResponse" message="tns:getAdminByEmailResponse"/>
+</operation>
+<operation name="getAveragePrice">
+<input wsam:Action="http://assignment/AdminWebService/getAveragePriceRequest" message="tns:getAveragePrice"/>
+<output wsam:Action="http://assignment/AdminWebService/getAveragePriceResponse" message="tns:getAveragePriceResponse"/>
+</operation>
+<operation name="getAllRevenue">
+<input wsam:Action="http://assignment/AdminWebService/getAllRevenueRequest" message="tns:getAllRevenue"/>
+<output wsam:Action="http://assignment/AdminWebService/getAllRevenueResponse" message="tns:getAllRevenueResponse"/>
+</operation>
+<operation name="getAllBookingCount">
+<input wsam:Action="http://assignment/AdminWebService/getAllBookingCountRequest" message="tns:getAllBookingCount"/>
+<output wsam:Action="http://assignment/AdminWebService/getAllBookingCountResponse" message="tns:getAllBookingCountResponse"/>
 </operation>
 <operation name="getDistanceBySourceIdAndDestinationId">
 <input wsam:Action="http://assignment/AdminWebService/getDistanceBySourceIdAndDestinationIdRequest" message="tns:getDistanceBySourceIdAndDestinationId"/>
@@ -427,6 +487,24 @@
 </output>
 </operation>
 <operation name="updateAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllDrivers">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllCustomers">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -741,7 +819,43 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="getAllVehicleCount">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="getAdminByEmail">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAveragePrice">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllRevenue">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllBookingCount">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

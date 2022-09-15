@@ -15,6 +15,7 @@ import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -204,5 +205,33 @@ public class AdminBL {
         Admin oldAdmin = this.getAdminById(adminId);
         Admin admin = new Admin(0, password, adminId, firstName, lastName, oldAdmin.getEmail(), mobile);
         return this.util.updateAdminProfile(admin);
+    }
+    
+    public Map getDashboardData() {
+        return this.util.getDashboardData();
+    }
+
+    public int getAllVehicleCount() {
+        return this.util.getAllVehicleCount();
+    }
+
+    public int getAllCustomers() {
+        return this.util.getAllCustomers();
+    }
+
+    public int getAllDrivers() {
+        return this.util.getAllDrivers();
+    }
+
+    public int getAllBookingCount() {
+        return this.util.getAllBookingCount();
+    }
+
+    public double getAllRevenue() {
+        return this.util.getAllRevenue();
+    }
+
+    public double getAveragePrice() {
+        return (this.getAllRevenue() / this.getAllBookingCount());
     }
 }

@@ -20,23 +20,33 @@
             isSuperAdmin = "true";
         }
         
-        Cookie userEmail = new Cookie("EMAIL", admin.getEmail());
+        Cookie userEmail = new Cookie("ADMINEMAIL", admin.getEmail());
+        Cookie firstName = new Cookie("ADMINFIRSTNAME", admin.getFirstName());
+        Cookie lastName  = new Cookie("ADMINLASTNAME", admin.getLastName());
         Cookie isLogin = new Cookie("ISADMINLOGIN", "true");
         Cookie isAdmin = new Cookie("ISADMIN", "true");
         Cookie isSuper = new Cookie("ISSUPER", isSuperAdmin);
+        
         isLogin.setPath("/");
         isAdmin.setPath("/");
         isSuper.setPath("/");
         userEmail.setPath("/");
+        firstName.setPath("/");
+        lastName.setPath("/");
+        
         isLogin.setMaxAge(60 * 60 * 24);
         isAdmin.setMaxAge(60 * 60 * 24);//set for 1 day
         isSuper.setMaxAge(60 * 60 * 24);//set for 1 day
         userEmail.setMaxAge(60 * 60 * 24);
+        firstName.setMaxAge(60 * 60 * 24);
+        lastName.setMaxAge(60 * 60 * 24);
 
         response.addCookie(isLogin);
         response.addCookie(isAdmin);
         response.addCookie(isSuper);
         response.addCookie(userEmail);
+        response.addCookie(firstName);
+        response.addCookie(lastName);
         
         ses.setAttribute("success", "Login Success. Welcome");
         response.sendRedirect("/assignment-client/admin/index.jsp");

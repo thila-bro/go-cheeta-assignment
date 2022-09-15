@@ -12,6 +12,8 @@
     boolean isLogin = false;
     boolean isSuper = false;
     String email = "";
+    String firstName = "";
+    String lastName = "";
     HttpSession ses = request.getSession();
     
     for (Cookie cookie : request.getCookies()) {
@@ -25,8 +27,14 @@
                 isSuper = true;
             }
         }
-        if (cookie.getName().equals("EMAIL")) {
+        if (cookie.getName().equals("ADMINEMAIL")) {
             email = cookie.getValue();
+        }
+        if (cookie.getName().equals("ADMINFIRSTNAME")) {
+            firstName = cookie.getValue();
+        }
+        if (cookie.getName().equals("ADMINLASTNAME")) {
+            lastName = cookie.getValue();
         }
     }
     
@@ -178,7 +186,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="/assignment-client/admin/asset/img/avatar-3.jpg" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry"><%= firstName + " " + lastName %></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

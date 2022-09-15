@@ -14,6 +14,7 @@ import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.util.List;
+import java.util.Map;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -227,5 +228,35 @@ public class AdminWebService {
     @WebMethod(operationName = "updateAdmin")
     public boolean updateAdminProfile(@WebParam(name = "customerId") int adminId, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName,@WebParam(name = "mobile") String mobile, @WebParam(name = "password") String password) {
         return this.adminBL.updateAdminProfile(adminId, firstName, lastName, mobile, password);
+    }    
+    
+    @WebMethod(operationName = "getAllVehicleCount")
+    public int getAllVehicleCount() {
+        return this.adminBL.getAllVehicleCount();
+    }
+    
+    @WebMethod(operationName = "getAllDrivers")
+    public int getAllDrivers() {
+        return this.adminBL.getAllDrivers();
+    }
+    
+    @WebMethod(operationName = "getAllCustomers")
+    public int getAllCustomers() {
+        return this.adminBL.getAllCustomers();
+    }
+    
+    @WebMethod(operationName = "getAllBookingCount")
+    public int getAllBookingCount() {
+        return this.adminBL.getAllBookingCount();
+    }
+    
+    @WebMethod(operationName = "getAllRevenue")
+    public double getAllRevenue() {
+        return this.adminBL.getAllRevenue();
+    }
+    
+    @WebMethod(operationName = "getAveragePrice")
+    public double getAveragePrice() {
+        return this.adminBL.getAveragePrice();
     }
 }

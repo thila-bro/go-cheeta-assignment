@@ -4,6 +4,7 @@
  */
 package assignment.src;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -54,6 +55,12 @@ public interface DBUtil {
    public boolean updateCustomer(Customer customer);
    public Admin getAdminByEmail(String email);
    public boolean updateAdminProfile(Admin admin);
+   public Map getDashboardData();
+   public int getAllVehicleCount();
+   public int getAllCustomers();
+   public int getAllDrivers();
+   public int getAllBookingCount();
+   public double getAllRevenue();
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
@@ -72,5 +79,13 @@ public interface DBUtil {
    public boolean driverBookingAccept(int bookingId);
    public boolean driverBookingComplete(int bookingId);
    public boolean updateDriverProfile(Driver driver);
+
+    
+
+    
+
+    
+
+    
 
 }

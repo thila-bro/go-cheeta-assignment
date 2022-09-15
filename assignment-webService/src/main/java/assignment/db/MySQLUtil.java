@@ -26,7 +26,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -714,6 +716,107 @@ public class MySQLUtil implements DBUtil {
             return false;
         }
     }
+    
+    @Override
+    public int getAllVehicleCount() {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_vehicle_count`();");
+            
+            if(rs.next()) {
+                return rs.getInt("vehicle_count");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public int getAllCustomers() {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_customer_count`();");
+            
+            if(rs.next()) {
+                return rs.getInt("customer_count");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public int getAllDrivers() {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_driver_count`();");
+            
+            if(rs.next()) {
+                return rs.getInt("driver_count");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public int getAllBookingCount() {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_booking_count`();");
+            
+            if(rs.next()) {
+                return rs.getInt("booking_count");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public double getAllRevenue() {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_all_revenue`();");
+            
+            if(rs.next()) {
+                return rs.getInt("sum_of_revenue");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public Map getDashboardData() {
+        try {
+            Map<String,String> map = new HashMap<>();
+            map.put("a","abc");
+            map.put("b","def");
+            
+            return map;
+            
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
     
     // customer area
     @Override
