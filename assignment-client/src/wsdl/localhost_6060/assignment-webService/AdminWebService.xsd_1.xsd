@@ -184,6 +184,18 @@
 
 <xs:element name="updateVehicleTypeResponse" type="tns:updateVehicleTypeResponse"/>
 
+<xs:complexType name="deleteCustomer">
+<xs:sequence>
+<xs:element name="customerId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getBranchById">
 <xs:sequence>
 <xs:element name="branch_id" type="xs:int"/>
@@ -204,50 +216,6 @@
 <xs:element name="cityId" type="xs:int"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
 <xs:element name="fixed" type="xs:string" minOccurs="0"/>
-<xs:element name="mobile" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteCustomer">
-<xs:sequence>
-<xs:element name="customerId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteCustomerResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAdmins">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAdminsResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:admin" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="admin">
-<xs:complexContent>
-<xs:extension base="tns:person">
-<xs:sequence>
-<xs:element name="branchId" type="xs:int"/>
-<xs:element name="isSuper" type="xs:boolean"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:extension>
-</xs:complexContent>
-</xs:complexType>
-
-<xs:complexType name="person">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="firstName" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:int"/>
-<xs:element name="lastName" type="xs:string" minOccurs="0"/>
 <xs:element name="mobile" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
@@ -293,6 +261,38 @@
 <xs:sequence>
 <xs:element name="cityId" type="xs:int"/>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdmins">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAdminsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:admin" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="admin">
+<xs:complexContent>
+<xs:extension base="tns:person">
+<xs:sequence>
+<xs:element name="branchId" type="xs:int"/>
+<xs:element name="isSuper" type="xs:boolean"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="person">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="mobile" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -388,18 +388,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteBranch">
-<xs:sequence>
-<xs:element name="branch_id" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteBranchResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="addDestination">
 <xs:sequence>
 <xs:element name="sourceId" type="xs:int"/>
@@ -409,6 +397,18 @@
 </xs:complexType>
 
 <xs:complexType name="addDestinationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBranch">
+<xs:sequence>
+<xs:element name="branch_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteBranchResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -457,18 +457,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdminById">
-<xs:sequence>
-<xs:element name="adminId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getAdminByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:admin" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="updateCustomer">
 <xs:sequence>
 <xs:element name="arg0" type="xs:int"/>
@@ -481,6 +469,18 @@
 <xs:complexType name="updateCustomerResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminById">
+<xs:sequence>
+<xs:element name="adminId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:admin" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -521,15 +521,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicleType">
-<xs:sequence>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
+<xs:complexType name="getAllBookingCount">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="deleteVehicleTypeResponse">
+<xs:complexType name="getAllBookingCountResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
+<xs:element name="return" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -559,13 +557,15 @@
 </xs:complexContent>
 </xs:complexType>
 
-<xs:complexType name="getAllBookingCount">
-<xs:sequence/>
+<xs:complexType name="deleteVehicleType">
+<xs:sequence>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAllBookingCountResponse">
+<xs:complexType name="deleteVehicleTypeResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:int"/>
+<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -588,6 +588,29 @@
 <xs:complexType name="getAllRevenueResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleById">
+<xs:sequence>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicle" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vehicle">
+<xs:sequence>
+<xs:element name="availability" type="xs:boolean"/>
+<xs:element name="driverId" type="xs:int"/>
+<xs:element name="ratePerKm" type="xs:double"/>
+<xs:element name="registerNo" type="xs:string" minOccurs="0"/>
+<xs:element name="typeId" type="xs:int"/>
+<xs:element name="vehicleId" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -618,29 +641,6 @@
 <xs:complexType name="getVehicleTypeByIdResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:vehicleType" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getVehicleById">
-<xs:sequence>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getVehicleByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicle" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="vehicle">
-<xs:sequence>
-<xs:element name="availability" type="xs:boolean"/>
-<xs:element name="driverId" type="xs:int"/>
-<xs:element name="ratePerKm" type="xs:double"/>
-<xs:element name="registerNo" type="xs:string" minOccurs="0"/>
-<xs:element name="typeId" type="xs:int"/>
-<xs:element name="vehicleId" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -780,16 +780,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getBranches">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getBranchesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:branch" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="deleteAdmin">
 <xs:sequence>
 <xs:element name="adminId" type="xs:int"/>
@@ -799,6 +789,16 @@
 <xs:complexType name="deleteAdminResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBranches">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getBranchesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:branch" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

@@ -79,6 +79,8 @@ public interface DBUtil {
    public boolean driverBookingAccept(int bookingId);
    public boolean driverBookingComplete(int bookingId);
    public boolean updateDriverProfile(Driver driver);
+   public int getOrdersCountByDriverId(int driverId);
+   public double getRevenueByDriverId(int driverId);
 
     
 

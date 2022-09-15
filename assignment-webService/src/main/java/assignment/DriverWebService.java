@@ -59,4 +59,14 @@ public class DriverWebService {
     public boolean updateDriverProfile(@WebParam(name = "driverId") int driverId, @WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName, @WebParam(name = "mobile") String mobile, @WebParam(name = "licence") String licence, @WebParam(name = "nic") String nic, @WebParam(name = "password") String password) {
         return this.driverBL.updateDriverProfile(driverId, firstName, lastName, mobile, licence, nic, password);
     }
+    
+    @WebMethod(operationName = "getOrdersCountByDriverId")
+    public int getOrdersCountByDriverId(@WebParam(name = "driverId") int driverId) {
+        return this.driverBL.getOrdersCountByDriverId(driverId);
+    }
+    
+    @WebMethod(operationName = "getRevenueByDriverId")
+    public double getRevenueByDriverId(@WebParam(name = "driverId") int driverId) {
+        return this.driverBL.getRevenueByDriverId(driverId);
+    }
 }

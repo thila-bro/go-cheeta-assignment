@@ -4,29 +4,23 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/DriverWebService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="updateDriverProfile">
-<part name="parameters" element="tns:updateDriverProfile"/>
+<message name="getRevenueByDriverId">
+<part name="parameters" element="tns:getRevenueByDriverId"/>
 </message>
-<message name="updateDriverProfileResponse">
-<part name="parameters" element="tns:updateDriverProfileResponse"/>
+<message name="getRevenueByDriverIdResponse">
+<part name="parameters" element="tns:getRevenueByDriverIdResponse"/>
 </message>
-<message name="getDriverByEmail">
-<part name="parameters" element="tns:getDriverByEmail"/>
+<message name="getOrdersCountByDriverId">
+<part name="parameters" element="tns:getOrdersCountByDriverId"/>
 </message>
-<message name="getDriverByEmailResponse">
-<part name="parameters" element="tns:getDriverByEmailResponse"/>
+<message name="getOrdersCountByDriverIdResponse">
+<part name="parameters" element="tns:getOrdersCountByDriverIdResponse"/>
 </message>
 <message name="authDriver">
 <part name="parameters" element="tns:authDriver"/>
 </message>
 <message name="authDriverResponse">
 <part name="parameters" element="tns:authDriverResponse"/>
-</message>
-<message name="getDriverBookings">
-<part name="parameters" element="tns:getDriverBookings"/>
-</message>
-<message name="getDriverBookingsResponse">
-<part name="parameters" element="tns:getDriverBookingsResponse"/>
 </message>
 <message name="driverBookingAccept">
 <part name="parameters" element="tns:driverBookingAccept"/>
@@ -46,22 +40,36 @@
 <message name="getDriverByIdResponse">
 <part name="parameters" element="tns:getDriverByIdResponse"/>
 </message>
+<message name="updateDriverProfile">
+<part name="parameters" element="tns:updateDriverProfile"/>
+</message>
+<message name="updateDriverProfileResponse">
+<part name="parameters" element="tns:updateDriverProfileResponse"/>
+</message>
+<message name="getDriverByEmail">
+<part name="parameters" element="tns:getDriverByEmail"/>
+</message>
+<message name="getDriverByEmailResponse">
+<part name="parameters" element="tns:getDriverByEmailResponse"/>
+</message>
+<message name="getDriverBookings">
+<part name="parameters" element="tns:getDriverBookings"/>
+</message>
+<message name="getDriverBookingsResponse">
+<part name="parameters" element="tns:getDriverBookingsResponse"/>
+</message>
 <portType name="DriverWebService">
-<operation name="updateDriverProfile">
-<input wsam:Action="http://assignment/DriverWebService/updateDriverProfileRequest" message="tns:updateDriverProfile"/>
-<output wsam:Action="http://assignment/DriverWebService/updateDriverProfileResponse" message="tns:updateDriverProfileResponse"/>
+<operation name="getRevenueByDriverId">
+<input wsam:Action="http://assignment/DriverWebService/getRevenueByDriverIdRequest" message="tns:getRevenueByDriverId"/>
+<output wsam:Action="http://assignment/DriverWebService/getRevenueByDriverIdResponse" message="tns:getRevenueByDriverIdResponse"/>
 </operation>
-<operation name="getDriverByEmail">
-<input wsam:Action="http://assignment/DriverWebService/getDriverByEmailRequest" message="tns:getDriverByEmail"/>
-<output wsam:Action="http://assignment/DriverWebService/getDriverByEmailResponse" message="tns:getDriverByEmailResponse"/>
+<operation name="getOrdersCountByDriverId">
+<input wsam:Action="http://assignment/DriverWebService/getOrdersCountByDriverIdRequest" message="tns:getOrdersCountByDriverId"/>
+<output wsam:Action="http://assignment/DriverWebService/getOrdersCountByDriverIdResponse" message="tns:getOrdersCountByDriverIdResponse"/>
 </operation>
 <operation name="authDriver">
 <input wsam:Action="http://assignment/DriverWebService/authDriverRequest" message="tns:authDriver"/>
 <output wsam:Action="http://assignment/DriverWebService/authDriverResponse" message="tns:authDriverResponse"/>
-</operation>
-<operation name="getDriverBookings">
-<input wsam:Action="http://assignment/DriverWebService/getDriverBookingsRequest" message="tns:getDriverBookings"/>
-<output wsam:Action="http://assignment/DriverWebService/getDriverBookingsResponse" message="tns:getDriverBookingsResponse"/>
 </operation>
 <operation name="driverBookingAccept">
 <input wsam:Action="http://assignment/DriverWebService/driverBookingAcceptRequest" message="tns:driverBookingAccept"/>
@@ -75,10 +83,22 @@
 <input wsam:Action="http://assignment/DriverWebService/getDriverByIdRequest" message="tns:getDriverById"/>
 <output wsam:Action="http://assignment/DriverWebService/getDriverByIdResponse" message="tns:getDriverByIdResponse"/>
 </operation>
+<operation name="updateDriverProfile">
+<input wsam:Action="http://assignment/DriverWebService/updateDriverProfileRequest" message="tns:updateDriverProfile"/>
+<output wsam:Action="http://assignment/DriverWebService/updateDriverProfileResponse" message="tns:updateDriverProfileResponse"/>
+</operation>
+<operation name="getDriverByEmail">
+<input wsam:Action="http://assignment/DriverWebService/getDriverByEmailRequest" message="tns:getDriverByEmail"/>
+<output wsam:Action="http://assignment/DriverWebService/getDriverByEmailResponse" message="tns:getDriverByEmailResponse"/>
+</operation>
+<operation name="getDriverBookings">
+<input wsam:Action="http://assignment/DriverWebService/getDriverBookingsRequest" message="tns:getDriverBookings"/>
+<output wsam:Action="http://assignment/DriverWebService/getDriverBookingsResponse" message="tns:getDriverBookingsResponse"/>
+</operation>
 </portType>
 <binding name="DriverWebServicePortBinding" type="tns:DriverWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="updateDriverProfile">
+<operation name="getRevenueByDriverId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -87,7 +107,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getDriverByEmail">
+<operation name="getOrdersCountByDriverId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -97,15 +117,6 @@
 </output>
 </operation>
 <operation name="authDriver">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getDriverBookings">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -133,6 +144,33 @@
 </output>
 </operation>
 <operation name="getDriverById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateDriverProfile">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getDriverByEmail">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getDriverBookings">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

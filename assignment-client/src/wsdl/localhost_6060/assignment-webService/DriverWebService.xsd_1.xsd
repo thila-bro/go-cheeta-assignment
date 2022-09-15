@@ -24,6 +24,14 @@
 
 <xs:element name="getDriverByIdResponse" type="tns:getDriverByIdResponse"/>
 
+<xs:element name="getOrdersCountByDriverId" type="tns:getOrdersCountByDriverId"/>
+
+<xs:element name="getOrdersCountByDriverIdResponse" type="tns:getOrdersCountByDriverIdResponse"/>
+
+<xs:element name="getRevenueByDriverId" type="tns:getRevenueByDriverId"/>
+
+<xs:element name="getRevenueByDriverIdResponse" type="tns:getRevenueByDriverIdResponse"/>
+
 <xs:element name="updateDriverProfile" type="tns:updateDriverProfile"/>
 
 <xs:element name="updateDriverProfileResponse" type="tns:updateDriverProfileResponse"/>
@@ -135,6 +143,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getOrdersCountByDriverId">
+<xs:sequence>
+<xs:element name="driverId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersCountByDriverIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="authDriver">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -145,6 +165,18 @@
 <xs:complexType name="authDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRevenueByDriverId">
+<xs:sequence>
+<xs:element name="driverId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRevenueByDriverIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
 </xs:sequence>
 </xs:complexType>
 

@@ -1036,4 +1036,38 @@ public class MySQLUtil implements DBUtil {
             return false;
         }
     }
+    
+    @Override
+    public int getOrdersCountByDriverId(int driverId) {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_all_order_count_by_driver_id`("+driverId+");");
+            
+            if(rs.next()) {
+                return rs.getInt("all_driver_order");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    @Override
+    public double getRevenueByDriverId(int driverId) {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_all_order_revenue_by_driver_id`("+driverId+");");
+            
+            if(rs.next()) {
+                return rs.getInt("driver_revenue");
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
 }

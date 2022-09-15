@@ -14,6 +14,18 @@
             cookie.setMaxAge(0);
             response.addCookie(cookie);
         }
+        if (cookie.getName().equals("ISSUPER")) {
+            cookie.setValue("false");
+            cookie.setPath("/");
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
+        if (cookie.getName().equals("ADMINEMAIL")) {
+            cookie.setValue("false");
+            cookie.setPath("/");
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
     }
     
     ses.setAttribute("success", "Admin Logout Success");

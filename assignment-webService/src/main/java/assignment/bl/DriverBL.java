@@ -52,4 +52,12 @@ public class DriverBL {
         Driver driver = new Driver(0, license, "", nic, password, driverId, firstName, lastName, oldDriver.getEmail(), mobile);
         return this.util.updateDriverProfile(driver);
     }
+
+    public int getOrdersCountByDriverId(int driverId) {
+        return this.util.getOrdersCountByDriverId(driverId);
+    }
+
+    public double getRevenueByDriverId(int driverId) {
+        return this.util.getRevenueByDriverId(driverId);
+    }
 }
