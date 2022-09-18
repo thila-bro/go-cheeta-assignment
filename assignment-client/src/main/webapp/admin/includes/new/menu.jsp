@@ -166,7 +166,7 @@
                 <li class="menu-title" key="t-menu">Super Admin</li>
 
                 <li>
-                    <a href="/assignment-client/admin/views/distance/all.jsp" class="waves-effect">
+                    <a href="/assignment-client/admin/views/template/email/all.jsp" class="waves-effect">
                         <i class="bx bx-calendar"></i>
                         <span key="t-calendar">Email Template</span>
                     </a>

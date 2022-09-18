@@ -5,6 +5,7 @@
 package assignment;
 
 import assignment.bl.AdminBL;
+import assignment.bl.Template;
 import assignment.src.Admin;
 import assignment.src.Branch;
 import assignment.src.City;
@@ -14,7 +15,6 @@ import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
 import java.util.List;
-import java.util.Map;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -258,5 +258,20 @@ public class AdminWebService {
     @WebMethod(operationName = "getAveragePrice")
     public double getAveragePrice() {
         return this.adminBL.getAveragePrice();
+    }
+    
+    @WebMethod(operationName = "getEmailTemplates")
+    public List<Template> getEmailTemplates() {
+        return this.adminBL.getEmailTemplates();
+    }
+    
+    @WebMethod(operationName = "getEmailTemplateById")
+    public Template getEmailTemplateById(@WebParam(name = "templateId") int templateId) {
+        return this.adminBL.getEmailTemplateById(templateId);
+    }
+    
+    @WebMethod(operationName = "updateEmailTemplate")
+    public boolean updateEmailTemplate(@WebParam(name = "templateId") int templateId,@WebParam(name = "title") String title,@WebParam(name = "content") String content) {
+        return this.adminBL.updateEmailTemplate(templateId, title, content);
     }
 }

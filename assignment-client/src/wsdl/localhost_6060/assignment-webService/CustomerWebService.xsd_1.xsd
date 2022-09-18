@@ -87,6 +87,19 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="authCustomer">
+<xs:sequence>
+<xs:element name="mobile" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="authCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="vehiclePriceCalculation">
 <xs:sequence>
 <xs:element name="initialCost" type="xs:double"/>
@@ -101,16 +114,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="authCustomer">
+<xs:complexType name="getCustomerById">
 <xs:sequence>
-<xs:element name="mobile" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="customerId" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="authCustomerResponse">
+<xs:complexType name="getCustomerByIdResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
+<xs:element name="return" type="tns:customer" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -127,18 +139,6 @@
 <xs:complexType name="updateCustomerProfileResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getCustomerById">
-<xs:sequence>
-<xs:element name="customerId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getCustomerByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:customer" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

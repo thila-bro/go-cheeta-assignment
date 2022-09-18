@@ -4,17 +4,23 @@
 <xsd:import namespace="http://assignment/" schemaLocation="http://localhost:6060/assignment-webService/CustomerWebService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="authCustomer">
+<part name="parameters" element="tns:authCustomer"/>
+</message>
+<message name="authCustomerResponse">
+<part name="parameters" element="tns:authCustomerResponse"/>
+</message>
+<message name="getCustomerById">
+<part name="parameters" element="tns:getCustomerById"/>
+</message>
+<message name="getCustomerByIdResponse">
+<part name="parameters" element="tns:getCustomerByIdResponse"/>
+</message>
 <message name="sendTestEmail">
 <part name="parameters" element="tns:sendTestEmail"/>
 </message>
 <message name="sendTestEmailResponse">
 <part name="parameters" element="tns:sendTestEmailResponse"/>
-</message>
-<message name="getDriversByTypeIdAndSouceCity">
-<part name="parameters" element="tns:getDriversByTypeIdAndSouceCity"/>
-</message>
-<message name="getDriversByTypeIdAndSouceCityResponse">
-<part name="parameters" element="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </message>
 <message name="vehiclePriceCalculation">
 <part name="parameters" element="tns:vehiclePriceCalculation"/>
@@ -40,12 +46,6 @@
 <message name="addCustomerResponse">
 <part name="parameters" element="tns:addCustomerResponse"/>
 </message>
-<message name="getCustomerByMobileAndPassword">
-<part name="parameters" element="tns:getCustomerByMobileAndPassword"/>
-</message>
-<message name="getCustomerByMobileAndPasswordResponse">
-<part name="parameters" element="tns:getCustomerByMobileAndPasswordResponse"/>
-</message>
 <message name="addFeedback">
 <part name="parameters" element="tns:addFeedback"/>
 </message>
@@ -58,26 +58,30 @@
 <message name="updateCustomerProfileResponse">
 <part name="parameters" element="tns:updateCustomerProfileResponse"/>
 </message>
-<message name="getCustomerById">
-<part name="parameters" element="tns:getCustomerById"/>
+<message name="getDriversByTypeIdAndSouceCity">
+<part name="parameters" element="tns:getDriversByTypeIdAndSouceCity"/>
 </message>
-<message name="getCustomerByIdResponse">
-<part name="parameters" element="tns:getCustomerByIdResponse"/>
+<message name="getDriversByTypeIdAndSouceCityResponse">
+<part name="parameters" element="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </message>
-<message name="authCustomer">
-<part name="parameters" element="tns:authCustomer"/>
+<message name="getCustomerByMobileAndPassword">
+<part name="parameters" element="tns:getCustomerByMobileAndPassword"/>
 </message>
-<message name="authCustomerResponse">
-<part name="parameters" element="tns:authCustomerResponse"/>
+<message name="getCustomerByMobileAndPasswordResponse">
+<part name="parameters" element="tns:getCustomerByMobileAndPasswordResponse"/>
 </message>
 <portType name="CustomerWebService">
+<operation name="authCustomer">
+<input wsam:Action="http://assignment/CustomerWebService/authCustomerRequest" message="tns:authCustomer"/>
+<output wsam:Action="http://assignment/CustomerWebService/authCustomerResponse" message="tns:authCustomerResponse"/>
+</operation>
+<operation name="getCustomerById">
+<input wsam:Action="http://assignment/CustomerWebService/getCustomerByIdRequest" message="tns:getCustomerById"/>
+<output wsam:Action="http://assignment/CustomerWebService/getCustomerByIdResponse" message="tns:getCustomerByIdResponse"/>
+</operation>
 <operation name="sendTestEmail">
 <input wsam:Action="http://assignment/CustomerWebService/sendTestEmailRequest" message="tns:sendTestEmail"/>
 <output wsam:Action="http://assignment/CustomerWebService/sendTestEmailResponse" message="tns:sendTestEmailResponse"/>
-</operation>
-<operation name="getDriversByTypeIdAndSouceCity">
-<input wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityRequest" message="tns:getDriversByTypeIdAndSouceCity"/>
-<output wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityResponse" message="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </operation>
 <operation name="vehiclePriceCalculation">
 <input wsam:Action="http://assignment/CustomerWebService/vehiclePriceCalculationRequest" message="tns:vehiclePriceCalculation"/>
@@ -95,10 +99,6 @@
 <input wsam:Action="http://assignment/CustomerWebService/addCustomerRequest" message="tns:addCustomer"/>
 <output wsam:Action="http://assignment/CustomerWebService/addCustomerResponse" message="tns:addCustomerResponse"/>
 </operation>
-<operation name="getCustomerByMobileAndPassword">
-<input wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordRequest" message="tns:getCustomerByMobileAndPassword"/>
-<output wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordResponse" message="tns:getCustomerByMobileAndPasswordResponse"/>
-</operation>
 <operation name="addFeedback">
 <input wsam:Action="http://assignment/CustomerWebService/addFeedbackRequest" message="tns:addFeedback"/>
 <output wsam:Action="http://assignment/CustomerWebService/addFeedbackResponse" message="tns:addFeedbackResponse"/>
@@ -107,18 +107,18 @@
 <input wsam:Action="http://assignment/CustomerWebService/updateCustomerProfileRequest" message="tns:updateCustomerProfile"/>
 <output wsam:Action="http://assignment/CustomerWebService/updateCustomerProfileResponse" message="tns:updateCustomerProfileResponse"/>
 </operation>
-<operation name="getCustomerById">
-<input wsam:Action="http://assignment/CustomerWebService/getCustomerByIdRequest" message="tns:getCustomerById"/>
-<output wsam:Action="http://assignment/CustomerWebService/getCustomerByIdResponse" message="tns:getCustomerByIdResponse"/>
+<operation name="getDriversByTypeIdAndSouceCity">
+<input wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityRequest" message="tns:getDriversByTypeIdAndSouceCity"/>
+<output wsam:Action="http://assignment/CustomerWebService/getDriversByTypeIdAndSouceCityResponse" message="tns:getDriversByTypeIdAndSouceCityResponse"/>
 </operation>
-<operation name="authCustomer">
-<input wsam:Action="http://assignment/CustomerWebService/authCustomerRequest" message="tns:authCustomer"/>
-<output wsam:Action="http://assignment/CustomerWebService/authCustomerResponse" message="tns:authCustomerResponse"/>
+<operation name="getCustomerByMobileAndPassword">
+<input wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordRequest" message="tns:getCustomerByMobileAndPassword"/>
+<output wsam:Action="http://assignment/CustomerWebService/getCustomerByMobileAndPasswordResponse" message="tns:getCustomerByMobileAndPasswordResponse"/>
 </operation>
 </portType>
 <binding name="CustomerWebServicePortBinding" type="tns:CustomerWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="sendTestEmail">
+<operation name="authCustomer">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -127,7 +127,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getDriversByTypeIdAndSouceCity">
+<operation name="getCustomerById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="sendTestEmail">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -172,15 +181,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getCustomerByMobileAndPassword">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="addFeedback">
 <soap:operation soapAction=""/>
 <input>
@@ -199,7 +199,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getCustomerById">
+<operation name="getDriversByTypeIdAndSouceCity">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -208,7 +208,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="authCustomer">
+<operation name="getCustomerByMobileAndPassword">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

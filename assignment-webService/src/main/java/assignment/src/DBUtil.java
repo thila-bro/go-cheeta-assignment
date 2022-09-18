@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package assignment.src;
+import assignment.bl.Template;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +62,9 @@ public interface DBUtil {
    public int getAllDrivers();
    public int getAllBookingCount();
    public double getAllRevenue();
+   public List<Template> getEmailTemplates();
+   public Template getEmailTemplateById(int templateId);
+   public boolean updateEmailTemplate(Template template);
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
@@ -81,6 +85,13 @@ public interface DBUtil {
    public boolean updateDriverProfile(Driver driver);
    public int getOrdersCountByDriverId(int driverId);
    public double getRevenueByDriverId(int driverId);
+
+    
+
+    
+   
+
+    
 
     
 

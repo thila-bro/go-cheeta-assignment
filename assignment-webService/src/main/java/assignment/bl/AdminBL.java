@@ -234,4 +234,17 @@ public class AdminBL {
     public double getAveragePrice() {
         return (this.getAllRevenue() / this.getAllBookingCount());
     }
+
+    public List<Template> getEmailTemplates() {
+        return this.util.getEmailTemplates();
+    }
+
+    public Template getEmailTemplateById(int templateId) {
+        return this.util.getEmailTemplateById(templateId);
+    }
+    
+    public boolean updateEmailTemplate(int templateId, String title, String content) {
+        Template template = new Template(templateId, 1, title, content);
+        return this.util.updateEmailTemplate(template);
+    }
 }

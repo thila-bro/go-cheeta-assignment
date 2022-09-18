@@ -6,6 +6,7 @@ package assignment.db;
 
 import assignment.bl.AdminBL;
 import assignment.bl.AuthBL;
+import assignment.bl.Template;
 import assignment.src.Admin;
 import assignment.src.Booking;
 import assignment.src.Branch;
@@ -803,6 +804,57 @@ public class MySQLUtil implements DBUtil {
     }
     
     @Override
+    public List<Template> getEmailTemplates() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_email_templates`();");
+
+            List<Template> templates = new ArrayList<>();            
+
+            while (rs.next()) {
+                Template template = new Template(rs.getInt("id"), rs.getInt("type"), rs.getString("title"), rs.getString("content"));
+                templates.add(template);
+            }
+            
+            return templates;
+            
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public Template getEmailTemplateById(int templateId) {
+        try {
+            this.stmt = this.con.createStatement();
+            this.rs   = this.stmt.executeQuery("CALL `get_email_template_by_id`('"+templateId+"');");
+            
+            if(rs.next()) {
+                Template template = new Template(rs.getInt("id"), rs.getInt("type"), rs.getString("title"), rs.getString("content"));
+                return template;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public boolean updateEmailTemplate(Template template) {
+        try {
+            
+            this.stmt  = this.con.prepareCall("CALL `update_email_template`("+template.getTemplateId()+", '"+template.getTitle()+"', '"+template.getContent()+"');");
+            return ((PreparedStatement) this.stmt).executeUpdate() > 0;
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
     public Map getDashboardData() {
         try {
             Map<String,String> map = new HashMap<>();
@@ -816,6 +868,8 @@ public class MySQLUtil implements DBUtil {
             return null;
         }
     }
+    
+    
     
     
     // customer area
