@@ -14,6 +14,8 @@ import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -273,5 +275,15 @@ public class AdminWebService {
     @WebMethod(operationName = "updateEmailTemplate")
     public boolean updateEmailTemplate(@WebParam(name = "templateId") int templateId,@WebParam(name = "title") String title,@WebParam(name = "content") String content) {
         return this.adminBL.updateEmailTemplate(templateId, title, content);
+    }
+    
+    @WebMethod(operationName = "getLastEarningForChart")
+    public ArrayList getLastEarningForChart() {
+        return this.adminBL.getLastEarningForChart();
+    }
+    
+    @WebMethod(operationName = "getVehicleCountForChart")
+    public ArrayList getVehicleCountForChart() {
+        return this.adminBL.getVehicleCountForChart();
     }
 }

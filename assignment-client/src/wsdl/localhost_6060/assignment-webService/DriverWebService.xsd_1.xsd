@@ -24,6 +24,10 @@
 
 <xs:element name="getDriverByIdResponse" type="tns:getDriverByIdResponse"/>
 
+<xs:element name="getLetestBooking" type="tns:getLetestBooking"/>
+
+<xs:element name="getLetestBookingResponse" type="tns:getLetestBookingResponse"/>
+
 <xs:element name="getOrdersCountByDriverId" type="tns:getOrdersCountByDriverId"/>
 
 <xs:element name="getOrdersCountByDriverIdResponse" type="tns:getOrdersCountByDriverIdResponse"/>
@@ -31,6 +35,10 @@
 <xs:element name="getRevenueByDriverId" type="tns:getRevenueByDriverId"/>
 
 <xs:element name="getRevenueByDriverIdResponse" type="tns:getRevenueByDriverIdResponse"/>
+
+<xs:element name="sendCompleteBookingMail" type="tns:sendCompleteBookingMail"/>
+
+<xs:element name="sendCompleteBookingMailResponse" type="tns:sendCompleteBookingMailResponse"/>
 
 <xs:element name="updateDriverProfile" type="tns:updateDriverProfile"/>
 
@@ -113,6 +121,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="sendCompleteBookingMail">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendCompleteBookingMailResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="updateDriverProfile">
 <xs:sequence>
 <xs:element name="driverId" type="xs:int"/>
@@ -189,6 +209,18 @@
 <xs:complexType name="getDriverByEmailResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:driver" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getLetestBooking">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getLetestBookingResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:booking" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

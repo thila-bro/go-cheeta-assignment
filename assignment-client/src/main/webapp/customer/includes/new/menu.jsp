@@ -28,7 +28,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="/" class="logo logo-dark">
+                <a href="/assignment-client/customer/controller/customerCookieCheck.jsp" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="/assignment-client/admin/asset/img/logo.svg" alt="" height="22">
                     </span>
@@ -37,7 +37,7 @@
                     </span>
                 </a>
 
-                <a href="/" class="logo logo-light">
+                <a href="/assignment-client/customer/controller/customerCookieCheck.jsp" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="/assignment-client/admin/asset/img/logo-light.svg" alt="" height="22">
                     </span>
@@ -76,7 +76,7 @@
             
 
             
-            <div class="dropdown d-inline-block">
+<!--            <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
                     <span class="badge bg-danger rounded-pill">3</span>
@@ -157,7 +157,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -193,7 +193,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-menu">Menu</li>
 
-                <li>
+<!--                <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
                         <span key="t-dashboards">Dashboards</span>
@@ -204,7 +204,7 @@
                         <li><a href="dashboard-crypto" key="t-crypto">Crypto</a></li>
                         <li><a href="dashboard-blog" key="t-blog">Blog</a></li>
                     </ul>
-                </li>
+                </li>-->
 
                 <li>
                     <a href="/assignment-client/customer/view/histry/list.jsp" class="waves-effect">

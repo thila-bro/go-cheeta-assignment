@@ -4,11 +4,20 @@
     Author     : thilan
 --%>
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.lang.reflect.Array"%>
+<%@page import="java.util.List"%>
 <%@page import="assignment.City"%>
 <%@page import="assignment.Branch"%>
 <%@page import="assignment.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../admin/includes/wsdlAdminConenction.jsp" %>
+<% List<Object> prices = admin_proxy.getLastEarningForChart(); %>
+<% List<Object> vehicleCounts = admin_proxy.getVehicleCountForChart(); %>
+<% NumberFormat nf = NumberFormat.getInstance(Locale.UK); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,7 +158,7 @@
                                                     <h5 class="font-size-14 mb-0">Revenue</h5>
                                                 </div>
                                                 <div class="text-muted mt-4">
-                                                    <h4>Rs. <%= admin_proxy.getAllRevenue() %></h4>
+                                                    <h4>Rs. <%= nf.format(admin_proxy.getAllRevenue()) %></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +176,7 @@
                                                     <h5 class="font-size-14 mb-0">Average Price</h5>
                                                 </div>
                                                 <div class="text-muted mt-4">
-                                                    <h4>Rs. <%= admin_proxy.getAveragePrice() %></h4>
+                                                    <h4>Rs. <%= nf.format(admin_proxy.getAveragePrice()) %></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,13 +193,13 @@
                                         <div class="clearfix">
                                             <div class="float-end">
                                                 <div class="input-group input-group-sm">
-                                                    <select class="form-select form-select-sm">
+<!--                                                    <select class="form-select form-select-sm">
                                                         <option value="JA" selected>Jan</option>
                                                         <option value="DE">Dec</option>
                                                         <option value="NO">Nov</option>
                                                         <option value="OC">Oct</option>
                                                     </select>
-                                                    <label class="input-group-text">Month</label>
+                                                    <label class="input-group-text">Month</label>-->
                                                 </div>
                                             </div>
                                             <h4 class="card-title mb-4">Earning</h4>
@@ -200,25 +209,25 @@
                                             <div class="col-lg-4">
                                                 <div class="text-muted">
                                                     <div class="mb-4">
-                                                        <p>This month</p>
-                                                        <h4>$2453.35</h4>
-                                                        <div><span class="badge badge-soft-success font-size-12 me-1"> + 0.2% </span> From previous period</div>
+                                                        <p>Revenue</p>
+                                                        <h4>Rs. <%= nf.format(admin_proxy.getAllRevenue()) %></h4>
+                                                        <!--<div><span class="badge badge-soft-success font-size-12 me-1"> + 0.2% </span> From previous period</div>-->
                                                     </div>
 
-                                                    <div>
+<!--                                                    <div>
                                                         <a href="#" class="btn btn-primary waves-effect waves-light btn-sm">View Details <i class="mdi mdi-chevron-right ms-1"></i></a>
-                                                    </div>
+                                                    </div>-->
                                                     
                                                     <div class="mt-4">
-                                                        <p class="mb-2">Last month</p>
-                                                        <h5>$2281.04</h5>
+                                                        <p class="mb-2">Average</p>
+                                                        <h5>Rs. <%= nf.format(admin_proxy.getAveragePrice()) %></h5>
                                                     </div>
                                                     
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-8">
-                                                <div id="line-chart" class="apex-charts" dir="ltr"></div>
+                                                <div id="line-chart2" class="apex-charts" dir="ltr"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -228,29 +237,35 @@
                             <div class="col-xl-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-4">Sales Analytics</h4>
+                                        <h4 class="card-title mb-4">Vehicles Analytics</h4>
 
                                         <div>
-                                            <div id="donut-chart" class="apex-charts"></div>
+                                            <div id="donut-chart2" class="apex-charts"></div>
                                         </div>
 
                                         <div class="text-center text-muted">
                                             <div class="row">
-                                                <div class="col-4">
+                                                <div class="col-3">
                                                     <div class="mt-4">
-                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary me-1"></i> Product A</p>
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary me-1"></i> Tuk Tuk</p>
                                                         <h5>$ 2,132</h5>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-3">
                                                     <div class="mt-4">
-                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success me-1"></i> Product B</p>
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success me-1"></i> Car</p>
                                                         <h5>$ 1,763</h5>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-3">
                                                     <div class="mt-4">
-                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger me-1"></i> Product C</p>
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger me-1"></i> Van</p>
+                                                        <h5>$ 973</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="mt-4">
+                                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-warning me-1"></i> Bus</p>
                                                         <h5>$ 973</h5>
                                                     </div>
                                                 </div>
@@ -284,6 +299,84 @@
         <script src="/assignment-client/admin/asset/js/saas-dashboard.init.js"></script>
 
         <script src="/assignment-client/admin/asset/js/app.js"></script>
+        
+        
+        
+        <script>
+            var data_arary =  [
+                <% for(int i = 0; i < prices.size(); i++) { %>
+                <% out.print(prices.get(i) + ","); %>
+                <% } %>
+            ];
+            
+            
+            var options = {
+                series: [{
+                name: 'series1',
+//                    data: [3250, 1150]
+                    data: data_arary
+                }],
+                chart: {
+                    height: 320,
+                    type: 'line',
+                    toolbar: 'false',
+                    dropShadow: {
+                        enabled: true,
+                        color: '#000',
+                        top: 18,
+                        left: 7,
+                        blur: 8,
+                        opacity: 0.2
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                colors: ['#556ee6'],
+
+                stroke: {
+                    curve: 'smooth',
+                    width: 3,
+                },
+
+            };
+
+            var chart = new ApexCharts(document.querySelector("#line-chart2"), options);
+            chart.render();
+        </script>
+        
+        
+        <script>
+            var data_arary_vehicles =  [
+                <% for(int i = 0; i < vehicleCounts.size(); i++) { %>
+                <% out.print(vehicleCounts.get(i) + ","); %>
+                <% } %>
+            ];
+            
+            var options = {
+//            series: [56, 38, 26, 38],
+            series: data_arary_vehicles,
+            chart: {
+                type: 'donut',
+                height: 262,
+            },
+            labels: ['Series A', 'Series B', 'Series C', 'Series D'],
+            colors: ['#556ee6', '#34c38f', '#f46a6a', '#f1b44c'],
+            legend: {
+                show: false,
+            },
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '70%',
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#donut-chart2"), options);
+        chart.render();
+        </script>
 
     </body>
 </html>

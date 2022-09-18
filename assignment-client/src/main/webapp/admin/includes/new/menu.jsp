@@ -171,6 +171,18 @@
                         <span key="t-calendar">Email Template</span>
                     </a>
                 </li>
+                
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-store"></i>
+                        <span key="t-ecommerce"><span>Reports</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/assignment-client/admin/views/report/customer.jsp" key="t-products">Customer</a></li>
+                        <li><a href="/assignment-client/admin/views/report/vehicles.jsp" key="t-products">Vehicles</a></li>
+                        <li><a href="/assignment-client/admin/views/report/branch.jsp" key="t-products">Branch</a></li>
+                    </ul>
+                </li>
                 <% }%>
 
             </ul>

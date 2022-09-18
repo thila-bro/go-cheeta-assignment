@@ -28,6 +28,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -855,6 +856,96 @@ public class MySQLUtil implements DBUtil {
     }
     
     @Override
+    public ArrayList getLastEarningForChart() {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_last_10_bookings`();");
+            
+            ArrayList prices = new ArrayList<>();
+            
+
+            while (rs.next()) {
+                prices.add(rs.getDouble("price"));
+            }
+            
+            return prices;
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public ArrayList getVehicleCountForChart() {
+        final int tukTuk = 19;
+        final int car = 5;
+        final int van = 6;
+        final int bus = 7;
+        try {
+            ArrayList vehicle_count = new ArrayList<>();
+            
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_count_by_type_id`('"+tukTuk+"');");
+
+            if(rs.next()) {
+                vehicle_count.add(rs.getInt("vehicle_count"));
+            } else {
+                vehicle_count.add(0);
+            }
+            
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_count_by_type_id`('"+car+"');");
+
+            if(rs.next()) {
+                vehicle_count.add(rs.getInt("vehicle_count"));
+            } else {
+                vehicle_count.add(0);
+            }
+            
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_count_by_type_id`('"+van+"');");
+
+            if(rs.next()) {
+                vehicle_count.add(rs.getInt("vehicle_count"));
+            } else {
+                vehicle_count.add(0);
+            }
+            
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_vehicle_count_by_type_id`('"+bus+"');");
+
+            if(rs.next()) {
+                vehicle_count.add(rs.getInt("vehicle_count"));
+            } else {
+                vehicle_count.add(0);
+            }
+            
+            return vehicle_count;
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
+    public Booking getBookingById(int bookingId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_booking_by_booking_id`('"+bookingId+"');");
+            
+            if(rs.next()) {
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"), rs.getBoolean("feedback_status"));
+                return booking;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    @Override
     public Map getDashboardData() {
         try {
             Map<String,String> map = new HashMap<>();
@@ -998,6 +1089,24 @@ public class MySQLUtil implements DBUtil {
         }
     }
     
+    @Override
+    public Booking getCustomerLastBookingByCustomerId(int customerId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_last_booking_by_customer_id`('"+customerId+"');");
+            
+            if(rs.next()) {
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"), rs.getBoolean("feedback_status"));
+                return booking;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
     
     // driver arae
     @Override
@@ -1066,9 +1175,9 @@ public class MySQLUtil implements DBUtil {
     }
     
     @Override
-    public boolean driverBookingComplete(int bookingId) {
+    public boolean driverBookingComplete(int bookingId, int vehicleId) {
         try {
-            this.stmt = this.con.prepareCall("CALL `driver_booking_complete`('" + bookingId + "');");
+            this.stmt = this.con.prepareCall("CALL `driver_booking_complete`('" + bookingId + "', '"+vehicleId+"');");
             return ((PreparedStatement) this.stmt).executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -1122,6 +1231,27 @@ public class MySQLUtil implements DBUtil {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return 0;
+        }
+    }
+    
+    @Override
+    public List<Booking> getLetestBooking(int driverId) {
+        try {
+            this.stmt  = this.con.createStatement();
+            this.rs    = this.stmt.executeQuery("CALL `get_latest_booking`("+driverId+");");
+
+            List<Booking> bookings = new ArrayList<>();            
+
+            while (rs.next()) {
+                Booking booking = new Booking(rs.getInt("customer_id"), rs.getInt("id"), rs.getInt("vehicle_id"), rs.getInt("pick_up_city_id"), rs.getInt("drop_off_city_id"), rs.getInt("vehicle_type_id"), rs.getString("pick_up_street"), rs.getString("drop_off_street"), rs.getDouble("price"), rs.getDouble("distance"), rs.getInt("status"), rs.getBoolean("feedback_status"));
+                bookings.add(booking);
+            }
+            
+            return bookings;
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

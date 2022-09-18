@@ -32,9 +32,9 @@
 
 <xs:element name="getDriversByTypeIdAndSouceCityResponse" type="tns:getDriversByTypeIdAndSouceCityResponse"/>
 
-<xs:element name="sendTestEmail" type="tns:sendTestEmail"/>
+<xs:element name="sendBookingToDriver" type="tns:sendBookingToDriver"/>
 
-<xs:element name="sendTestEmailResponse" type="tns:sendTestEmailResponse"/>
+<xs:element name="sendBookingToDriverResponse" type="tns:sendBookingToDriverResponse"/>
 
 <xs:element name="updateCustomerProfile" type="tns:updateCustomerProfile"/>
 
@@ -77,11 +77,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="sendTestEmail">
-<xs:sequence/>
+<xs:complexType name="sendBookingToDriver">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="sendTestEmailResponse">
+<xs:complexType name="sendBookingToDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -171,6 +173,22 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="addCustomer">
+<xs:sequence>
+<xs:element name="mobile" type="xs:string" minOccurs="0"/>
+<xs:element name="fristName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="addBooking">
 <xs:sequence>
 <xs:element name="customerId" type="xs:int"/>
@@ -186,22 +204,6 @@
 </xs:complexType>
 
 <xs:complexType name="addBookingResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addCustomer">
-<xs:sequence>
-<xs:element name="mobile" type="xs:string" minOccurs="0"/>
-<xs:element name="fristName" type="xs:string" minOccurs="0"/>
-<xs:element name="lastName" type="xs:string" minOccurs="0"/>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addCustomerResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>

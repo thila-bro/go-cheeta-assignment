@@ -4,6 +4,8 @@
  */
 package assignment.src;
 import assignment.bl.Template;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -65,6 +67,9 @@ public interface DBUtil {
    public List<Template> getEmailTemplates();
    public Template getEmailTemplateById(int templateId);
    public boolean updateEmailTemplate(Template template);
+   public ArrayList getLastEarningForChart();
+   public ArrayList getVehicleCountForChart();
+   public Booking getBookingById(int bookingId);
    
    // customer arae
    public boolean authCustomer(String mobile, String password);
@@ -75,30 +80,17 @@ public interface DBUtil {
    public Customer getCustomerByMobileAndPassword(String mobile, String pasword);
    public boolean addFeedback(Feedback feedback);
    public boolean updateCustomerProfile(Customer customer);
+   public Booking getCustomerLastBookingByCustomerId(int customerId);
 
    // driver area 
    public boolean authDriver(String email, String password);
    public Driver getDriverByEmail(String email);
    public List<Booking> getDriverBookings(int driverId);
    public boolean driverBookingAccept(int bookingId);
-   public boolean driverBookingComplete(int bookingId);
+   public boolean driverBookingComplete(int bookingId, int vehicleId);
    public boolean updateDriverProfile(Driver driver);
    public int getOrdersCountByDriverId(int driverId);
    public double getRevenueByDriverId(int driverId);
-
-    
-
-    
-   
-
-    
-
-    
-
-    
-
-    
-
-    
+   public List<Booking> getLetestBooking(int driverId);
 
 }

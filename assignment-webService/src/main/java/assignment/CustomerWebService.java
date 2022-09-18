@@ -28,9 +28,9 @@ public class CustomerWebService {
     private final PriceCalculation priceCalculation = new PriceCalculation();
     private SendEmail sendMail = new SendEmail();
     
-    @WebMethod(operationName = "sendTestEmail")
-    public boolean sendBookingToDriver() {
-        return this.sendMail.sendBookingToDriver();
+    @WebMethod(operationName = "sendBookingToDriver")
+    public boolean sendBookingToDriver(int customerId) {
+        return this.sendMail.sendBookingToDriver(customerId);
     }
     
     @WebMethod(operationName = "authCustomer")

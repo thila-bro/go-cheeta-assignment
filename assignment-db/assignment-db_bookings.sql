@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
 --
 -- Host: localhost    Database: assignment-db
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.30-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,7 @@ CREATE TABLE `bookings` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,'4',1,66,69,19,'12/e,behind The Temple','12/e,behind The Temple',32500,360,1,3,'2022-09-10 07:36:10','2022-09-10 11:16:55'),(2,'4',1,66,65,19,'12/e,behind The Temple','12/e,behind The Temple',32500,360,0,3,'2022-09-10 11:20:02','2022-09-10 11:21:00');
+INSERT INTO `bookings` VALUES (1,'4',1,66,69,19,'12/e,behind The Temple','12/e,behind The Temple',32500,360,1,3,'2022-09-10 07:36:10','2022-09-10 11:16:55'),(2,'4',1,66,65,19,'12/e,behind The Temple','12/e,behind The Temple',32500,360,0,3,'2022-09-10 11:20:02','2022-09-10 11:21:00'),(3,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,3,'2022-09-18 07:09:48','2022-09-18 08:48:36'),(4,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,3,'2022-09-18 07:23:17','2022-09-18 09:01:43'),(5,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,3,'2022-09-18 07:24:34','2022-09-18 09:08:13'),(6,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,1,'2022-09-18 07:26:34','2022-09-18 09:16:51'),(7,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:27:26','2022-09-18 07:27:26'),(8,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:37:16','2022-09-18 07:37:16'),(9,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:37:21','2022-09-18 07:37:21'),(10,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:37:28','2022-09-18 07:37:28'),(11,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:02','2022-09-18 07:38:02'),(12,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:03','2022-09-18 07:38:03'),(13,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:03','2022-09-18 07:38:03'),(14,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:03','2022-09-18 07:38:03'),(15,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:03','2022-09-18 07:38:03'),(16,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:38:51','2022-09-18 07:38:51'),(17,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:39:18','2022-09-18 07:39:18'),(18,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 07:40:41','2022-09-18 07:40:41'),(19,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 09:01:21','2022-09-18 09:01:21'),(20,'4',1,66,67,19,'12/e,behind The Temple','12/e,behind The Temple',10900,120,0,0,'2022-09-18 09:08:01','2022-09-18 09:08:01'),(21,'4',1,66,65,19,'12/e,behind The Temple','12/e,behind The Temple',32500,360,0,3,'2022-09-18 09:16:38','2022-09-18 09:17:05');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-15 19:28:27
+-- Dump completed on 2022-09-18 21:44:24

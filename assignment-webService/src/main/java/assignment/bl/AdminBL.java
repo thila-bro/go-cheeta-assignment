@@ -6,6 +6,7 @@ package assignment.bl;
 
 import assignment.db.MySQLUtil;
 import assignment.src.Admin;
+import assignment.src.Booking;
 import assignment.src.Branch;
 import assignment.src.City;
 import assignment.src.Customer;
@@ -14,6 +15,8 @@ import assignment.src.Distance;
 import assignment.src.Driver;
 import assignment.src.Vehicle;
 import assignment.src.VehicleType;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -246,5 +249,17 @@ public class AdminBL {
     public boolean updateEmailTemplate(int templateId, String title, String content) {
         Template template = new Template(templateId, 1, title, content);
         return this.util.updateEmailTemplate(template);
+    }
+
+    public ArrayList getLastEarningForChart() {
+        return this.util.getLastEarningForChart();
+    }
+
+    public ArrayList getVehicleCountForChart() {
+        return this.util.getVehicleCountForChart();
+    }
+    
+    public Booking getBookingById(int bookingId) {
+        return this.util.getBookingById(bookingId);
     }
 }

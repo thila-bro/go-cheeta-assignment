@@ -144,9 +144,17 @@
 
 <xs:element name="getEmailTemplatesResponse" type="tns:getEmailTemplatesResponse"/>
 
+<xs:element name="getLastEarningForChart" type="tns:getLastEarningForChart"/>
+
+<xs:element name="getLastEarningForChartResponse" type="tns:getLastEarningForChartResponse"/>
+
 <xs:element name="getVehicleById" type="tns:getVehicleById"/>
 
 <xs:element name="getVehicleByIdResponse" type="tns:getVehicleByIdResponse"/>
+
+<xs:element name="getVehicleCountForChart" type="tns:getVehicleCountForChart"/>
+
+<xs:element name="getVehicleCountForChartResponse" type="tns:getVehicleCountForChartResponse"/>
 
 <xs:element name="getVehicleTypeById" type="tns:getVehicleTypeById"/>
 
@@ -228,16 +236,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAveragePrice">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAveragePriceResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:double"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getCitiesWithOutSelectedId">
 <xs:sequence>
 <xs:element name="id" type="xs:int"/>
@@ -254,6 +252,16 @@
 <xs:sequence>
 <xs:element name="cityId" type="xs:int"/>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAveragePrice">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAveragePriceResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -327,16 +335,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getCities">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getCitiesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:city" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="addVehicleType">
 <xs:sequence>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
@@ -350,15 +348,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAdminById">
-<xs:sequence>
-<xs:element name="adminId" type="xs:int"/>
-</xs:sequence>
+<xs:complexType name="getCities">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="getAdminByIdResponse">
+<xs:complexType name="getCitiesResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:admin" minOccurs="0"/>
+<xs:element name="return" type="tns:city" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -374,6 +370,18 @@
 <xs:complexType name="updateCustomerResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminById">
+<xs:sequence>
+<xs:element name="adminId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdminByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:admin" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -395,18 +403,6 @@
 <xs:element name="templateId" type="xs:int"/>
 <xs:element name="title" type="xs:string" minOccurs="0"/>
 <xs:element name="typeId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicleType">
-<xs:sequence>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="deleteVehicleTypeResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -434,6 +430,18 @@
 </xs:sequence>
 </xs:extension>
 </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleType">
+<xs:sequence>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteVehicleTypeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="getAllRevenue">
@@ -469,19 +477,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="updateCity">
-<xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="updateCityResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="updateEmailTemplate">
 <xs:sequence>
 <xs:element name="templateId" type="xs:int"/>
@@ -491,6 +486,19 @@
 </xs:complexType>
 
 <xs:complexType name="updateEmailTemplateResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCity">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCityResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
@@ -586,18 +594,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getBranchById">
-<xs:sequence>
-<xs:element name="branch_id" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getBranchByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:branch" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="deleteCustomer">
 <xs:sequence>
 <xs:element name="customerId" type="xs:int"/>
@@ -607,6 +603,18 @@
 <xs:complexType name="deleteCustomerResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBranchById">
+<xs:sequence>
+<xs:element name="branch_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBranchByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:branch" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -703,24 +711,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getVehicleTypes">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getVehicleTypesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicleType" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="vehicleType">
-<xs:sequence>
-<xs:element name="initialCost" type="xs:double"/>
-<xs:element name="vehicleType" type="xs:string" minOccurs="0"/>
-<xs:element name="vehilceTypeId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="addDriver">
 <xs:sequence>
 <xs:element name="branchId" type="xs:int"/>
@@ -737,6 +727,24 @@
 <xs:complexType name="addDriverResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleTypes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getVehicleTypesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicleType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vehicleType">
+<xs:sequence>
+<xs:element name="initialCost" type="xs:double"/>
+<xs:element name="vehicleType" type="xs:string" minOccurs="0"/>
+<xs:element name="vehilceTypeId" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -762,6 +770,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getVehicleTypeById">
+<xs:sequence>
+<xs:element name="vehicleId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleTypeByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vehicleType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="upadteBranch">
 <xs:sequence>
 <xs:element name="branch_id" type="xs:int"/>
@@ -777,18 +797,6 @@
 <xs:complexType name="upadteBranchResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getVehicleTypeById">
-<xs:sequence>
-<xs:element name="vehicleId" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getVehicleTypeByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:vehicleType" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -831,6 +839,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getLastEarningForChart">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getLastEarningForChartResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="updateAdmin">
 <xs:sequence>
 <xs:element name="customerId" type="xs:int"/>
@@ -856,6 +874,16 @@
 <xs:complexType name="getCustomerByIdResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:customer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVehicleCountForChart">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getVehicleCountForChartResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

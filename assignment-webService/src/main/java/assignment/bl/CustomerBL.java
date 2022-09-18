@@ -68,4 +68,9 @@ public class CustomerBL {
         Customer customer = new Customer(oldCustomer.getMobile(), passowrd, customerId, firstName, lastName, email);
         return this.util.updateCustomerProfile(customer);
     }
+    
+    // customer last booking
+    public Booking getCustomerLastBookingByCustomerId(int customerId) {
+        return this.util.getCustomerLastBookingByCustomerId(customerId);
+    }
 }

@@ -40,7 +40,8 @@ public class DriverBL {
     }
 
     public boolean driverBookingComplete(int bookingId) {
-        return  this.util.driverBookingComplete(bookingId);
+        Booking booking = this.util.getBookingById(bookingId);
+        return this.util.driverBookingComplete(bookingId, booking.getVehicleId());
     }
 
     public Driver getDriverById(int driverId) {
@@ -59,5 +60,9 @@ public class DriverBL {
 
     public double getRevenueByDriverId(int driverId) {
         return this.util.getRevenueByDriverId(driverId);
+    }
+
+    public List<Booking> getLetestBooking(int driverId) {
+        return this.util.getLetestBooking(driverId);
     }
 }

@@ -10,9 +10,8 @@
 <%
     int bookingId = Integer.parseInt(request.getParameter("booking_id"));
     HttpSession ses = request.getSession();
-    
-//    out.print(driverProxy.driverBookingAccept(bookingId));
     if(driverProxy.driverBookingComplete(bookingId)) {
+        out.print(driverProxy.sendCompleteBookingMail(bookingId));
         ses.setAttribute("success", "Booking Complete Success");
         response.sendRedirect("/assignment-client/driver/view/index.jsp");
     } else {

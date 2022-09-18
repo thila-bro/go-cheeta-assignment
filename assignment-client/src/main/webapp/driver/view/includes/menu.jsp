@@ -122,7 +122,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-menu">Menu</li>
 
-                <li>
+<!--                <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
                         <span key="t-dashboards">Dashboards</span>
@@ -133,39 +133,13 @@
                         <li><a href="dashboard-crypto" key="t-crypto">Crypto</a></li>
                         <li><a href="dashboard-blog" key="t-blog">Blog</a></li>
                     </ul>
-                </li>
+                </li>-->
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
-                        <span key="t-layouts">Layouts</span>
+                    <a href="/assignment-client/driver/view/histry/list.jsp" class="waves-effect">
+                        <i class="bx bx-calendar"></i>
+                        <span key="t-calendar">Bookings</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Vertical</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="layouts-light-sidebar" key="t-light-sidebar">Light Sidebar</a></li>
-                                <li><a href="layouts-compact-sidebar" key="t-compact-sidebar">Compact Sidebar</a></li>
-                                <li><a href="layouts-icon-sidebar" key="t-icon-sidebar">Icon Sidebar</a></li>
-                                <li><a href="layouts-boxed" key="t-boxed-width">Boxed Width</a></li>
-                                <li><a href="layouts-preloader" key="t-preloader">Preloader</a></li>
-                                <li><a href="layouts-colored-sidebar" key="t-colored-sidebar">Colored Sidebar</a></li>
-                                <li><a href="layouts-scrollable" key="t-scrollable">Scrollable></a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Horizontal</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="layouts-horizontal" key="t-horizontal">Horizontal</a></li>
-                                <li><a href="layouts-hori-topbar-light" key="t-topbar-light">Topbar Light</a></li>
-                                <li><a href="layouts-hori-boxed-width" key="t-boxed-width">Boxed Width</a></li>
-                                <li><a href="layouts-hori-preloader" key="t-preloader">Preloader</a></li>
-                                <li><a href="layouts-hori-colored-header" key="t-colored-topbar">Colored Header</a></li>
-                                <li><a href="layouts-hori-scrollable" key="t-scrollable">Scrollable</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
 
                 

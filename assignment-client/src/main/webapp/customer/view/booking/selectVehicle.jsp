@@ -88,7 +88,7 @@
                                                                 <span class="font-size-15"><%= distance.getDistance() %> Km</span>
                                                             </div>
                                                             <div class="flex-fill">
-                                                                <a href="/assignment-client/customer/controller/booking/sendDriverRequest.jsp?pick_up_city_id=<%= pickUpCityId %>&drop_off_city_id=<%= dropOffCityId %>&vehicle_type_id=<%= vehicleType %>&pickup_street=<%= pickUpStreet %>&drop_off_street=<%= dropOffStreet %>&selected_vehicle_id=<%= vehicle.getVehicleId() %>&price=<%= price %>&distance=<%= distance.getDistance() %>" class="btn btn-sm btn-success">Accept</a>
+                                                                <a href="/assignment-client/customer/controller/booking/sendDriverRequest.jsp?pick_up_city_id=<%= pickUpCityId %>&drop_off_city_id=<%= dropOffCityId %>&vehicle_type_id=<%= vehicleType %>&pickup_street=<%= pickUpStreet %>&drop_off_street=<%= dropOffStreet %>&selected_vehicle_id=<%= vehicle.getVehicleId() %>&price=<%= price %>&distance=<%= distance.getDistance() %>&customer_id=<%= customerId %>" class="btn btn-sm btn-success">Accept</a>
                                                             </div>
                                                         </div>
                                                     </div>

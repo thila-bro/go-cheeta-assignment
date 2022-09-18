@@ -4,6 +4,8 @@
     Author     : thilan
 --%>
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Locale"%>
 <%@page import="assignment.City"%>
 <%@page import="assignment.Customer"%>
 <%@page import="assignment.Booking"%>
@@ -11,6 +13,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../include/wsdlDriverConnection.jsp" %>
 <%@include file="../../admin/includes/wsdlAdminConenction.jsp" %>
+<% NumberFormat nf = NumberFormat.getInstance(Locale.UK); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +62,7 @@
                                         <div class="d-flex">
                                             <div class="flex-grow-1">
                                                 <p class="text-muted fw-medium">Revenue</p>
-                                                <h4 class="mb-0">Rs. <%= driverProxy.getRevenueByDriverId(Integer.parseInt(userID)) %></h4>
+                                                <h4 class="mb-0">Rs. <%= nf.format(driverProxy.getRevenueByDriverId(Integer.parseInt(userID))) %></h4>
                                             </div>
 
                                             <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -75,7 +78,7 @@
                                         <div class="d-flex">
                                             <div class="flex-grow-1">
                                                 <p class="text-muted fw-medium">Average Price</p>
-                                                <h4 class="mb-0">Rs. <%= (driverProxy.getRevenueByDriverId(Integer.parseInt(userID)) / (driverProxy.getOrdersCountByDriverId(Integer.parseInt(userID)))) %></h4>
+                                                <h4 class="mb-0">Rs. <%= nf.format((driverProxy.getRevenueByDriverId(Integer.parseInt(userID)) / (driverProxy.getOrdersCountByDriverId(Integer.parseInt(userID))))) %></h4>
                                             </div>
 
                                             <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -133,7 +136,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <% List<Booking> bookings = driverProxy.getDriverBookings(Integer.parseInt(userID)); %>
+                                                    <% List<Booking> bookings = driverProxy.getLetestBooking(Integer.parseInt(userID)); %>
                                                     <% for (Booking booking : bookings) { %>
                                                     <% City dropCity = admin_proxy.getCityById(booking.getDropOffCityId()); %>
                                                     <% Customer customer = admin_proxy.getCustomerById(booking.getCustomerId());%>
@@ -142,8 +145,8 @@
                                                         <td><%= customer.getFirstName() + " " + customer.getLastName()%></td>
                                                         <td><a href="tel:<%= customer.getMobile() %>"><%= customer.getMobile() %></td>
                                                         <td><%= dropCity.getName()%></td>
-                                                        <td>Rs. <%= booking.getPrice()%></td>
-                                                        <td><%= booking.getDistance()%> Km</td>
+                                                        <td>Rs. <%= nf.format(booking.getPrice()) %></td>
+                                                        <td><%= nf.format(booking.getDistance()) %> Km</td>
                                                         <td>
                                                             <% if(booking.getStatus() == 0) { %>
                                                                 <span class="badge badge-pill badge-soft-warning font-size-11">Pending</span>

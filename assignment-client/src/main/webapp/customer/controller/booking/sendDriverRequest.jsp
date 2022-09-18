@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    int userId              = 1;
+    int userId              = Integer.parseInt(request.getParameter("customer_id"));
     int selectedVehicleId   = Integer.parseInt(request.getParameter("selected_vehicle_id"));
     int pickUpCityId        = Integer.parseInt(request.getParameter("pick_up_city_id"));
     int dropOffCityId       = Integer.parseInt(request.getParameter("drop_off_city_id"));
@@ -17,35 +17,14 @@
     String dropOffStreet    = request.getParameter("drop_off_street");
     double price            = Double.parseDouble(request.getParameter("price"));
     double distance         = Double.parseDouble(request.getParameter("distance"));
-    
-//    out.print(selectedVehicleId);
-//    out.print("<br>");
-//    out.print(pickUpCityId);
-//    out.print("<br>");
-//    out.print(pickUpStreet);
-//    out.print("<br>");
-//    out.print(dropOffCityId);
-//    out.print("<br>");
-//    out.print(dropOffStreet);
-//    out.print("<br>");
-//    out.print(vehicleType);
-//    out.print("<br>");
-//    out.print(price);
-//    out.print("<br>");
-//    out.print(distance);
-//    out.print("<br>");
-    
-//    out.print(customerProxy.addBooking(userId, selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance));
-    
-
-//out.print(request.getServerName() + ":" + request.getServerPort());
-    
+    HttpSession ses = request.getSession();
     if(customerProxy.addBooking(userId, selectedVehicleId, vehicleType, pickUpCityId, dropOffCityId, pickUpStreet, dropOffStreet, price, distance)) {
-        out.print(customerProxy.sendTestEmail());
-        out.print("<br>");
-        out.print("success");
+        customerProxy.sendBookingToDriver(userId);
+        ses.setAttribute("success", "Booking placed success");
     }else {
-        out.print("false");
+        ses.setAttribute("error", "Booking placed failed");
     }
+    
+    response.sendRedirect("/assignment-client/customer/view/histry/list.jsp");
 
 %>

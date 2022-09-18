@@ -5,6 +5,7 @@
 package assignment;
 
 import assignment.bl.DriverBL;
+import assignment.bl.SendEmail;
 import assignment.src.Booking;
 import assignment.src.Driver;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.jws.WebParam;
 @WebService(serviceName = "DriverWebService")
 public class DriverWebService {
     private final DriverBL driverBL = new DriverBL();
+    private SendEmail sendMail = new SendEmail();
     
     /**
      * @param email
@@ -68,5 +70,15 @@ public class DriverWebService {
     @WebMethod(operationName = "getRevenueByDriverId")
     public double getRevenueByDriverId(@WebParam(name = "driverId") int driverId) {
         return this.driverBL.getRevenueByDriverId(driverId);
+    }
+    
+    @WebMethod(operationName = "sendCompleteBookingMail")
+    public boolean sendCompleteBookingMail(int bookingId) {
+        return this.sendMail.sendCompleteBookingMail(bookingId);
+    }
+    
+    @WebMethod(operationName = "getLetestBooking")
+    public List<Booking> getLetestBooking(int driverId) {
+        return this.driverBL.getLetestBooking(driverId);
     }
 }
